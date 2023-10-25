@@ -1,5 +1,5 @@
 ---
-title:  CommonJS和AMD/CMD
+title:  CommonJS和AMD和CMD
 date: {{ date }}
 updated: {{ date }}
 toc: true

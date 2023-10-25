@@ -1,5 +1,5 @@
 ---
-title:  选中/取消iconfont所有图标
+title:  选中取消iconfont所有图标
 date: {{ date }}
 updated: {{ date }}
 toc: true
