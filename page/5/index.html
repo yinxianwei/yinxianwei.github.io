@@ -60,7 +60,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-10-25 07:21:10'
+  postUpdate: '2023-11-02 10:21:34'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -164,124 +164,101 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">88</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="yinxianwei"><span class="site-name">yinxianwei</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/git%20%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" title="git 常用命令">git 常用命令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">常用拉取1git pull
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">88</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="yinxianwei"><span class="site-name">yinxianwei</span></a></span><div id="menus"><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/%E9%82%AE%E4%BB%B6%E6%9C%8D%E5%8A%A1/" title="邮件服务">邮件服务</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.939Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">环境
+Ubuntu 22.04 server 64bit
+nginx+php
+sqlite3
 
-提交123git add .git add &lt;file_path...&gt;git add -p
+FQDN
+怎样使修改的静态主机名永久生效？
 
+12# 更新apt-get update
 
-
-暂存1git commit -m &quot;commit message&quot;
-推送1git push
-遴选1git cherry-pick &lt;commit id&gt;
-
-重置提交12345678# 重置所有修改git checkout .# 所有未提交内容暂存至stash，可用git stash pop恢复git stash# 重置到某个节点，保留修改git reset --soft HASH# 重置到某个节点，舍弃修改git reset --hard HASH
-
-变更查看123456# 查看没有add的修改git diff# 查看已经add的修改git diff --cached# 所有修改git diff HEAD
-
-标签标签列表12git taggit tag -l &#x27;v1.*&#x27;
-glob pattern
-标签列表格式化1git tag -l --format=&#x27;%(refname:short ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/gitlab%E5%AE%89%E8%A3%85/" title="gitlab安装">gitlab安装</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">
-gitlab-ce
-external-url
-$ gitlab-ctl reconfigure
-$ gitlab-ctl stop
-$ gitlab-ctl start
-$ sudo gitlab-ctl stop unicorn
-$ sudo gitlab-ctl stop sidekiq
+1234567echo &gt; /etc/hostname mail.example.com# 注释 - update_hostnamevim /etc/cloud/cloud.cfg# 重启reboot
 
 
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/gitstats%E4%BB%A3%E7%A0%81%E7%BB%9F%E8%AE%A1/" title="gitstats代码统计">gitstats代码统计</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">12345678910brew install gnuplotgit clone https://github.com/hoxu/gitstats.gitpython gitstats/gitstats &quot;git路径&quot; &quot;git路径&quot; &quot;生成路径&quot;如: python gitstats/gitstats -c project_name=&quot;name&quot; -c start_date=2017-10-1 &quot;git/code1&quot; &quot;git/code2&quot; out统计git/code1，git/code2代码，时间从2017-10-1号开始，项目名为name，输出至out目录
+安装nginx123apt-get -y install nginxsystemctl start nginxsystemctl enable nginx
 
+安装certbot12345678apt-get -y install certbotcertbot certonly --manual -d &#x27;yinxianwei.com,*.yinxianwei.com&#x27;# 1. 输入邮箱# 2. Y# 3. N# 4. *.example.com# 5. 配置域名解析，TXT _acme-challenge 提示字符串# 6. 配置后等待几分钟回车
 
-1234567891011121314// 一些参数：&#123;	&#x27;max_domains&#x27;: 10,	&#x27;max_ext_length&#x27;: 10,	&#x27;style&#x27;: &#x27;gitstats.css&#x27;,	&#x27;max_auth ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/google%20push-notifications/" title="google push-notifications">google push-notifications</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">按照教程添加前端
-https://developers.google.com/web/fundamentals/codelabs/push-notifications?hl=zh-cn
-后端服务使用web-push
-需要审核key:
-https://console.firebase.google.com/project/test-22de3/settings/cloudmessaging/web:Mzg2N2Q4MzgtNmY5MS00YTAzLTkzYTItMDc2NTczZWJkYmE2?hl=zh-cn
-服务端需要能正常访问google api
-index.html
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/linux%20node-sass%E6%8A%A5%E9%94%99/" title="linux node-sass报错">linux node-sass报错</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">全局安装sudo npm install -g --unsafe-perm node-sass@4.14.1 --save
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/linux%E4%B8%80%E4%BA%9B%E5%91%BD%E4%BB%A4/" title="linux一些命令">linux一些命令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">linux文件权限-rw——- (600) 只有所有者才有读和写的权限-rw-r–r– (644) 只有所有者才有读和写的权限，组群和其他人只有读的权限-rwx—— (700) 只有所有者才有读，写，执行的权限-rwxr-xr-x (755) 只有所有者才有读，写，执行的权限，组群和其他人只有读和执行的权限-rwx–x–x (711) 只有所有者才有读，写，执行的权限，组群和其他人只有执行的权限-rw-rw-rw- (666) 每个人都有读写的权限-rwxrwxrwx (777) 每个人都有读写和执行的权限
-Every possible UNIX&#x2F;Linux file permission: Listed and explained (All 4,096 of them)
+设置证书自动更新12cron ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/15084683065423/" title="解决Cannot find module '../lib/completion'">解决Cannot find module '../lib/completion'</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">123456// package.json&#123;    &quot;scripts&quot;: &#123;        &quot;build&quot;: &quot;gulp build&quot;    &#125;&#125;
 
 
 
-修改文件夹权限
-  chmod 777 /file
+错误：
+1234567891011Error: Cannot find module &#x27;../lib/completion&#x27;    at Function.Module._resolveFilename (module.js:469:15)    at Function.Module._load (module.js:417:25)    at Module.require (module.js:497:17)    at require (internal/module.js:20:19)    at Object.&lt;anonymous&gt; (/staticDisk/repository/jenkins/saas/node_modules/.bin/gulp:13:18)    at Module._co ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/Aerial%204k%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80/" title="Aerial 4k下载地址">Aerial 4k下载地址</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">Aerial版本：1.4.7beta6
+1234567891011121314https://sylvan.apple.com/Aerials/2x/Videos/DB_D001_C001_4K_SDR_HEVC.movhttps://sylvan.apple.com/Aerials/2x/Videos/DB_D001_C005_4K_SDR_HEVC.movhttps://sylvan.apple.com/Aerials/2x/Videos/DB_D008_C010_4K_SDR_HEVC.movhttps://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C009_4K_SDR_HEVC.movhttps://sylvan.apple.com/Aerials/2x/Videos/DB_D011_C010_4K_SDR_HEVC.movhttps://sylvan.apple.com/Aerials/2x/Videos/GL_G004_C010_4K_SDR_HEVC.movhttps://sylvan.apple.com/Aerials/2x ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/All%20about%20angularjs%20$formatters%20and%20$parsers/" title="All about angularjs $formatters and $parsers">All about angularjs $formatters and $parsers</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">The original link
+Hi folks, As a front end developers we need to deal with different data models which come from the server side. We have to format them , change them and yes! we need to validate them. Mainly JSON at these days. In most cases back end data not in the way it should be.(Back end developers doesn’t bother to format data that much).Hence we are in a dark when we are going to render that data in our view. If you are angularjs user, Hell! you are in the business. Fortunately angularjs ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/Catalina%2010.15.4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8SSH%E5%9F%9F%E5%90%8D%E7%99%BB%E5%BD%95/" title="Catalina 10.15.4无法使用SSH域名登录">Catalina 10.15.4无法使用SSH域名登录</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">https://tyler.io/so-uh-i-think-catalina-10154-broke-ssh/
+方案一
+.ssh&#x2F;config文件添加 ProxyCommand nc %h %p
+如：
+1234host vpshostname xx.xxx.comuser rootProxyCommand nc %h %p
 
-修改文件夹下所有文件夹权限
-  chmod 777 /file/*
-
-修改文件夹下所有文件权限
-  chmod 777 /file/*.*
-
-修改文件夹下所有文件和子文件权限
-  chmod -R 777 /file
-
-修改文件夹下所有.js文件权 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/macOS%20Catalina%20Shimo%E4%BD%BF%E7%94%A8PPTP/" title="macOS Catalina Shimo使用PPTP">macOS Catalina Shimo使用PPTP</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">环境：macOS Catalina 10.15.3
-Shimo 4.1.5.1
-
-下载文件下载pptp和PPTP.ppp 链接: https://pan.baidu.com/s/1lANcpclyTMJPZZLcgOpXFQ 提取码: vbr9
-下载VPN Tracker 365
-使用方法
-关闭系统SIP
-复制PPTP.ppp文件至/系统/资源库/Extensions/
-打开VPN Tracker 365，试用，添加PPTP，连接时会自动下载PPTP组件（需登录）
-使用VPN Tracker 365连接成功后打开Shimo.app再连接PPTP就可以了
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/macOS%20Catalina%20%E6%89%93%E5%8D%B0%E6%9C%BA%20Stopped%20Filter%20Failed/" title="macOS Catalina 打印机 Stopped Filter Failed">macOS Catalina 打印机 Stopped Filter Failed</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">通常是打印驱动太旧引起
-
-删除打印机旧的驱动 如：&#x2F;Library&#x2F;Printers&#x2F;FujiXerox
-重新安装最新的驱动
-重新添加打印机
-
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/mockjs/" title="mockjs">mockjs</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">https://github.com/nuysoft/Mock/wiki
-占位符:
-
-@占位符@占位符(参数 [, 参数])
+方案二
+brew install openssh
+~&#x2F;.bash_profile 添加: export PATH&#x3D;”&#x2F;usr&#x2F;local&#x2F;sbin:$PATH”
+source ~/.bash_profile
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/CentOS%20%E5%AE%89%E8%A3%85%20Odoo10/" title="CentOS 安装 Odoo10">CentOS 安装 Odoo10</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">postgresql
 
 
+根据系统生成命令 https://www.postgresql.org/download/linux/redhat/
+sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+禁用内置psql sudo dnf -qy module disable postgresql
+安装psql sudo yum install -y postgresql10-server
+安装contrib sudo yum install postgresql10-contrib -y
+初始化 sudo /usr/pgsql-10/bin/postgresql-10-setup initdb
+开机启动 sudo systemctl enable postgresql-10
+sudo systemctl start postgresql-10
+切换用户 su - postgres
+psql
+修改默认密码 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/CocoaPods%E5%88%B6%E4%BD%9C%E7%AF%87/" title="CocoaPods制作篇">CocoaPods制作篇</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">Update: 2015-04-10
+上传podspec文件到CocoaPods官方仓库中的方式更改，原来的办法不可行，新的办法如下：    http://guides.cocoapods.org/making/getting-setup-with-trunk.html
+First you need to register for trunk:
 
-如: 
-12345&#123;    &#x27;list|10&#x27;: [        &#123;&#x27;text&#x27;:  &#x27;@ctitle()&#x27;&#125;    ]&#125;
+$ pod trunk register orta@cocoapods.org &#39;Orta Therox&#39; --description=&#39;macbook air&#39;
+Then you should be able to do:
 
-
-url
-@url
-
-
-中文文本
-@cword()
-
-
-中文标题
-@ctitle
-
-
-自然数
-@natural
-
-
-布尔
-@boolean
+$ pod trunk push yourPodspec.podspec
+I hope that answers your question - I&#39;m afraid I don&#39;t speak Chinese so I&#39;m relying on google translate.
 
 
-随机整数
-@integer
+
+大概就是：先把邮箱信息注册，然后收到邮件，点击链接验证，最后一步提交你的po ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/CommonJS%E5%92%8CAMD%E5%92%8CCMD/" title="CommonJS和AMD和CMD">CommonJS和AMD和CMD</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">CommonJS根据JS的表现制定规范：
+
+{模块引用(require)} {模块定义(exports)} {模块标识(module)}
+
+NodeJS遵循了CommonJS规范，写法如下：
+12345// foo.jsmodule.exports = function(x) &#123;    console.log(x);&#125;;
+
+1234// index.jslet foo = require(&#x27;./foo&#x27;)foo(1);
 
 
-随机字符
-@string
+
+CommonJS主要为了JS在后端制定的规范，但并不适用与前端，因为代码在是通过网络加载，所以AMD（异步模块定义）出现：
+
+define([‘dep1’,’dep2’],function(dep1,dep2){…});
+
+RequireJS实现了AMD规范，写法如下：
+1234567// foo.jsdefine(function() &#123;    return function(x) &#123;        console.log(x);    &#125;;&#125;);
+
+12345// ind ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/Crack%20latest%20Sketch%20app%20easy%20without%20crack/" title="Crack latest Sketch app easy without crack">Crack latest Sketch app easy without crack</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">优酷地址: http://v.youku.com/v_show&#x2F;id_XMzQwNjU2Njk4OA&#x3D;&#x3D;.html
+youtube地址：https://www.youtube.com/watch?v=lqUpvkpiSDI
+</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/11/02/Fire%20TV%20stick%204K/" title="Fire TV stick 4K">Fire TV stick 4K</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-11-02T10:20:53.935Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></span></div><div class="content">准备
+梯子
+电视HDMI输入
 
 
-中文名
-@cname
 
+开箱
 
-时间
+设置
+软件安装
+电脑安装ADB
+下载apk
+$ adb connect 192.168.1.xx（盒子IP） 
+$ adb install -r xxx.apk
+成功
 
-</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2023/10/25/new%20Date('yyyy-MM-dd%20hh/" title="new Date('yyyy-MM-dd hh:mm:ss')在Safari中的问题">new Date('yyyy-MM-dd hh:mm:ss')在Safari中的问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></span></div><div class="content">如：new Date(&#39;2019-09-04 09:00:41&#39;) 得到的是 Invalid Date
-使用 new Date(&#39;2019/09/04 09:00:41&#39;) 是正常的
-MDN: a simplification of the ISO 8601 calendar date extended format
+图
 
-The standard string representation of a date time string is a simplification of the ISO 8601 calendar date extended format (see Date Time String Format section in the ECMAScript specification for more details). For example, “2011-10-10” (date-only form), “2011-10-10T14:48:00” (date-time form), or “2011-10-10T14:48:00.000+ ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/4/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#content-inner">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#content-inner">9</a><a class="extend next" rel="next" href="/page/6/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yinxianwei</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">88</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yinxianwei"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/25/CommonJS%E5%92%8CAMD%E5%92%8CCMD/" title="CommonJS和AMD和CMD">CommonJS和AMD和CMD</a><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/25/Crack%20latest%20Sketch%20app%20easy%20without%20crack/" title="Crack latest Sketch app easy without crack">Crack latest Sketch app easy without crack</a><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/25/Fire%20TV%20stick%204K/" title="Fire TV stick 4K">Fire TV stick 4K</a><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/25/Git%20Commit%20Msg/" title="Git Commit Msg">Git Commit Msg</a><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/10/25/GitBook%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8/" title="GitBook的安装和使用">GitBook的安装和使用</a><time datetime="2023-10-25T07:20:58.596Z" title="发表于 2023-10-25 07:20:58">2023-10-25</time></div></div></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">88</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">88</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-10-25T07:21:10.417Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By yinxianwei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" href="https://beian.miit.gov.cn">豫ICP备16018939号-2</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?34a4e77e90286f42f09c5c49d3da8082"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/4/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/#content-inner">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/#content-inner">9</a><a class="extend next" rel="next" href="/page/6/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">yinxianwei</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">88</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">2</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/yinxianwei"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/02/docker%E8%87%AA%E5%AE%9A%E4%B9%89%E9%95%9C%E5%83%8F/" title="docker自定义镜像">docker自定义镜像</a><time datetime="2023-11-02T15:36:52.000Z" title="发表于 2023-11-02 15:36:52">2023-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/02/gitlab%E5%AE%89%E8%A3%85/" title="gitlab安装">gitlab安装</a><time datetime="2023-11-02T10:20:53.939Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/02/gitstats%E4%BB%A3%E7%A0%81%E7%BB%9F%E8%AE%A1/" title="gitstats代码统计">gitstats代码统计</a><time datetime="2023-11-02T10:20:53.939Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/02/google%20push-notifications/" title="google push-notifications">google push-notifications</a><time datetime="2023-11-02T10:20:53.939Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/11/02/linux%20node-sass%E6%8A%A5%E9%94%99/" title="linux node-sass报错">linux node-sass报错</a><time datetime="2023-11-02T10:20:53.939Z" title="发表于 2023-11-02 10:20:53">2023-11-02</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/docker-jellyfin/" style="font-size: 1.1em; color: #999">docker jellyfin</a> <a href="/tags/docker/" style="font-size: 1.1em; color: #999">docker</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><span class="card-archive-list-count">87</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/10/"><span class="card-archive-list-date">十月 2023</span><span class="card-archive-list-count">1</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">88</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-11-02T10:21:34.789Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By yinxianwei</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" href="https://beian.miit.gov.cn">豫ICP备16018939号-2</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script> var _hmt = _hmt || []; (function() { var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?34a4e77e90286f42f09c5c49d3da8082"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s); })(); </script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
