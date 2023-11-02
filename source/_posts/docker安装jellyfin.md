@@ -1,7 +1,7 @@
 ---
 title: docker安装jellyfin
 date: 2023-10-24 15:24:07
-tags:
+tags: docker jellyfin
 ---
 
 ```
