@@ -564,7 +564,7 @@ baidu_analytics: 34a4e77e90286f42f09c5c49d3da8082
 
 # Google Analytics
 # https://analytics.google.com/analytics/web/
-google_analytics:
+google_analytics: G-J8HMB6HPES
 
 # Cloudflare Analytics
 # https://www.cloudflare.com/zh-tw/web-analytics/
@@ -572,7 +572,7 @@ cloudflare_analytics:
 
 # Microsoft Clarity
 # https://clarity.microsoft.com/
-microsoft_clarity:
+microsoft_clarity: jyieacjwsb
 
 # Advertisement
 # --------------------------------------
@@ -582,7 +582,7 @@ google_adsense:
   enable: true
   auto_ads: true
   js: https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js
-  client:
+  client: ca-pub-1314323945395441
   enable_page_level_ads: true
 
 # Insert ads manually (手動插入廣告)
