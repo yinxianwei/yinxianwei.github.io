@@ -27,6 +27,7 @@ EXTRA_PATH_METADATA = {
     "extra/robots.txt": {"path": "robots.txt"},
     "extra/ads.txt": {"path": "ads.txt"},
     "extra/favicon.ico": {"path": "favicon.ico"},
+    "extra/custom.css": {"path": "custom.css"},
 }
 ANALYTICS = """
     <script>
@@ -41,6 +42,6 @@ ANALYTICS = """
 GITHUB_URL = "https://github.com/yinxianwei"
 DEFAULT_CATEGORY = "随笔"
 THEME_TEMPLATES_OVERRIDES = ["templates"]
-
+STYLESHEET_URL = "custom.css"
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
