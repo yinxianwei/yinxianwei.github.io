@@ -1,0 +1,9 @@
+#content nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+}
+#content nav ul li,
+#content nav ul li a {
+    padding: 0 10px;
+}
