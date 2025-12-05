@@ -52,5 +52,13 @@ ANALYTICS = """
 """
 GITHUB_URL = "https://github.com/yinxianwei"
 DEFAULT_CATEGORY = "随笔"
+# 隐藏分类
+DISPLAY_CATEGORIES_ON_MENU = False
 THEME_TEMPLATES_OVERRIDES = ["templates"]
-STYLESHEET_URL = "custom.css"
+STYLESHEET_URL = "/custom.css"
+MENUITEMS = [
+    ("首页", "/"),
+    ("分类", "/categories.html"),
+    ("标签", "/tags.html"),
+    ("归档", "/archives.html"),
+]
