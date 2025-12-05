@@ -1,6 +1,7 @@
 AUTHOR = "yinxianwei"
 SITENAME = "一枝红杏出墙来"
-SITEURL = ""
+SITEURL = "https://blog.yinxianwei.com"
+# RELATIVE_URLS = True
 
 PATH = "content"
 
