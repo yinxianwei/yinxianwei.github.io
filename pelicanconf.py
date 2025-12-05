@@ -49,6 +49,7 @@ ANALYTICS = """
     </script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1314323945395441"
      crossorigin="anonymous"></script>
+    <script defer src="https://cloud.umami.is/script.js" data-website-id="084e9ce4-c530-4851-8c0f-c4dd40fb0655"></script>
 """
 GITHUB_URL = "https://github.com/yinxianwei"
 DEFAULT_CATEGORY = "随笔"
@@ -62,3 +63,4 @@ MENUITEMS = [
     ("标签", "/tags.html"),
     ("归档", "/archives.html"),
 ]
+DISQUS_SITENAME = "yinxianwei"
