@@ -25,7 +25,35 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="https://blog.yinxianwei.com/sed-ming-ling-zhong-wen-su-cha-shou-ce.html">sed 命令中文速查手册</a></h1>
+                        <h1 class="entry-title"><a href="https://blog.yinxianwei.com/centos7an-zhuang-node18.html">CentOS7安装node18+</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-12-08T00:00:00+08:00">
+                Published: Mon 08 December 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
+        
+</footer><!-- /.post-info --><ol>
+<li>从 <a href="https://unofficial-builds.nodejs.org/download/release/">https://unofficial-builds.nodejs.org/download/release/</a> 选择版本下载</li>
+<li>解压 <code>tar -zxvf node-v18.19.1-linux-x86.tar.xz</code></li>
+<li><code>export PATH="node-v18.19.1-linux-x86/bin:$PATH"</code></li>
+</ol><p>There are <a href="https://blog.yinxianwei.com/centos7an-zhuang-node18.html#disqus_thread">comments</a>.</p>                    </article>
+                </aside><!-- /#featured -->
+                    <section id="content" class="body">
+                        <h1>Other articles</h1>
+                        <hr />
+                        <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="https://blog.yinxianwei.com/sed-ming-ling-zhong-wen-su-cha-shou-ce.html" rel="bookmark"
+                               title="Permalink to sed 命令中文速查手册">sed 命令中文速查手册</a></h1>
+                    </header>
+
+                    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2025-12-04T00:00:00+08:00">
                 Published: Thu 04 December 2025
@@ -36,7 +64,7 @@
                 </address>
         <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info --><h2>基础语法</h2>
+</footer><!-- /.post-info -->                        <h2>基础语法</h2>
 <div class="highlight"><pre><span></span><code>sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span><span class="w"> </span><span class="s1">&#39;命令&#39;</span><span class="w"> </span>文件名
 sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>脚本文件<span class="w"> </span>文件名
 </code></pre></div>
@@ -60,297 +88,10 @@ sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span
 </tr>
 <tr>
 <td><code>-f</code></td>
-<td>从文件中读取sed命令</td>
-</tr>
-<tr>
-<td><code>-i</code></td>
-<td>直接修改文件内容(不加参数),<code>-i.bak</code>可创建备份</td>
-</tr>
-<tr>
-<td><code>-r</code> 或 <code>-E</code></td>
-<td>使用扩展正则表达式</td>
-</tr>
-</tbody>
-</table>
-<h2>基本命令</h2>
-<h3>查找与打印</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 打印第5行</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;5p&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 打印第5到第10行</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;5,10p&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 打印包含&quot;pattern&quot;的行</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/pattern/p&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 打印从第一个匹配到第二个匹配之间的行</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/start/,/end/p&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 打印最后一行</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;$p&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>删除操作</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 删除第3行</span>
-sed<span class="w"> </span><span class="s1">&#39;3d&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 删除第3到第6行</span>
-sed<span class="w"> </span><span class="s1">&#39;3,6d&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 删除包含&quot;pattern&quot;的行</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/d&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 删除空行</span>
-sed<span class="w"> </span><span class="s1">&#39;/^$/d&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 删除以#开头的行(注释行)</span>
-sed<span class="w"> </span><span class="s1">&#39;/^#/d&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>替换操作</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 替换每行第一个匹配</span>
-sed<span class="w"> </span><span class="s1">&#39;s/old/new/&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 替换每行所有匹配(全局替换)</span>
-sed<span class="w"> </span><span class="s1">&#39;s/old/new/g&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 只替换第2个匹配</span>
-sed<span class="w"> </span><span class="s1">&#39;s/old/new/2&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 替换并打印被修改的行</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;s/old/new/p&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 忽略大小写替换</span>
-sed<span class="w"> </span><span class="s1">&#39;s/old/new/gi&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 只在第5行进行替换</span>
-sed<span class="w"> </span><span class="s1">&#39;5s/old/new/&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 只在第5到第10行进行替换</span>
-sed<span class="w"> </span><span class="s1">&#39;5,10s/old/new/g&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 在包含&quot;pattern&quot;的行中进行替换</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/s/old/new/g&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>插入与追加</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 在第3行前插入文本</span>
-sed<span class="w"> </span><span class="s1">&#39;3i\新插入的文本&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 在第3行后追加文本</span>
-sed<span class="w"> </span><span class="s1">&#39;3a\新追加的文本&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 在匹配行前插入</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/i\新插入的文本&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 在匹配行后追加</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/a\新追加的文本&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>修改行</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 替换第3行的内容</span>
-sed<span class="w"> </span><span class="s1">&#39;3c\新的一行内容&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 替换匹配行的内容</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/c\新的一行内容&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h2>高级用法</h2>
-<h3>使用正则表达式</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 删除行首空格</span>
-sed<span class="w"> </span><span class="s1">&#39;s/^[ \t]*//&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 删除行尾空格</span>
-sed<span class="w"> </span><span class="s1">&#39;s/[ \t]*$//&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 删除所有空格</span>
-sed<span class="w"> </span><span class="s1">&#39;s/ //g&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 匹配数字</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/[0-9]/p&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 使用扩展正则(+, ?, |等)</span>
-sed<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;s/[0-9]+/NUM/g&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>使用反向引用</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 交换两个单词的位置</span>
-sed<span class="w"> </span><span class="s1">&#39;s/\(.*\) \(.*\)/\2 \1/&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 给匹配的内容加括号</span>
-sed<span class="w"> </span><span class="s1">&#39;s/[0-9]*/(&amp;)/&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 提取IP地址的某一段</span>
-<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;192.168.1.1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/\([0-9]*\)\.\([0-9]*\)\..*/\1.\2/&#39;</span>
-</code></pre></div>
-
-<h3>多命令组合</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 使用分号分隔多个命令</span>
-sed<span class="w"> </span><span class="s1">&#39;1d; s/old/new/g&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 使用-e选项</span>
-sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;1d&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/old/new/g&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 使用花括号组合命令</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/{s/old/new/; p}&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>读写文件</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 将匹配行后追加文件内容</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/r other.txt&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 将匹配行写入新文件</span>
-sed<span class="w"> </span><span class="s1">&#39;/pattern/w output.txt&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>保持空间操作</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># h - 将模式空间复制到保持空间</span>
-<span class="c1"># H - 将模式空间追加到保持空间</span>
-<span class="c1"># g - 将保持空间复制到模式空间</span>
-<span class="c1"># G - 将保持空间追加到模式空间</span>
-<span class="c1"># x - 交换模式空间和保持空间</span>
-
-<span class="c1"># 示例:删除重复的相邻行</span>
-sed<span class="w"> </span><span class="s1">&#39;$!N; /^\(.*\)\n\1$/!P; D&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 示例:倒序输出文件</span>
-sed<span class="w"> </span><span class="s1">&#39;1!G;h;$!d&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h2>实用示例</h2>
-<h3>文本处理</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 在文件开头添加内容</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;1i\标题行&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 在文件末尾添加内容</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;$a\结尾行&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 给每行添加行号</span>
-<span class="nv">sed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>file.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;N;s/\n/\t/&#39;</span>
-
-<span class="c1"># 删除HTML标签</span>
-sed<span class="w"> </span><span class="s1">&#39;s/&lt;[^&gt;]*&gt;//g&#39;</span><span class="w"> </span>file.html
-
-<span class="c1"># 转换DOS格式到Unix格式</span>
-sed<span class="w"> </span><span class="s1">&#39;s/\r$//&#39;</span><span class="w"> </span>file.txt
-
-<span class="c1"># 转换Unix格式到DOS格式</span>
-sed<span class="w"> </span><span class="s1">&#39;s/$/\r/&#39;</span><span class="w"> </span>file.txt
-</code></pre></div>
-
-<h3>配置文件修改</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 修改配置项的值</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^Port 22/Port 2222/&#39;</span><span class="w"> </span>sshd_config
-
-<span class="c1"># 取消注释</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#\(.*\)/\1/&#39;</span><span class="w"> </span>config.txt
-
-<span class="c1"># 添加注释</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^\(.*\)/#\1/&#39;</span><span class="w"> </span>config.txt
-
-<span class="c1"># 在特定行后添加配置</span>
-sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/\[section\]/a\new_option = value&#39;</span><span class="w"> </span>config.ini
-</code></pre></div>
-
-<h3>日志分析</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 提取特定时间段的日志</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/2024-01-01/,/2024-01-31/p&#39;</span><span class="w"> </span>log.txt
-
-<span class="c1"># 删除日志中的时间戳</span>
-sed<span class="w"> </span><span class="s1">&#39;s/^[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9:]*//g&#39;</span><span class="w"> </span>log.txt
-
-<span class="c1"># 统计错误日志</span>
-sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/ERROR/p&#39;</span><span class="w"> </span>log.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
-</code></pre></div>
-
-<h2>注意事项</h2>
-<ol>
-<li>
-<p><strong>备份文件</strong>: 使用 <code>-i</code> 选项修改文件前,建议先备份:<code>sed -i.bak 's/old/new/g' file.txt</code></p>
-</li>
-<li>
-<p><strong>特殊字符转义</strong>: 在正则表达式中,需要转义的字符:<code>^ $ . * [ ] \ /</code></p>
-</li>
-<li>
-<p><strong>分隔符</strong>: 替换命令的分隔符可以改变,避免转义过多斜杠:
-   <code>bash
-   sed 's#/path/to/old#/path/to/new#g' file.txt
-   sed 's|old|new|g' file.txt</code></p>
-</li>
-<li>
-<p><strong>元字符</strong>: 基本正则和扩展正则的区别:</p>
-</li>
-<li>基本: <code>\+</code>, <code>\?</code>, <code>\|</code>, <code>\(\)</code></li>
-<li>
-<p>扩展(加<code>-E</code>): <code>+</code>, <code>?</code>, <code>|</code>, <code>()</code></p>
-</li>
-<li>
-<p><strong>空格处理</strong>: 在shell中使用sed时,注意引号的使用:</p>
-</li>
-<li>单引号 <code>'</code> : 保持原样</li>
-<li>双引号 <code>"</code> : 允许变量替换</li>
-</ol>
-<h2>快速参考</h2>
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>功能</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>p</code></td>
-<td>打印</td>
-</tr>
-<tr>
-<td><code>d</code></td>
-<td>删除</td>
-</tr>
-<tr>
-<td><code>s///</code></td>
-<td>替换</td>
-</tr>
-<tr>
-<td><code>a\</code></td>
-<td>追加</td>
-</tr>
-<tr>
-<td><code>i\</code></td>
-<td>插入</td>
-</tr>
-<tr>
-<td><code>c\</code></td>
-<td>修改</td>
-</tr>
-<tr>
-<td><code>r</code></td>
-<td>读取文件</td>
-</tr>
-<tr>
-<td><code>w</code></td>
-<td>写入文件</td>
-</tr>
-<tr>
-<td><code>q</code></td>
-<td>退出</td>
-</tr>
-<tr>
-<td><code>n</code></td>
-<td>读取下一行</td>
-</tr>
-<tr>
-<td><code>N</code></td>
-<td>追加下一行到模式空间</td>
-</tr>
-</tbody>
-</table>
-<hr><p>There are <a href="https://blog.yinxianwei.com/sed-ming-ling-zhong-wen-su-cha-shou-ce.html#disqus_thread">comments</a>.</p>                    </article>
-                </aside><!-- /#featured -->
-                    <section id="content" class="body">
-                        <h1>Other articles</h1>
-                        <hr />
-                        <ol id="posts-list" class="hfeed">
+<td>从 …</td></tr></tbody></table>
+                        <a class="readmore" href="https://blog.yinxianwei.com/sed-ming-ling-zhong-wen-su-cha-shou-ce.html">read more</a>
+<p>There are <a href="https://blog.yinxianwei.com/sed-ming-ling-zhong-wen-su-cha-shou-ce.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>
@@ -604,35 +345,6 @@ hooks列表： https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Usi
 <li>网线连接路由后，打开 192.168 …</li></ol>
                         <a class="readmore" href="https://blog.yinxianwei.com/wr720nying-gai-shua-openwrt.html">read more</a>
 <p>There are <a href="https://blog.yinxianwei.com/wr720nying-gai-shua-openwrt.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="https://blog.yinxianwei.com/centos-an-zhuang-odoo10.html" rel="bookmark"
-                               title="Permalink to CentOS 安装 Odoo10">CentOS 安装 Odoo10</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-01-24T15:15:52+08:00">
-                Published: Mon 24 January 2022
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
-                </address>
-        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
-        
-</footer><!-- /.post-info -->                        <h2>postgresql</h2>
-<!-- https://blog.csdn.net/S2T11Enterprise/article/details/109775056 -->
-
-<ol>
-<li>根据系统生成命令 https://www.postgresql.org/download/linux/redhat/</li>
-<li>sudo yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm</li>
-<li>禁用内置psql <code>sudo dnf -qy module disable postgresql</code></li>
-<li>安装psql <code>sudo yum install -y …</code></li></ol>
-                        <a class="readmore" href="https://blog.yinxianwei.com/centos-an-zhuang-odoo10.html">read more</a>
-<p>There are <a href="https://blog.yinxianwei.com/centos-an-zhuang-odoo10.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
                 </article></li>
                     </ol><!-- /#posts-list -->
   <nav>
