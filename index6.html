@@ -27,6 +27,45 @@
                         <ol id="posts-list" class="hfeed" start="9">
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="https://blog.yinxianwei.com/cron-parser.html" rel="bookmark"
+                               title="Permalink to cron-parser">cron-parser</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2018-08-15T14:23:57+08:00">
+                Published: Wed 15 August 2018
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
+        
+</footer><!-- /.post-info -->                        <p>Github: <a href="https://github.com/harrisiirak/cron-parser">cron-parser</a></p>
+<div class="highlight"><pre><span></span><code><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span>
+<span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span>
+<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="o">|</span>
+<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">week</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">Sun</span><span class="p">)</span>
+<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└─────</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
+<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└──────────</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">31</span><span class="p">)</span>
+<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└───────────────</span><span class="w"> </span><span class="n">hour</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">23</span><span class="p">)</span>
+<span class="err">│</span><span class="w">    </span><span class="err">└────────────────────</span><span class="w"> </span><span class="n">minute</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">59</span><span class="p">)</span>
+<span class="err">└─────────────────────────</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w"> </span><span class="n">optional</span><span class="p">)</span>
+</code></pre></div>
+
+<ol>
+<li>每10秒执行: <code>*/10 * * * * *</code></li>
+<li>每周一10点执行: 0 0 10 ? * 1</li>
+<li>每月1号10点执行: 0 0 10 1 * ?</li>
+</ol>
+<p>暂时 …</p>
+                        <a class="readmore" href="https://blog.yinxianwei.com/cron-parser.html">read more</a>
+<p>There are <a href="https://blog.yinxianwei.com/cron-parser.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="https://blog.yinxianwei.com/guan-yu-tong-guo-documentstylesheetsxiu-gai-yang-shi-gui-ze.html" rel="bookmark"
                                title="Permalink to 关于通过document.styleSheets修改样式规则">关于通过document.styleSheets修改样式规则</a></h1>
                     </header>
@@ -317,38 +356,14 @@ $<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
                         <a class="readmore" href="https://blog.yinxianwei.com/cha-kan-swiftdai-ma-zhi-xing-shi-jian.html">read more</a>
 <p>There are <a href="https://blog.yinxianwei.com/cha-kan-swiftdai-ma-zhi-xing-shi-jian.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
                 </article></li>
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="https://blog.yinxianwei.com/nexus7tiao-guo-wlan.html" rel="bookmark"
-                               title="Permalink to Nexus7跳过WLAN">Nexus7跳过WLAN</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2017-08-15T15:43:12+08:00">
-                Published: Tue 15 August 2017
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
-                </address>
-        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
-        
-</footer><!-- /.post-info -->                        <p>连接WIFI的时候点开高级设置，把IP和端口填进去。</p>
-<p>IP代理：<a href="http://www.xici.net.co">http://www.xici.net.co</a></p>
-<p>点击更多，选择<code>双绿高匿</code>的IP</p>
-<p>如果不行就换个IP试试</p>
-<p>教程是贴吧看到的: <a href="http://tieba.baidu.com/p/3548595778">http://tieba.baidu.com/p/3548595778</a></p>
-                        <a class="readmore" href="https://blog.yinxianwei.com/nexus7tiao-guo-wlan.html">read more</a>
-<p>There are <a href="https://blog.yinxianwei.com/nexus7tiao-guo-wlan.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
-                </article></li>
                     </ol><!-- /#posts-list -->
   <nav>
     <ul>
         <li><a href="https://blog.yinxianwei.com/index.html">&Lang;</a></li>
         <li><a href="https://blog.yinxianwei.com/index5.html">&lang;</a></li>
-      <li>Page 6 / 6</li>
+      <li>Page 6 / 7</li>
+        <li><a href="https://blog.yinxianwei.com/index7.html">&rang;</a></li>
+        <li><a href="https://blog.yinxianwei.com/index7.html">&Rang;</a></li>
     </ul>
   </nav>
                     </section><!-- /#content -->
