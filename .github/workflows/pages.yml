@@ -35,7 +35,7 @@ jobs:
           pip install -r requirements.txt
       
       - name: Build with Pelican
-        run: pelican content -o output -s pelicanconf.py
+        run: pelican content -o output -s pelicanconf_github.py
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
