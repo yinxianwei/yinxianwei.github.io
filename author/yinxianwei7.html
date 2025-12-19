@@ -27,6 +27,49 @@
                         <ol id="posts-list" class="hfeed" start="9">
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="https://blog.yinxianwei.com/cha-kan-swiftdai-ma-zhi-xing-shi-jian.html" rel="bookmark"
+                               title="Permalink to 查看Swift代码执行时间">查看Swift代码执行时间</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-08-15T15:43:33+08:00">
+                Published: Tue 15 August 2017
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
+        
+</footer><!-- /.post-info -->                        <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">measure</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">String</span><span class="p">!,</span> <span class="n">call</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">startTime</span> <span class="p">=</span> <span class="n">CACurrentMediaTime</span><span class="p">()</span>
+    <span class="n">call</span><span class="p">()</span>
+    <span class="kd">let</span> <span class="nv">endTime</span> <span class="p">=</span> <span class="n">CACurrentMediaTime</span><span class="p">()</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">title</span> <span class="p">=</span> <span class="n">title</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">title</span><span class="si">)</span><span class="s">: &quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Time - </span><span class="si">\(</span><span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+ <span class="p">}</span>
+</code></pre></div>
+
+<!-- more -->
+
+<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">doSomeWork</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">measure</span><span class="p">(</span><span class="s">&quot;Array&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">ar</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..</span><span class="mi">10000</span> <span class="p">{</span>
+  <span class="n">ar</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;New elem </span><span class="si">\(</span><span class="n">i</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">measure</span><span class="p">(</span><span class="s">&quot;Image&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nv">url</span> <span class="p">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="s">&quot;http://lorempixel.com/1920 …</span></code></pre></div>
+                        <a class="readmore" href="https://blog.yinxianwei.com/cha-kan-swiftdai-ma-zhi-xing-shi-jian.html">read more</a>
+<p>There are <a href="https://blog.yinxianwei.com/cha-kan-swiftdai-ma-zhi-xing-shi-jian.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="https://blog.yinxianwei.com/nexus7tiao-guo-wlan.html" rel="bookmark"
                                title="Permalink to Nexus7跳过WLAN">Nexus7跳过WLAN</a></h1>
                     </header>

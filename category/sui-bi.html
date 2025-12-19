@@ -25,7 +25,267 @@
 
                 <aside id="featured" class="body">
                     <article>
-                        <h1 class="entry-title"><a href="https://blog.yinxianwei.com/centos7an-zhuang-node18.html">CentOS7安装node18+</a></h1>
+                        <h1 class="entry-title"><a href="https://blog.yinxianwei.com/shuang-tokendui-bi-dan-tokenyou-na-xie-you-shi.html">双token对比单token有哪些优势</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2025-12-19T00:00:00+08:00">
+                Published: Fri 19 December 2025
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
+        
+</footer><!-- /.post-info --><p>JWT <strong>双 Token 机制</strong>（通常指 <strong>Access Token + Refresh Token</strong>）的核心目的只有一句话：
+👉 <strong>在保证安全性的前提下，让用户“尽量少重新登录”</strong>。</p>
+<p>下面我从<strong>单 Token 的问题 → 双 Token 如何解决 → 实际优势 → 适用场景</strong>，一步一步说明「为什么要用双 Token」。</p>
+<hr>
+<h2>一、先看单 Token（只有 Access Token）的问题</h2>
+<p>如果系统只用一个 JWT（Access Token），你会遇到几个矛盾点：</p>
+<h3>1️⃣ Token 有效期长 → 安全性差</h3>
+<ul>
+<li>Token 一旦泄露</li>
+<li>攻击者可以长期使用</li>
+<li><strong>无法主动失效</strong>（JWT 是无状态的）</li>
+</ul>
+<h3>2️⃣ Token 有效期短 → 用户体验差</h3>
+<ul>
+<li>比如 15 分钟过期</li>
+<li>用户频繁被踢下线</li>
+<li>前端要反复登录</li>
+</ul>
+<blockquote>
+<p>⚠️ 本质冲突：
+<strong>安全 = 短有效期</strong>
+<strong>体验 = 长有效期</strong></p>
+</blockquote>
+<p>单 Token 无法同时满足。</p>
+<hr>
+<h2>二、双 Token 是怎么解决这个矛盾的？</h2>
+<h3>双 Token 结构</h3>
+<table>
+<thead>
+<tr>
+<th>Token 类型</th>
+<th>作用</th>
+<th>有效期</th>
+<th>使用频率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Access Token</td>
+<td>接口鉴权</td>
+<td>短（10～30 分钟）</td>
+<td>高频</td>
+</tr>
+<tr>
+<td>Refresh Token</td>
+<td>换新 Access Token</td>
+<td>长（7～30 天）</td>
+<td>低频</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3>流程示意</h3>
+<div class="highlight"><pre><span></span><code>登录
+ ↓
+返回：
+<span class="k">-</span> access_token（短期）
+<span class="k">-</span> refresh_token（长期）
+
+请求接口
+ ↓
+access_token 过期？
+  ↓ 是
+用 refresh_token 换新的 access_token
+</code></pre></div>
+
+<hr>
+<h2>三、双 Token 的核心优势（重点）</h2>
+<h3>✅ 1. Access Token 泄露，风险可控</h3>
+<ul>
+<li>Access Token <strong>有效期很短</strong></li>
+<li>
+<p>就算被截获：</p>
+</li>
+<li>
+<p>最多只能用十几分钟</p>
+</li>
+<li><strong>无法无限期调用接口</strong></li>
+</ul>
+<p>📌 安全性大幅提升</p>
+<hr>
+<h3>✅ 2. Refresh Token 可控、可失效</h3>
+<p>Refresh Token 通常：</p>
+<ul>
+<li><strong>只存服务端（数据库 / Redis）</strong></li>
+<li>
+<p>可以做到：</p>
+</li>
+<li>
+<p>手动吊销</p>
+</li>
+<li>用户退出登录即失效</li>
+<li>异地登录踢下线</li>
+</ul>
+<div class="highlight"><pre><span></span><code>refresh_token 是“有状态”的
+access_token 是“无状态”的
+</code></pre></div>
+
+<p>📌 弥补了 JWT 无法主动失效的缺陷</p>
+<hr>
+<h3>✅ 3. 用户几乎无感知续期（体验好）</h3>
+<ul>
+<li>Access Token 自动刷新</li>
+<li>用户不需要重新登录</li>
+<li>前端可以拦截 401 → 自动 refresh</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">// 典型前端逻辑</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">refreshToken</span><span class="p">()</span>
+<span class="w">  </span><span class="nx">retryRequest</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>📌 <strong>体验接近 Cookie Session，但更适合前后端分离</strong></p>
+<hr>
+<h3>✅ 4. 减少 Token 被长期滥用的可能</h3>
+<p>对比一下：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>Token 泄露后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>单 Token（30 天）</td>
+<td>攻击者 30 天随便用</td>
+</tr>
+<tr>
+<td>双 Token</td>
+<td>攻击者最多用 10～30 分钟</td>
+</tr>
+</tbody>
+</table>
+<p>📌 这是双 Token 最大的安全收益</p>
+<hr>
+<h3>✅ 5. 更符合实际安全分级</h3>
+<p>双 Token 本质是 <strong>权限分层</strong>：</p>
+<ul>
+<li>Access Token：
+  👉 “我现在能不能访问接口？”</li>
+<li>Refresh Token：
+  👉 “我有没有资格继续登录？”</li>
+</ul>
+<p>📌 类似「临时工证 + 身份证」</p>
+<hr>
+<h2>四、为什么 Refresh Token 一般不用 JWT？</h2>
+<p>很多系统会这样设计：</p>
+<ul>
+<li>Access Token：JWT</li>
+<li>Refresh Token：随机字符串（UUID）</li>
+</ul>
+<p>原因：</p>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>可控性</td>
+<td>能随时吊销</td>
+</tr>
+<tr>
+<td>安全</td>
+<td>不暴露用户信息</td>
+</tr>
+<tr>
+<td>防重放</td>
+<td>可绑定设备 / IP</td>
+</tr>
+</tbody>
+</table>
+<p>📌 <strong>Refresh Token 一定要可失效</strong></p>
+<hr>
+<h2>五、双 Token vs Session（你可能会关心）</h2>
+<table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>Session</th>
+<th>双 Token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>前后端分离</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>无状态扩展</td>
+<td>❌</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>移动端支持</td>
+<td>一般</td>
+<td>很好</td>
+</tr>
+<tr>
+<td>安全性</td>
+<td>高</td>
+<td>高（设计好）</td>
+</tr>
+<tr>
+<td>微服务</td>
+<td>一般</td>
+<td>非常适合</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>六、什么时候“没必要”用双 Token？</h2>
+<p>❌ 以下情况可以不复杂化：</p>
+<ul>
+<li>内部后台系统</li>
+<li>短期工具</li>
+<li>只在可信内网</li>
+<li>用户量很小</li>
+</ul>
+<p>✅ 适合双 Token 的场景：</p>
+<ul>
+<li>Web + App</li>
+<li>前后端分离</li>
+<li>微服务</li>
+<li>对安全有要求的业务</li>
+</ul>
+<hr>
+<h2>七、总结一句话</h2>
+<blockquote>
+<p><strong>JWT 双 Token 机制的优势在于：
+用短期 Token 保证安全，用长期 Token 保证体验，同时弥补 JWT 无法失效的缺陷。</strong></p>
+</blockquote><p>There are <a href="https://blog.yinxianwei.com/shuang-tokendui-bi-dan-tokenyou-na-xie-you-shi.html#disqus_thread">comments</a>.</p>                    </article>
+                </aside><!-- /#featured -->
+                    <section id="content" class="body">
+                        <h1>Other articles</h1>
+                        <hr />
+                        <ol id="posts-list" class="hfeed">
+
+                <li><article class="hentry">
+                    <header>
+                        <h1><a href="https://blog.yinxianwei.com/centos7an-zhuang-node18.html" rel="bookmark"
+                               title="Permalink to CentOS7安装node18+">CentOS7安装node18+</a></h1>
+                    </header>
+
+                    <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2025-12-08T00:00:00+08:00">
                 Published: Mon 08 December 2025
@@ -36,17 +296,15 @@
                 </address>
         <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info --><ol>
+</footer><!-- /.post-info -->                        <ol>
 <li>从 <a href="https://unofficial-builds.nodejs.org/download/release/">https://unofficial-builds.nodejs.org/download/release/</a> 选择版本下载</li>
 <li>解压 <code>tar -zxvf node-v18.19.1-linux-x86.tar.xz</code></li>
 <li>执行 <code>export PATH="node-v18.19.1-linux-x86/bin:$PATH"</code></li>
 <li>node -v</li>
-</ol><p>There are <a href="https://blog.yinxianwei.com/centos7an-zhuang-node18.html#disqus_thread">comments</a>.</p>                    </article>
-                </aside><!-- /#featured -->
-                    <section id="content" class="body">
-                        <h1>Other articles</h1>
-                        <hr />
-                        <ol id="posts-list" class="hfeed">
+</ol>
+                        <a class="readmore" href="https://blog.yinxianwei.com/centos7an-zhuang-node18.html">read more</a>
+<p>There are <a href="https://blog.yinxianwei.com/centos7an-zhuang-node18.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
+                </article></li>
 
                 <li><article class="hentry">
                     <header>
@@ -312,47 +570,12 @@ hooks列表： https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Usi
                         <a class="readmore" href="https://blog.yinxianwei.com/redminecha-jian-kai-fa.html">read more</a>
 <p>There are <a href="https://blog.yinxianwei.com/redminecha-jian-kai-fa.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
                 </article></li>
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="https://blog.yinxianwei.com/wr720nying-gai-shua-openwrt.html" rel="bookmark"
-                               title="Permalink to WR720N硬改刷openwrt">WR720N硬改刷openwrt</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2022-02-07T15:43:39+08:00">
-                Published: Mon 07 February 2022
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
-                </address>
-        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
-        
-</footer><!-- /.post-info -->                        <h2>需要准备的工具：</h2>
-<ol>
-<li>WR720N v3</li>
-<li>W25Q1238FVSSIG 16M闪存</li>
-<li>H5DU5162ETR-E3C 64M路由内存</li>
-<li>电烙铁</li>
-<li>热风枪</li>
-<li>土豪金XTW100编程器</li>
-<li>网线一根</li>
-<li>可以插网线的电脑一台</li>
-</ol>
-<h2>流程</h2>
-<ol>
-<li>网线连接路由后，打开 192.168 …</li></ol>
-                        <a class="readmore" href="https://blog.yinxianwei.com/wr720nying-gai-shua-openwrt.html">read more</a>
-<p>There are <a href="https://blog.yinxianwei.com/wr720nying-gai-shua-openwrt.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
-                </article></li>
                     </ol><!-- /#posts-list -->
   <nav>
     <ul>
-      <li>Page 1 / 6</li>
+      <li>Page 1 / 7</li>
         <li><a href="https://blog.yinxianwei.com/category/sui-bi2.html">&rang;</a></li>
-        <li><a href="https://blog.yinxianwei.com/category/sui-bi6.html">&Rang;</a></li>
+        <li><a href="https://blog.yinxianwei.com/category/sui-bi7.html">&Rang;</a></li>
     </ul>
   </nav>
                     </section><!-- /#content -->

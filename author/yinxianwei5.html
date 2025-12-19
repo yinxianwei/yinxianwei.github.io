@@ -27,6 +27,31 @@
                         <ol id="posts-list" class="hfeed" start="9">
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="https://blog.yinxianwei.com/gitignoreshi-xiao-de-jie-jue-ban-fa.html" rel="bookmark"
+                               title="Permalink to .gitignore失效的解决办法">.gitignore失效的解决办法</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-01-23T16:22:49+08:00">
+                Published: Wed 23 January 2019
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
+        
+</footer><!-- /.post-info -->                        <div class="highlight"><pre><span></span><code>git rm -r --cached .
+git add .
+git commit -m &#39;update&#39;
+</code></pre></div>
+                        <a class="readmore" href="https://blog.yinxianwei.com/gitignoreshi-xiao-de-jie-jue-ban-fa.html">read more</a>
+<p>There are <a href="https://blog.yinxianwei.com/gitignoreshi-xiao-de-jie-jue-ban-fa.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="https://blog.yinxianwei.com/xiao-mi-lu-you-3gshua-lao-mao-zi.html" rel="bookmark"
                                title="Permalink to 小米路由3G刷老毛子">小米路由3G刷老毛子</a></h1>
                     </header>
@@ -345,60 +370,6 @@ ERROR: Failed to download Chromium r579032! Set "PUPPETEER_SKIP_CHROMIUM_DOWNLOA
 <p>CommonJS主要为了JS在后端制 …</p>
                         <a class="readmore" href="https://blog.yinxianwei.com/commonjshe-amdcmd.html">read more</a>
 <p>There are <a href="https://blog.yinxianwei.com/commonjshe-amdcmd.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="https://blog.yinxianwei.com/jwtbearer.html" rel="bookmark"
-                               title="Permalink to JwtBearer">JwtBearer</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-21T09:53:49+08:00">
-                Published: Tue 21 August 2018
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="https://blog.yinxianwei.com/author/yinxianwei.html">yinxianwei</a>
-                </address>
-        <p>In <a href="https://blog.yinxianwei.com/category/sui-bi.html">随笔</a>.</p>
-        
-</footer><!-- /.post-info -->                        <h4><a href="https://jwt.io/">JWT</a> Token由以下三部分组成：</h4>
-<ul>
-<li>
-<p><a href="https://tools.ietf.org/html/rfc7519#section-5">HEADER:ALGORITHM &amp; TOKEN TYPE</a></p>
-<p><code>json
- {
-  "alg": "HS256",
-  "typ": "JWT"
-}</code></p>
-</li>
-</ul>
-<!-- more -->
-
-<ul>
-<li>
-<p><a href="https://tools.ietf.org/html/rfc7519#section-4.1">PAYLOAD:DATA</a></p>
-<p><code>json
-{
-  "sub": "1234567890",
-  "name": "John Doe",
-  "iat": 1516239022
-}</code></p>
-</li>
-<li>
-<p>VERIFY SIGNATURE</p>
-<p><code>json
-HMACSHA256(
-  base64UrlEncode(header) + "." +
-  base64UrlEncode(payload),
-  your-256-bit-secret
-)</code></p>
-</li>
-</ul>
-                        <a class="readmore" href="https://blog.yinxianwei.com/jwtbearer.html">read more</a>
-<p>There are <a href="https://blog.yinxianwei.com/jwtbearer.html#disqus_thread">comments</a>.</p>                    </div><!-- /.entry-content -->
                 </article></li>
                     </ol><!-- /#posts-list -->
   <nav>
