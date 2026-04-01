@@ -49,26 +49,26 @@
 <p>Before going further , These four features we can access via “link” function within the directive. And another point is we need “<strong>ngModelController</strong>” instance for the access these features. $parsers and $formatters are arrays, that act as pipelines that get called when users update the view(View to model update) or app update the view(<em>Model to view update</em>).</p>
 <p>So lets get to the business.A simple directive will explain everything. Lets start with the basic syntax of the $parsers and $formatters.</p>
 <p>We can use “ModelController.$formatters.unshift()” or “ModelController.$formatters.push()” to bind our $formatter or $parser functions to our model controller.Here I used the second option.</p>
-<p><img alt="angular-d-1" src="media/15027832317589/angular-d-1.png"></p>
+<p><img alt="angular-d-1" src="media/15027832317589/angular-d-1.png" /></p>
 <p>So in here <strong>scope</strong> is the scope that is bound to our HTML template, <strong>element</strong> is the actual HTML DOM element, <strong>attr</strong> are the attributes of the directive HTML, and  <strong>ngModelController</strong>  is an instance of the required NgModelController.</p>
 <p>Wait! I know you wonder what is this “require: 'ngModel'” statement do. Do not panic guys. This statement connects our ngModelController instance with the real ng-model directive.</p>
 <p>The Important thing is this $parsers are called as soon as the value in the form input is modified by the user. In other words View to model update.In most of the cases $parsers used to handle custom validations. As an example, lets check this sample $parser function.</p>
-<p><img alt="angular-d-2" src="media/15027832317589/angular-d-2.png"></p>
+<p><img alt="angular-d-2" src="media/15027832317589/angular-d-2.png" /></p>
 <p>Lets see actually what happens in here.</p>
-<p><img alt="angular-d-3" src="media/15027832317589/angular-d-3.png"></p>
+<p><img alt="angular-d-3" src="media/15027832317589/angular-d-3.png" /></p>
 <p>As you can see , This simple parser function sets the validation attribute of our input. Pretty simple! That's about $parsers folks. Then we talk about $formatters.</p>
 <p>$formatters do the opposite of $parsers.They deal with data coming up from the model into view and they will call whenever the model is changed.</p>
-<p><img alt="angular-d-4" src="media/15027832317589/angular-d-4.png"></p>
+<p><img alt="angular-d-4" src="media/15027832317589/angular-d-4.png" /></p>
 <p>Here is the super simple sample. This formatter convert input string into Uppercase.</p>
-<p><img alt="angular-d-5" src="media/15027832317589/angular-d-5.png"></p>
+<p><img alt="angular-d-5" src="media/15027832317589/angular-d-5.png" /></p>
 <p>Now its time to get these things together.This is the full cycle.</p>
-<p><img alt="angular-d-6" src="media/15027832317589/angular-d-6.png"></p>
+<p><img alt="angular-d-6" src="media/15027832317589/angular-d-6.png" /></p>
 <p>Now we know about parsers and formatters.But the story still continues.Angular 1.3 introduced new feature call validator.What the heck.we use parsers to validate.Why this new validator?Let me explain,</p>
 <p>Validators are created by combining both parsers and formatters.Is this make sense to you?Yes that means, validators can access both view value and model value.Ok here is the same example of, we use earlier with $parsers.</p>
-<p><img alt="angular-d-7" src="media/15027832317589/angular-d-7.png"></p>
+<p><img alt="angular-d-7" src="media/15027832317589/angular-d-7.png" /></p>
 <p>Thing is we don't want to set validity in here. It will happen internally.</p>
 <p>So far so good!Here is the final phase. What happens if you want to validate something based on server response. As an example you want to validate user name in your login. For these purposes we can use <strong>$asyncValidators.Basically</strong> these validators are based on promises. Lets go for the code. Sorry folks , I don't have any backend to demonstrate this. But here is the code. Go and try it yourself.</p>
-<p><img alt="angular-d-8" src="media/15027832317589/angular-d-8.png"></p>
+<p><img alt="angular-d-8" src="media/15027832317589/angular-d-8.png" /></p>
 <p>To see working example , go and pick jsfiddle that I created <a href="http://jsfiddle.net/bandara00007/8xmLa22n/16/">here</a>.</p>
 <p>Cheers!Happy $parsers and $formatters!</p>
       </div><!-- /.entry-content -->
@@ -93,4 +93,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

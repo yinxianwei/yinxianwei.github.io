@@ -43,10 +43,10 @@
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
 </footer><!-- /.post-info -->        <ol>
-<li>下载最新版 https://www.redmine.org/releases/redmine-4.2.3.tar.gz</li>
+<li>下载最新版 <a href="https://www.redmine.org/releases/redmine-4.2.3.tar.gz">https://www.redmine.org/releases/redmine-4.2.3.tar.gz</a></li>
 <li>解压 tar zxvf redmine-4.2.3.tar.gz</li>
 <li>复制3.x的files至redmine-4.2.3</li>
-<li>3.x数据库备份  https://www.redmine.org/projects/redmine/wiki/RedmineBackupRestore</li>
+<li>3.x数据库备份  <a href="https://www.redmine.org/projects/redmine/wiki/RedmineBackupRestore">https://www.redmine.org/projects/redmine/wiki/RedmineBackupRestore</a></li>
 <li>新建数据库 redmine4</li>
 <li>恢复3.x的数据至数据库redmine4</li>
 <li>使用rvm或rbenv升级ruby至2.7.0</li>
@@ -81,4 +81,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

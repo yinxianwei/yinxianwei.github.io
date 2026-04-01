@@ -42,9 +42,8 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <div class="highlight"><pre><span></span><code>$<span class="w"> </span>defaults<span class="w"> </span>write<span class="w"> </span>com.apple.screencapture<span class="w"> </span>location<span class="w"> </span>&lt;path&gt;
-$<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
-</code></pre></div>
+</footer><!-- /.post-info -->        <p><code>$ defaults write com.apple.screencapture location &lt;path&gt;
+$ killall SystemUIServer</code></p>
       </div><!-- /.entry-content -->
 
     </article>
@@ -67,4 +66,10 @@ $<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

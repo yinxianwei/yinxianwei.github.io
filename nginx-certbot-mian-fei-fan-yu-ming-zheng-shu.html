@@ -45,13 +45,13 @@
 </footer><!-- /.post-info -->        <p>系统: CentOS 7</p>
 <!-- more -->
 
-<p>https://certbot.eff.org/lets-encrypt/centosrhel7-nginx</p>
+<p><a href="https://certbot.eff.org/lets-encrypt/centosrhel7-nginx">https://certbot.eff.org/lets-encrypt/centosrhel7-nginx</a></p>
 <ol>
 <li><code>sudo yum install python2-certbot-dns-cloudflare</code></li>
 <li><code>yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</code></li>
 <li><code>sudo yum install certbot python2-certbot-nginx</code></li>
 <li><code>sudo yum install python2-certbot-dns-cloudflare</code></li>
-<li>注册并添加域名: https://dash.cloudflare.com/login</li>
+<li>注册并添加域名: <a href="https://dash.cloudflare.com/login">https://dash.cloudflare.com/login</a></li>
 <li>
 <p>添加路径和文件
     ~/.secrets/certbot/cloudflare.ini
@@ -59,8 +59,8 @@
 <p>```</p>
 <h1>Cloudflare API token used by Certbot</h1>
 <p>dns_cloudflare_api_token = 你的api token
-<code>1.</code>chmod 600 ~/.secrets/certbot/cloudflare.ini<code>2.</code>certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini -d *.yinxianwei.com --email example@qq.com<code>3. nginx配置泛域名解析</code></p>
-<h1>/etc/nginx/conf.d/www.conf</h1>
+<code>1.</code>chmod 600 ~/.secrets/certbot/cloudflare.ini<code>2.</code>certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini -d *.yinxianwei.com --email <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#64;&#113;&#113;&#46;&#99;&#111;&#109;">&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#64;&#113;&#113;&#46;&#99;&#111;&#109;</a><code>3. nginx配置泛域名解析</code></p>
+<h1>/etc/nginx/conf.d/<a href="http://www.conf">www.conf</a></h1>
 <p>server {
     server_name  ~^(?<subdomain>.+).yinxianwei.com$;
     root   /usr/share/nginx/$subdomain; 
@@ -87,11 +87,11 @@
 6. 选择重定向https
 7. 自动更新: 
 ~~</code>echo "0 0,12 * * * root python -c 'import random; import time; time.sleep(random.random() * 3600)' &amp;&amp; certbot renew -q" | sudo tee -a /etc/crontab &gt; /dev/null`~~</p>
-<p>https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au</p>
+<p><a href="https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au">https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au</a></p>
 </li>
 </ol>
-<p>一个教程: https://www.willh.cn/articles/2018/07/27/1532676216270.html</p>
-<p>https://certbot-dns-cloudflare.readthedocs.io/en/stable/</p>
+<p>一个教程: <a href="https://www.willh.cn/articles/2018/07/27/1532676216270.html">https://www.willh.cn/articles/2018/07/27/1532676216270.html</a></p>
+<p><a href="https://certbot-dns-cloudflare.readthedocs.io/en/stable/">https://certbot-dns-cloudflare.readthedocs.io/en/stable/</a></p>
       </div><!-- /.entry-content -->
 
     </article>
@@ -114,4 +114,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

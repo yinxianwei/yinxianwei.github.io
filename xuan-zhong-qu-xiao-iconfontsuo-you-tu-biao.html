@@ -7,7 +7,7 @@
                         <title>选中取消iconfont所有图标</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="选中/取消iconfont所有图标 打开控制台，粘贴下面代码，回车 var ls = document.getElementsByClassName('icon-cover-freeze'); var mClick = function(index) { if (index ==..." />
+    <meta name="description" content="选中/取消iconfont所有图标 打开控制台，粘贴下面代码，回车 ``` var ls = document.getElementsByClassName('icon-cover-freeze'); var mClick = function(index) { if (index ==..." />
         </head>
 
         <body id="index" class="home">
@@ -44,16 +44,17 @@
         
 </footer><!-- /.post-info -->        <h1>选中/取消iconfont所有图标</h1>
 <p>打开控制台，粘贴下面代码，回车</p>
-<div class="highlight"><pre><span></span><code><span class="nf">var</span><span class="w"> </span><span class="n">ls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">document</span><span class="p">.</span><span class="n">getElementsByClassName</span><span class="p">(</span><span class="s1">&#39;icon-cover-freeze&#39;</span><span class="p">);</span>
-<span class="nf">var</span><span class="w"> </span><span class="n">mClick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">(</span><span class="k">index</span><span class="p">)</span><span class="w"> </span><span class="err">{</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">index</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">ls</span><span class="p">.</span><span class="n">length</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="n">ls</span><span class="o">[</span><span class="n">index</span><span class="o">]</span><span class="p">.</span><span class="n">firstElementChild</span><span class="p">.</span><span class="n">click</span><span class="p">();</span>
-<span class="w">    </span><span class="n">setTimeout</span><span class="p">(()</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">{</span>
-<span class="w">        </span><span class="n">mClick</span><span class="p">(</span><span class="k">index</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
-<span class="w">    </span><span class="err">}</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">);</span>
-<span class="err">}</span><span class="p">;</span>
-<span class="n">mClick</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-</code></pre></div>
+<p>```</p>
+<p>var ls = document.getElementsByClassName('icon-cover-freeze');
+var mClick = function(index) {
+    if (index == ls.length) return;
+    ls[index].firstElementChild.click();
+    setTimeout(() =&gt; {
+        mClick(index + 1);
+    }, 5);
+};
+mClick(0);</p>
+<p>```</p>
       </div><!-- /.entry-content -->
 
     </article>
@@ -76,4 +77,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

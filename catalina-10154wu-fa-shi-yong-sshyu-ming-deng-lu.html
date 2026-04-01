@@ -42,16 +42,14 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <p>https://tyler.io/so-uh-i-think-catalina-10154-broke-ssh/</p>
+</footer><!-- /.post-info -->        <p><a href="https://tyler.io/so-uh-i-think-catalina-10154-broke-ssh/">https://tyler.io/so-uh-i-think-catalina-10154-broke-ssh/</a></p>
 <p>方案一</p>
 <p>.ssh/config文件添加 <code>ProxyCommand nc %h %p</code></p>
 <p>如：</p>
-<div class="highlight"><pre><span></span><code>host vps
+<p><code>host vps
 hostname xx.xxx.com
 user root
-ProxyCommand nc %h %p
-</code></pre></div>
-
+ProxyCommand nc %h %p</code></p>
 <p>方案二</p>
 <p><code>brew install openssh</code></p>
 <p>~/.bash_profile 添加: export PATH="/usr/local/sbin:$PATH"</p>
@@ -78,4 +76,10 @@ ProxyCommand nc %h %p
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

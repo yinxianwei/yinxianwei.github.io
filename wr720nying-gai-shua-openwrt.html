@@ -73,22 +73,22 @@
 <li>安装ubuntu容器<code>docker pull ubuntu:20.04</code></li>
 <li>查看容器id <code>docker ps</code> </li>
 <li>进入容器 <code>docker exec -it 容器id  /bin/bash</code></li>
-<li>修改镜像 https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11ZrkuE2</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="err">echo</span><span class="w"> </span><span class="err">&#39;deb</span><span class="w"> </span><span class="err">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="err">focal</span><span class="w"> </span><span class="err">main</span><span class="w"> </span><span class="err">restricted</span><span class="w"> </span><span class="err">universe</span><span class="w"> </span><span class="err">multiverse</span>
-<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-security</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-security</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-updates</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-updates</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-proposed</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-proposed</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-backports</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
-<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-backports</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse&#39;</span><span class="w"> </span><span class="kp">&gt;</span><span class="w"> </span><span class="kp">/etc/apt/sources.list</span>
-</code></pre></div>
-
-<ol>
-<li><code>apt-get update</code></li>
+<li>
+<p>修改镜像 <a href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11ZrkuE2">https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11ZrkuE2</a>
+<code>echo 'deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse' &gt; /etc/apt/sources.list</code></p>
+</li>
+<li>
+<p><code>apt-get update</code></p>
+</li>
 <li><code>apt-get install git</code></li>
 <li><code>apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync</code></li>
 <li><code>git clone https://github.com/coolsnowwolf/openwrt.git</code></li>
@@ -100,8 +100,8 @@
 <li>
 <p>无法更新订阅
     执行 chown 755 /etc/config/s*</p>
-<p>https://github.com/coolsnowwolf/lede/commit/af803f2569bbbaac88d001890a8a7646abf0ce0d#comments</p>
-<p>https://github.com/maxlicheng/luci-app-ssr-plus</p>
+<p><a href="https://github.com/coolsnowwolf/lede/commit/af803f2569bbbaac88d001890a8a7646abf0ce0d#comments">https://github.com/coolsnowwolf/lede/commit/af803f2569bbbaac88d001890a8a7646abf0ce0d#comments</a></p>
+<p><a href="https://github.com/maxlicheng/luci-app-ssr-plus">https://github.com/maxlicheng/luci-app-ssr-plus</a></p>
 </li>
 </ol>
       </div><!-- /.entry-content -->
@@ -126,4 +126,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

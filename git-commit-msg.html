@@ -7,7 +7,7 @@
                         <title>Git Commit Msg</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="<type>(<scope>): <subject> <body> <footer> Example fix(middleware): ensure Range headers adhere more closely to RFC 2616 Add one new dependency,..." />
+    <meta name="description" content="``` (): ``` Example ``` fix(middleware): ensure Range headers adhere more closely to RFC 2616 Add one new dependency, use `range-parser` (Express..." />
         </head>
 
         <body id="index" class="home">
@@ -42,55 +42,59 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="k">type</span><span class="p">&gt;(&lt;</span><span class="nx">scope</span><span class="p">&gt;):</span><span class="w"> </span><span class="p">&lt;</span><span class="nx">subject</span><span class="p">&gt;</span>
+</footer><!-- /.post-info -->        <p>```
+<type>(<scope>): <subject></p>
+<body>
 
-<span class="p">&lt;</span><span class="nx">body</span><span class="p">&gt;</span>
+<footer>
+```
 
-<span class="p">&lt;</span><span class="nx">footer</span><span class="p">&gt;</span>
-</code></pre></div>
 
-<p>Example</p>
-<div class="highlight"><pre><span></span><code>fix(middleware): ensure Range headers adhere more closely to RFC 2616
+Example
+
+```
+fix(middleware): ensure Range headers adhere more closely to RFC 2616
 
 Add one new dependency, use `range-parser` (Express dependency) to compute
 range. It is more well-tested in the wild.
 
 Fixes #2310
-</code></pre></div>
+```
 
 <!-- more -->
 
-<p>Allowed <type> values:</p>
-<ul>
-<li>feat 针对用户来时的新功能</li>
-<li>fix 针对用户来说的bug修复</li>
-<li>docs 文档更新</li>
-<li>style 代码格式化，添加分号对代码没有影响的提交</li>
-<li>refactor 代码重构，如变更一个变量名</li>
-<li>test 测试代码修改</li>
-<li>chore 更新注释等</li>
-<li>ci 配置更新</li>
-</ul>
-<p>Example <scope> values:</p>
-<ul>
-<li>init</li>
-<li>runner</li>
-<li>watcher</li>
-<li>config</li>
-<li>web-server</li>
-<li>proxy</li>
-</ul>
-<p>Message body:</p>
-<ul>
-<li>修改内容说明</li>
-</ul>
-<p>Message footer:</p>
-<ul>
-<li>关闭的问题如：
+Allowed <type> values:
+
+- feat 针对用户来时的新功能
+- fix 针对用户来说的bug修复
+- docs 文档更新
+- style 代码格式化，添加分号对代码没有影响的提交
+- refactor 代码重构，如变更一个变量名
+- test 测试代码修改
+- chore 更新注释等
+- ci 配置更新
+
+Example <scope> values:
+
+- init
+- runner
+- watcher
+- config
+- web-server
+- proxy
+
+Message body:
+
+- 修改内容说明
+
+Message footer:
+
+- 关闭的问题如：
     Closes #123, #442
-    Fixes #422</li>
-</ul>
-<p>参考： http://karma-runner.github.io/2.0/dev/git-commit-msg.html</p>
+    Fixes #422
+
+
+参考： http://karma-runner.github.io/2.0/dev/git-commit-msg.html
       </div><!-- /.entry-content -->
 
     </article>
@@ -113,4 +117,10 @@ Fixes #2310
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

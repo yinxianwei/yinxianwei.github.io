@@ -70,29 +70,28 @@
 <ul>
 <li>
 <p>插件判断传过来的第一个参数是否为<code>HelloPlguin</code>，是就回调成功函数，反之失败。代码如下：</p>
-<p><img alt="QQ20150423-5@2x" src="media/15027829418427/QQ20150423-5@2x.png"></p>
+<p><img alt="QQ20150423-5@2x" src="media/15027829418427/QQ20150423-5@2x.png" /></p>
 </li>
 <li>
 <p>运行效果如下：
-<img alt="QQ20150423-6@2x" src="media/15027829418427/QQ20150423-6@2x.png"></p>
+<img alt="QQ20150423-6@2x" src="media/15027829418427/QQ20150423-6@2x.png" /></p>
 </li>
 </ul>
 <h1>重复回调JS函数</h1>
 <ul>
 <li>
 <p>我想实现多次回调JS代码，于是我就天真的这样写：</p>
-<div class="highlight"><pre><span></span><code><span class="cp">[</span><span class="bp">self.</span><span class="nx nx-Member">commandDelegate</span><span class="w"> </span><span class="nx">sendPluginResult</span><span class="p">:</span><span class="nx">pluginResult</span><span class="w"> </span><span class="nx">callbackId</span><span class="p">:</span><span class="nx">command.callbackId</span><span class="cp">]</span><span class="o">;</span>
+<pre><code>[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 
-<span class="cp">[</span><span class="bp">self.</span><span class="nx nx-Member">commandDelegate</span><span class="w"> </span><span class="nx">sendPluginResult</span><span class="p">:</span><span class="nx">pluginResult</span><span class="w"> </span><span class="nx">callbackId</span><span class="p">:</span><span class="nx">command.callbackId</span><span class="cp">]</span><span class="o">;</span>
-</code></pre></div>
-
+[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+</code></pre>
 <p>发现并不能回调多次，第二次调用时PhoneGap认为记录的这条<code>callbackId</code>已经回调成功了，所以就不会继续执行。</p>
 </li>
 <li>
 <p>然后这样写就实现了多次调用：</p>
 </li>
 </ul>
-<p><img alt="QQ20150423-7@2x" src="media/15027829418427/QQ20150423-7@2x.png"></p>
+<p><img alt="QQ20150423-7@2x" src="media/15027829418427/QQ20150423-7@2x.png" /></p>
 <p>参考：<a href="https://my.oschina.net/jgy/blog/175643#OSC_h4_4">phoneGap开发IOS,JS调用IOS方法/phoneGap插件开发</a></p>
 <p>Demo地址：<a href="https://github.com/yinxianwei/JEPlguinDemo.git">JEPlguinDemo</a></p>
       </div><!-- /.entry-content -->
@@ -117,4 +116,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

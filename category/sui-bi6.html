@@ -43,17 +43,15 @@
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
 </footer><!-- /.post-info -->                        <p>Github: <a href="https://github.com/harrisiirak/cron-parser">cron-parser</a></p>
-<div class="highlight"><pre><span></span><code><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span><span class="w">    </span><span class="o">*</span>
-<span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span><span class="w">    </span><span class="err">┬</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="o">|</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">week</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">7</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">Sun</span><span class="p">)</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└─────</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└──────────</span><span class="w"> </span><span class="n">day</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">month</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">31</span><span class="p">)</span>
-<span class="err">│</span><span class="w">    </span><span class="err">│</span><span class="w">    </span><span class="err">└───────────────</span><span class="w"> </span><span class="n">hour</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">23</span><span class="p">)</span>
-<span class="err">│</span><span class="w">    </span><span class="err">└────────────────────</span><span class="w"> </span><span class="n">minute</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">59</span><span class="p">)</span>
-<span class="err">└─────────────────────────</span><span class="w"> </span><span class="n">second</span><span class="w"> </span><span class="p">(</span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">59</span><span class="p">,</span><span class="w"> </span><span class="n">optional</span><span class="p">)</span>
-</code></pre></div>
-
+<p><code>*    *    *    *    *    *
+┬    ┬    ┬    ┬    ┬    ┬
+│    │    │    │    │    |
+│    │    │    │    │    └ day of week (0 - 7) (0 or 7 is Sun)
+│    │    │    │    └───── month (1 - 12)
+│    │    │    └────────── day of month (1 - 31)
+│    │    └─────────────── hour (0 - 23)
+│    └──────────────────── minute (0 - 59)
+└───────────────────────── second (0 - 59, optional)</code></p>
 <ol>
 <li>每10秒执行: <code>*/10 * * * * *</code></li>
 <li>每周一10点执行: 0 0 10 ? * 1</li>
@@ -81,21 +79,20 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <div class="highlight"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
-<span class="kd">function</span><span class="w"> </span><span class="nx">changeTheme</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span>
-<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;ROLE_ID&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;__theme&#39;</span><span class="p">)</span>
-<span class="w">        </span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">colors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;background-color&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;color&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;border-color&#39;</span><span class="p">];</span>
-
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">styleSheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">styleSheets</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">href</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">styleSheets</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">styleSheets</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">styleSheet</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">index</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">var …</span></code></pre></div>
+</footer><!-- /.post-info -->                        <p>```js
+var innerText = '';
+function changeTheme() {
+    try {
+        var colors = JSON.parse(
+            window.localStorage.getItem(window.localStorage.getItem('ROLE_ID') + '__theme')
+        );
+    } catch (error) { }
+    if (!colors) {
+        return;
+    }
+    var keys = ['background', 'background-color', 'color', 'border-color'];</p>
+<pre><code>var styleSheet = document.styleSheets[0].href ? document.styleSheets[0] : document.styleSheets[1];
+for (var index = 0; index &lt; styleSheet.rules.length; index …</code></pre>
                         <a class="readmore" href="https://yinxianwei.github.io/guan-yu-tong-guo-documentstylesheetsxiu-gai-yang-shi-gui-ze.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -117,9 +114,8 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <div class="highlight"><pre><span></span><code>$<span class="w"> </span>defaults<span class="w"> </span>write<span class="w"> </span>com.apple.screencapture<span class="w"> </span>location<span class="w"> </span>&lt;path&gt;
-$<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
-</code></pre></div>
+</footer><!-- /.post-info -->                        <p><code>$ defaults write com.apple.screencapture location &lt;path&gt;
+$ killall SystemUIServer</code></p>
                         <a class="readmore" href="https://yinxianwei.github.io/macxiu-gai-ping-mu-kuai-zhao-bao-cun-de-wei-zhi.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -219,23 +215,22 @@ $<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <div class="highlight"><pre><span></span><code><span class="c1">// package.json</span>
-<span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gulp build&quot;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
+</footer><!-- /.post-info -->                        <p><code>json
+// package.json
+{
+    "scripts": {
+        "build": "gulp build"
+    }
+}</code></p>
 <!-- more -->
 
 <p>错误：</p>
-<div class="highlight"><pre><span></span><code><span class="n">Error</span><span class="p">:</span><span class="w"> </span><span class="n">Cannot</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="s1">&#39;../lib/completion&#39;</span>
-<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Function</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">_resolveFilename</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">469</span><span class="p">:</span><span class="mi">15</span><span class="p">)</span>
-<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Function</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">_load</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">417</span><span class="p">:</span><span class="mi">25</span><span class="p">)</span>
-<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Module</span><span class="o">.</span><span class="n">require</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">497</span><span class="p">:</span><span class="mi">17</span><span class="p">)</span>
-<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="p">(</span><span class="n">internal</span><span class="o">/</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">19</span><span class="p">)</span>
-<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="nb nb-Type">Object</span><span class="o">.&lt;</span><span class="n">anonymous</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">staticDisk</span><span class="o">/</span><span class="n">repository</span><span class="o">/</span><span class="n">jenkins …</span></code></pre></div>
+<p><code>Error: Cannot find module '../lib/completion'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.require (module.js:497:17)
+    at require (internal/module.js:20:19)
+    at Object.&lt;anonymous&gt; (/staticDisk/repository …</code></p>
                         <a class="readmore" href="https://yinxianwei.github.io/jie-jue-cannot-find-module-libcompletion.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -261,27 +256,26 @@ $<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
 <li>element-ui: 1.4.2</li>
 <li>vue-cli: 2.8.2</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// utils.j</span>
-<span class="nx">exports</span><span class="p">.</span><span class="nx">cssLoaders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">css</span><span class="o">:</span><span class="w"> </span><span class="nx">generateLoaders</span><span class="p">(</span><span class="s1">&#39;postcss&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
-<span class="w">            </span><span class="nx">plugins</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;postcss-px2rem&#39;</span><span class="p">)({</span><span class="w"> </span><span class="nx">remUnit</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="w"> </span><span class="p">})]</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">}),</span>
-<span class="w">        </span><span class="p">...</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1">// vue-loader.conf.js</span>
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="w">    </span><span class="nx">postcss</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;postcss-px2rem&#39;</span><span class="p">)({</span><span class="w"> </span><span class="nx">remUnit</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="w"> </span><span class="p">})],</span>
-<span class="w">    </span><span class="p">...</span>
-<span class="p">}</span>
-</code></pre></div>
+<p><code>js
+// utils.j
+exports.cssLoaders = function (options) {
+    ...
+    return {
+        css: generateLoaders('postcss', {
+            plugins() {
+                return [require('postcss-px2rem')({ remUnit: 75 })]
+            }
+        }),
+        ...
+    }
+}</code></p>
+<p><code>js
+// vue-loader.conf.js
+module.exports = {
+    ...
+    postcss: [require('postcss-px2rem')({ remUnit: 75 })],
+    ...
+}</code></p>
                         <a class="readmore" href="https://yinxianwei.github.io/element-ui-element-theme-vue-cli-postcss-px2rem.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -331,28 +325,28 @@ $<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">measure</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">String</span><span class="p">!,</span> <span class="n">call</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nv">startTime</span> <span class="p">=</span> <span class="n">CACurrentMediaTime</span><span class="p">()</span>
-    <span class="n">call</span><span class="p">()</span>
-    <span class="kd">let</span> <span class="nv">endTime</span> <span class="p">=</span> <span class="n">CACurrentMediaTime</span><span class="p">()</span>
-    <span class="k">if</span> <span class="kd">let</span> <span class="nv">title</span> <span class="p">=</span> <span class="n">title</span> <span class="p">{</span>
-        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">title</span><span class="si">)</span><span class="s">: &quot;</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Time - </span><span class="si">\(</span><span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
- <span class="p">}</span>
-</code></pre></div>
-
+</footer><!-- /.post-info -->                        <p><code>swift
+func measure(title: String!, call: () -&gt; Void) {
+    let startTime = CACurrentMediaTime()
+    call()
+    let endTime = CACurrentMediaTime()
+    if let title = title {
+        print("\(title): ")
+    }
+    print("Time - \(endTime - startTime)")
+ }</code></p>
 <!-- more -->
 
-<div class="highlight"><pre><span></span><code><span class="kd">func</span> <span class="nf">doSomeWork</span><span class="p">()</span> <span class="p">{</span>
-  <span class="n">measure</span><span class="p">(</span><span class="s">&quot;Array&quot;</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nv">ar</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
-  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..</span><span class="mi">10000</span> <span class="p">{</span>
-  <span class="n">ar</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;New elem </span><span class="si">\(</span><span class="n">i</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
-  <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="n">measure</span><span class="p">(</span><span class="s">&quot;Image&quot;</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">let</span> <span class="nv">url</span> <span class="p">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="s">&quot;http://lorempixel.com/1920 …</span></code></pre></div>
+<p><code>swift
+func doSomeWork() {
+  measure("Array") {
+  var ar = [String]()
+  for i in 0...10000 {
+  ar.append("New elem \(i)")
+  }
+  }
+  measure("Image") {
+  let url = NSURL(string: "http://lorempixel …</code></p>
                         <a class="readmore" href="https://yinxianwei.github.io/cha-kan-swiftdai-ma-zhi-xing-shi-jian.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -385,4 +379,10 @@ $<span class="w"> </span>killall<span class="w"> </span>SystemUIServer
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

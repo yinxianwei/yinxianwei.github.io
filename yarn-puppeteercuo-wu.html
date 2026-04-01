@@ -80,4 +80,10 @@ ERROR: Failed to download Chromium r579032! Set "PUPPETEER_SKIP_CHROMIUM_DOWNLOA
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

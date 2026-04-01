@@ -7,7 +7,7 @@
                         <title>JS中toFixed的坑</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="重点：toFixed不是四舍五入 MDN: toFixed() 方法使用定点表示法来格式化一个数。 Chrome： console.log((0.005).toFixed(2)) -> 0.01 console.log((0.015).toFixed(2)) -> 0.01..." />
+    <meta name="description" content="重点：toFixed不是四舍五入 MDN: toFixed() 方法使用定点表示法来格式化一个数。 Chrome： js console.log((0.005).toFixed(2)) -> 0.01 console.log((0.015).toFixed(2)) -> 0.01..." />
         </head>
 
         <body id="index" class="home">
@@ -48,30 +48,28 @@
 <p>toFixed() 方法使用定点表示法来格式化一个数。</p>
 </blockquote>
 <p>Chrome：</p>
-<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.005</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.01</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.015</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.01</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.025</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.03</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.035</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.04</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.045</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.04</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.055</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.06</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.065</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.07</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.075</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.07</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.085</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.09</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.095</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.10</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.005</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.01</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.015</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.02</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.025</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.03</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.035</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.04</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.045</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.05</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.055</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.06</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.065</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.07</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.075</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.08</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.085</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.09</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nb">Math</span><span class="p">.</span><span class="nx">round</span><span class="p">(</span><span class="mf">0.095</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span><span class="w"> </span><span class="mf">2</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mf">100</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.1</span>
-</code></pre></div>
-
+<p><code>js
+console.log((0.005).toFixed(2)) -&gt; 0.01
+console.log((0.015).toFixed(2)) -&gt; 0.01
+console.log((0.025).toFixed(2)) -&gt; 0.03
+console.log((0.035).toFixed(2)) -&gt; 0.04
+console.log((0.045).toFixed(2)) -&gt; 0.04
+console.log((0.055).toFixed(2)) -&gt; 0.06
+console.log((0.065).toFixed(2)) -&gt; 0.07
+console.log((0.075).toFixed(2)) -&gt; 0.07
+console.log((0.085).toFixed(2)) -&gt; 0.09
+console.log((0.095).toFixed(2)) -&gt; 0.10</code></p>
+<p><code>js
+console.log(Math.round(0.005 * 100, 2) / 100) -&gt; 0.01
+console.log(Math.round(0.015 * 100, 2) / 100) -&gt; 0.02
+console.log(Math.round(0.025 * 100, 2) / 100) -&gt; 0.03
+console.log(Math.round(0.035 * 100, 2) / 100) -&gt; 0.04
+console.log(Math.round(0.045 * 100, 2) / 100) -&gt; 0.05
+console.log(Math.round(0.055 * 100, 2) / 100) -&gt; 0.06
+console.log(Math.round(0.065 * 100, 2) / 100) -&gt; 0.07
+console.log(Math.round(0.075 * 100, 2) / 100) -&gt; 0.08
+console.log(Math.round(0.085 * 100, 2) / 100) -&gt; 0.09
+console.log(Math.round(0.095 * 100, 2) / 100) -&gt; 0.1</code></p>
 <p><a href="https://zhuanlan.zhihu.com/p/31202697">为什么(2.55).toFixed(1)等于2.5？</a></p>
       </div><!-- /.entry-content -->
 
@@ -95,4 +93,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

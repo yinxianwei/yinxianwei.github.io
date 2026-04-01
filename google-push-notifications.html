@@ -43,192 +43,185 @@
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
 </footer><!-- /.post-info -->        <p>按照教程添加前端</p>
-<p>https://developers.google.com/web/fundamentals/codelabs/push-notifications?hl=zh-cn</p>
+<p><a href="https://developers.google.com/web/fundamentals/codelabs/push-notifications?hl=zh-cn">https://developers.google.com/web/fundamentals/codelabs/push-notifications?hl=zh-cn</a></p>
 <p>后端服务使用web-push</p>
 <p>需要审核key:</p>
-<p>https://console.firebase.google.com/project/test-22de3/settings/cloudmessaging/web:Mzg2N2Q4MzgtNmY5MS00YTAzLTkzYTItMDc2NTczZWJkYmE2?hl=zh-cn</p>
+<p><a href="https://console.firebase.google.com/project/test-22de3/settings/cloudmessaging/web:Mzg2N2Q4MzgtNmY5MS00YTAzLTkzYTItMDc2NTczZWJkYmE2?hl=zh-cn">https://console.firebase.google.com/project/test-22de3/settings/cloudmessaging/web:Mzg2N2Q4MzgtNmY5MS00YTAzLTkzYTItMDc2NTczZWJkYmE2?hl=zh-cn</a></p>
 <p>服务端需要能正常访问google api</p>
 <p>index.html</p>
-<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
-<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="p">&gt;</span>
+<p>```html</p>
+<!DOCTYPE html>
+<html lang="en">
 
-<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;viewport&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;width=device-width, initial-scale=1.0&quot;</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>push<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/ant-design-vue@1.6.4/dist/antd.min.css&quot;</span><span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>push</title>
+    <link href="https://unpkg.com/ant-design-vue@1.6.4/dist/antd.min.css"rel="stylesheet">
+</head>
 
-<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://cdn.jsdelivr.net/npm/vue&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://unpkg.com/ant-design-vue@1.6.4/dist/antd.min.js&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app&quot;</span><span class="p">&gt;</span>
-        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;padding: 40px;&quot;</span><span class="p">&gt;</span>
-            <span class="p">&lt;</span><span class="nt">a-switch</span> <span class="na">:checked</span><span class="o">=</span><span class="s">&quot;checked&quot;</span>
-                      <span class="err">@</span><span class="na">change</span><span class="o">=</span><span class="s">&quot;onChange&quot;</span>
-                      <span class="na">:loading</span><span class="o">=</span><span class="s">&quot;loading&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">a-switch</span><span class="p">&gt;</span> 开启推送
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/ant-design-vue@1.6.4/dist/antd.min.js"></script>
+    <div id="app">
+        <div style="padding: 40px;">
+            <a-switch :checked="checked"
+                      @change="onChange"
+                      :loading="loading"></a-switch> 开启推送
 
-            <span class="p">&lt;</span><span class="nt">pre</span> <span class="na">v-if</span><span class="o">=</span><span class="s">&quot;subscription&quot;</span>
-                 <span class="na">style</span><span class="o">=</span><span class="s">&quot;max-width: 800px;white-space: pre-wrap;background-color: #EEEEEE;padding: 16px;word-break: break-all;overflow: inherit;margin-top: 15px;&quot;</span><span class="p">&gt;</span>
+            <pre v-if="subscription"
+                 style="max-width: 800px;white-space: pre-wrap;background-color: #EEEEEE;padding: 16px;word-break: break-all;overflow: inherit;margin-top: 15px;">
                 {{subscription}}
-            <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
-    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="w">        </span><span class="kd">const</span><span class="w"> </span><span class="nx">applicationServerPublicKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;BLkKIpmYE9jtuWVRQ6Ov8ypgYTDzxfq2i8rzj0AguQrXj1Qf-htthf9_o0ThaJWvpO9MogVjas7ENFHgFzfvMpI&#39;</span><span class="p">;</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        const applicationServerPublicKey = 'BLkKIpmYE9jtuWVRQ6Ov8ypgYTDzxfq2i8rzj0AguQrXj1Qf-htthf9_o0ThaJWvpO9MogVjas7ENFHgFzfvMpI';
 
-<span class="w">        </span><span class="ow">new</span><span class="w"> </span><span class="nx">Vue</span><span class="p">({</span>
-<span class="w">            </span><span class="nx">el</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;#app&#39;</span><span class="p">,</span>
-<span class="w">            </span><span class="nx">data</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nx">loading</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">checked</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">supported</span><span class="o">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">subscription</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">,</span>
-<span class="w">                    </span><span class="nx">swRegistration</span><span class="o">:</span><span class="w"> </span><span class="kc">undefined</span>
-<span class="w">                </span><span class="p">};</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nx">mounted</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="k">this</span><span class="p">.</span><span class="nx">support</span><span class="p">();</span>
-<span class="w">                </span><span class="k">this</span><span class="p">.</span><span class="nx">regist</span><span class="p">();</span>
-<span class="w">            </span><span class="p">},</span>
-<span class="w">            </span><span class="nx">methods</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                </span><span class="nx">onChange</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">checked</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    loading: false,
+                    checked: false,
+                    supported: false,
+                    subscription: '',
+                    swRegistration: undefined
+                };
+            },
+            mounted() {
+                this.support();
+                this.regist();
+            },
+            methods: {
+                onChange() {
+                    this.loading = true;
+                    if (this.checked) {
 
-<span class="w">                    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="kd">const</span><span class="w"> </span><span class="nx">applicationServerKey</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="nx">urlB64ToUint8Array</span><span class="p">(</span><span class="nx">applicationServerPublicKey</span><span class="p">);</span>
-<span class="w">                        </span><span class="k">this</span><span class="p">.</span><span class="nx">swRegistration</span><span class="p">.</span><span class="nx">pushManager</span>
-<span class="w">                            </span><span class="p">.</span><span class="nx">subscribe</span><span class="p">({</span>
-<span class="w">                                </span><span class="nx">userVisibleOnly</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
-<span class="w">                                </span><span class="nx">applicationServerKey</span><span class="o">:</span><span class="w"> </span><span class="nx">applicationServerKey</span>
-<span class="w">                            </span><span class="p">})</span>
-<span class="w">                            </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">subscription</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">success</span><span class="p">(</span><span class="s1">&#39;开启成功&#39;</span><span class="p">);</span>
-<span class="w">                                </span><span class="k">this</span><span class="p">.</span><span class="nx">subscription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">subscription</span><span class="p">);</span>
-<span class="w">                                </span><span class="k">this</span><span class="p">.</span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">                                </span><span class="k">this</span><span class="p">.</span><span class="nx">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">                            </span><span class="p">},</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="k">this</span><span class="p">.</span><span class="nx">$message</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-<span class="w">                                </span><span class="k">this</span><span class="p">.</span><span class="nx">loading</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span>
-<span class="w">                            </span><span class="p">});</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="c1">// 判断是否支持消息推送</span>
-<span class="w">                </span><span class="nx">support</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;serviceWorker&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nx">navigator</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s1">&#39;PushManager&#39;</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="nb">window</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="k">this</span><span class="p">.</span><span class="nx">supported</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">                    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="k">this</span><span class="p">.</span><span class="nx">supported</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nx">regist</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="nx">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span>
-<span class="w">                        </span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;sw.js&#39;</span><span class="p">)</span>
-<span class="w">                        </span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">swReg</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Service Worker is registered&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">swReg</span><span class="p">);</span>
-<span class="w">                            </span><span class="k">this</span><span class="p">.</span><span class="nx">swRegistration</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">swReg</span><span class="p">;</span>
-<span class="w">                            </span><span class="k">this</span><span class="p">.</span><span class="nx">getSubscription</span><span class="p">();</span>
-<span class="w">                        </span><span class="p">},</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                            </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Service Worker Error&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="p">);</span>
-<span class="w">                        </span><span class="p">});</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nx">getSubscription</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="k">this</span><span class="p">.</span><span class="nx">swRegistration</span><span class="p">.</span><span class="nx">pushManager</span><span class="p">.</span><span class="nx">getSubscription</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">subscription</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">subscription</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                                </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">subscription</span><span class="p">);</span>
-<span class="w">                            </span><span class="k">this</span><span class="p">.</span><span class="nx">subscription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">subscription</span><span class="p">);</span>
-<span class="w">                            </span><span class="k">this</span><span class="p">.</span><span class="nx">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
-<span class="w">                        </span><span class="p">}</span>
-<span class="w">                    </span><span class="p">},</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">});</span>
-<span class="w">                </span><span class="p">},</span>
-<span class="w">                </span><span class="nx">urlB64ToUint8Array</span><span class="p">(</span><span class="nx">base64String</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">padding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;=&#39;</span><span class="p">.</span><span class="nx">repeat</span><span class="p">((</span><span class="mf">4</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="nx">base64String</span><span class="p">.</span><span class="nx">length</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">4</span><span class="p">))</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mf">4</span><span class="p">);</span>
-<span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">base64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">base64String</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">padding</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\-/g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;+&#39;</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/_/g</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="p">);</span>
+                    } else {
+                        const applicationServerKey = this.urlB64ToUint8Array(applicationServerPublicKey);
+                        this.swRegistration.pushManager
+                            .subscribe({
+                                userVisibleOnly: true,
+                                applicationServerKey: applicationServerKey
+                            })
+                            .then(subscription => {
+                                this.$message.success('开启成功');
+                                this.subscription = JSON.stringify(subscription);
+                                this.loading = false;
+                                this.checked = true;
+                            }, err => {
+                                this.$message.error(err);
+                                this.loading = false;
+                            });
+                    }
+                },
+                // 判断是否支持消息推送
+                support() {
+                    if ('serviceWorker' in navigator && 'PushManager' in window) {
+                        this.supported = true;
+                    } else {
+                        this.supported = true;
+                    }
+                },
+                regist() {
+                    navigator.serviceWorker
+                        .register('sw.js')
+                        .then(swReg => {
+                            console.log('Service Worker is registered', swReg);
+                            this.swRegistration = swReg;
+                            this.getSubscription();
+                        }, err => {
+                            console.error('Service Worker Error', err);
+                        });
+                },
+                getSubscription() {
+                    this.swRegistration.pushManager.getSubscription().then(subscription => {
+                        if (subscription) {
+                                console.log(subscription);
+                            this.subscription = JSON.stringify(subscription);
+                            this.checked = true;
+                        }
+                    }, err => { });
+                },
+                urlB64ToUint8Array(base64String) {
+                    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+                    const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
 
-<span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">rawData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">window</span><span class="p">.</span><span class="nx">atob</span><span class="p">(</span><span class="nx">base64</span><span class="p">);</span>
-<span class="w">                    </span><span class="kd">const</span><span class="w"> </span><span class="nx">outputArray</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nb">Uint8Array</span><span class="p">(</span><span class="nx">rawData</span><span class="p">.</span><span class="nx">length</span><span class="p">);</span>
+                    const rawData = window.atob(base64);
+                    const outputArray = new Uint8Array(rawData.length);
 
-<span class="w">                    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">let</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">rawData</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="nx">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">                        </span><span class="nx">outputArray</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rawData</span><span class="p">.</span><span class="nx">charCodeAt</span><span class="p">(</span><span class="nx">i</span><span class="p">);</span>
-<span class="w">                    </span><span class="p">}</span>
-<span class="w">                    </span><span class="k">return</span><span class="w"> </span><span class="nx">outputArray</span><span class="p">;</span>
-<span class="w">                </span><span class="p">}</span>
-<span class="w">            </span><span class="p">}</span>
-<span class="w">        </span><span class="p">});</span>
-<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
-<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+                    for (let i = 0; i < rawData.length; ++i) {
+                        outputArray[i] = rawData.charCodeAt(i);
+                    }
+                    return outputArray;
+                }
+            }
+        });
+    </script>
+</body>
 
-<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
-</code></pre></div>
-
+</html>
+<p>```</p>
 <p>// sw.js</p>
-<div class="highlight"><pre><span></span><code><span class="cm">/*</span>
-<span class="cm"> *</span>
-<span class="cm"> *  Push Notifications codelab</span>
-<span class="cm"> *  Copyright 2015 Google Inc. All rights reserved.</span>
-<span class="cm"> *</span>
-<span class="cm"> *  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
-<span class="cm"> *  you may not use this file except in compliance with the License.</span>
-<span class="cm"> *  You may obtain a copy of the License at</span>
-<span class="cm"> *</span>
-<span class="cm"> *      https://www.apache.org/licenses/LICENSE-2.0</span>
-<span class="cm"> *</span>
-<span class="cm"> *  Unless required by applicable law or agreed to in writing, software</span>
-<span class="cm"> *  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
-<span class="cm"> *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
-<span class="cm"> *  See the License for the specific language governing permissions and</span>
-<span class="cm"> *  limitations under the License</span>
-<span class="cm"> *</span>
-<span class="cm"> */</span>
+<p>```js
+/<em>
+ *
+ *  Push Notifications codelab
+ *  Copyright 2015 Google Inc. All rights reserved.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      <a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a>
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License
+ *
+ </em>/</p>
+<p>/<em> eslint-env browser, serviceworker, es6 </em>/</p>
+<p>'use strict';</p>
+<p>self.addEventListener('push', function (event) {
+    console.log('[Service Worker] Push Received.');
+    console.log(<code>[Service Worker] Push had this data: "${event.data.text()}"</code>);</p>
+<pre><code>const title = 'Push Codelab';
+const options = {
+    body: 'Yay it works.',
+    icon: 'images/icon.png',
+    badge: 'images/badge.png'
+};
 
-<span class="cm">/* eslint-env browser, serviceworker, es6 */</span>
-
-<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
-
-<span class="nx">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;push&#39;</span><span class="p">,</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;[Service Worker] Push Received.&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`[Service Worker] Push had this data: &quot;</span><span class="si">${</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">text</span><span class="p">()</span><span class="si">}</span><span class="sb">&quot;`</span><span class="p">);</span>
-
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;Push Codelab&#39;</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">body</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Yay it works.&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">icon</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;images/icon.png&#39;</span><span class="p">,</span>
-<span class="w">        </span><span class="nx">badge</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;images/badge.png&#39;</span>
-<span class="w">    </span><span class="p">};</span>
-
-<span class="w">    </span><span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span><span class="nx">self</span><span class="p">.</span><span class="nx">registration</span><span class="p">.</span><span class="nx">showNotification</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">options</span><span class="p">));</span>
-<span class="p">});</span>
-</code></pre></div>
-
+event.waitUntil(self.registration.showNotification(title, options));
+</code></pre>
+<p>});</p>
+<p>```</p>
 <p>服务端 main.js</p>
-<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">webpush</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;web-push&#39;</span><span class="p">);</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">pushSubscription</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">endpoint</span><span class="o">:</span>
-<span class="w">        </span><span class="s1">&#39;https://fcm.googleapis.com/fcm/send/d3FnYYAEL8c:APA91bFM5XKXi50PfFaP14R4GQ4NQ89ZZfZuY2YdS_nT3HNS1oavF66AOTuFwWA3JEs00MafFynUY3TGqXs8VebpyIpCqFD8y72nIrlc3Ge_QLVwNzcRIKz412872ncgBIitTbly99fz&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">keys</span><span class="o">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">p256dh</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;BEA3VFLE-Q6rp2qYrABzn6fRjiYzaSGq5gTVGFlemTuD7WVHRX9zjbivdUEjiSLldP4WnpVYVLjl-BxqSpJGr7I&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">auth</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;7PzGHHVMZMh7g39f3S1vNg&#39;</span><span class="w"> </span><span class="p">}</span>
-<span class="p">};</span>
-
-<span class="kd">const</span><span class="w"> </span><span class="nx">vapidKeys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">privateKey</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;3AtAfoXtsVOs2UjNZ-_JVZYnbfzxrjO4M0r9SZ2mw00&#39;</span><span class="p">,</span>
-<span class="w">    </span><span class="nx">publicKey</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;BLkKIpmYE9jtuWVRQ6Ov8ypgYTDzxfq2i8rzj0AguQrXj1Qf-htthf9_o0ThaJWvpO9MogVjas7ENFHgFzfvMpI&#39;</span>
-<span class="p">};</span>
-
-<span class="nx">webpush</span><span class="p">.</span><span class="nx">setGCMAPIKey</span><span class="p">(</span><span class="s1">&#39;&lt; FCM KEY &gt;&#39;</span><span class="p">);</span>
-
-<span class="nx">webpush</span><span class="p">.</span><span class="nx">setVapidDetails</span><span class="p">(</span><span class="s1">&#39;mailto:web-push-book@gauntface.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">vapidKeys</span><span class="p">.</span><span class="nx">publicKey</span><span class="p">,</span><span class="w"> </span><span class="nx">vapidKeys</span><span class="p">.</span><span class="nx">privateKey</span><span class="p">);</span>
-
-<span class="nx">webpush</span><span class="p">.</span><span class="nx">sendNotification</span><span class="p">(</span><span class="nx">pushSubscription</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;The text of the notification&#39;</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span>
-<span class="w">    </span><span class="nx">res</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;success&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nx">err</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">err</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">);</span>
-</code></pre></div>
+<p>```js
+const webpush = require('web-push');</p>
+<p>const pushSubscription = {
+    endpoint:
+        '<a href="https://fcm.googleapis.com/fcm/send/d3FnYYAEL8c:APA91bFM5XKXi50PfFaP14R4GQ4NQ89ZZfZuY2YdS_nT3HNS1oavF66AOTuFwWA3JEs00MafFynUY3TGqXs8VebpyIpCqFD8y72nIrlc3Ge_QLVwNzcRIKz412872ncgBIitTbly99fz">https://fcm.googleapis.com/fcm/send/d3FnYYAEL8c:APA91bFM5XKXi50PfFaP14R4GQ4NQ89ZZfZuY2YdS_nT3HNS1oavF66AOTuFwWA3JEs00MafFynUY3TGqXs8VebpyIpCqFD8y72nIrlc3Ge_QLVwNzcRIKz412872ncgBIitTbly99fz</a>',
+    keys: { p256dh: 'BEA3VFLE-Q6rp2qYrABzn6fRjiYzaSGq5gTVGFlemTuD7WVHRX9zjbivdUEjiSLldP4WnpVYVLjl-BxqSpJGr7I', auth: '7PzGHHVMZMh7g39f3S1vNg' }
+};</p>
+<p>const vapidKeys = {
+    privateKey: '3AtAfoXtsVOs2UjNZ-_JVZYnbfzxrjO4M0r9SZ2mw00',
+    publicKey: 'BLkKIpmYE9jtuWVRQ6Ov8ypgYTDzxfq2i8rzj0AguQrXj1Qf-htthf9_o0ThaJWvpO9MogVjas7ENFHgFzfvMpI'
+};</p>
+<p>webpush.setGCMAPIKey('&lt; FCM KEY &gt;');</p>
+<p>webpush.setVapidDetails('mailto:<a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#119;&#101;&#98;&#45;&#112;&#117;&#115;&#104;&#45;&#98;&#111;&#111;&#107;&#64;&#103;&#97;&#117;&#110;&#116;&#102;&#97;&#99;&#101;&#46;&#99;&#111;&#109;">&#119;&#101;&#98;&#45;&#112;&#117;&#115;&#104;&#45;&#98;&#111;&#111;&#107;&#64;&#103;&#97;&#117;&#110;&#116;&#102;&#97;&#99;&#101;&#46;&#99;&#111;&#109;</a>', vapidKeys.publicKey, vapidKeys.privateKey);</p>
+<p>webpush.sendNotification(pushSubscription, 'The text of the notification').then(
+    res =&gt; {
+        console.log('success');
+    },
+    err =&gt; {
+        console.log(err);
+    }
+);
+```</p>
       </div><!-- /.entry-content -->
 
     </article>
@@ -251,4 +244,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

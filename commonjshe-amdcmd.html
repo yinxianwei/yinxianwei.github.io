@@ -7,7 +7,7 @@
                         <title>CommonJS和AMD/CMD</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="CommonJS根据JS的表现制定规范： {模块引用(require)} {模块定义(exports)} {模块标识(module)} NodeJS遵循了CommonJS规范，写法如下： // foo.js module.exports = function(x) {..." />
+    <meta name="description" content="CommonJS根据JS的表现制定规范： {模块引用(require)} {模块定义(exports)} {模块标识(module)} NodeJS遵循了CommonJS规范，写法如下： ```js // foo.js module.exports = function(x) {..." />
         </head>
 
         <body id="index" class="home">
@@ -47,19 +47,17 @@
 <p>{模块引用(require)} {模块定义(exports)} {模块标识(module)}</p>
 </blockquote>
 <p>NodeJS遵循了CommonJS规范，写法如下：</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// foo.js</span>
-
-<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-<span class="p">};</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1">// index.js</span>
-
-<span class="kd">let</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./foo&#39;</span><span class="p">)</span>
-<span class="nx">foo</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
-</code></pre></div>
-
+<p>```js
+// foo.js</p>
+<p>module.exports = function(x) {
+    console.log(x);
+};
+```</p>
+<p>```js
+// index.js</p>
+<p>let foo = require('./foo')
+foo(1);
+```</p>
 <!-- more -->
 
 <p>CommonJS主要为了JS在后端制定的规范，但并不适用与前端，因为代码在是通过网络加载，所以AMD（异步模块定义）出现：</p>
@@ -67,22 +65,20 @@
 <p>define(['dep1','dep2'],function(dep1,dep2){...});</p>
 </blockquote>
 <p>RequireJS实现了AMD规范，写法如下：</p>
-<div class="highlight"><pre><span></span><code><span class="c1">// foo.js</span>
-
-<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-<span class="w">    </span><span class="p">};</span>
-<span class="p">});</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1">// index.js</span>
-
-<span class="nx">define</span><span class="p">([</span><span class="s1">&#39;foo&#39;</span><span class="p">],</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">foo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nx">foo</span><span class="p">(</span><span class="mf">2</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
-
+<p>```js
+// foo.js</p>
+<p>define(function() {
+    return function(x) {
+        console.log(x);
+    };
+});
+```</p>
+<p>```js
+// index.js</p>
+<p>define(['foo'], function(foo) {
+    foo(2);
+});
+```</p>
 <p>CMD （通用模块定义）写法更加直观：</p>
 <blockquote>
 <p>// 所有模块都通过 define 来定义
@@ -96,22 +92,21 @@ define(function(require, exports, module) {</p>
   module.exports = ...
 });</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1">// foo.js</span>
-
-<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span><span class="w"> </span><span class="nx">exports</span><span class="p">,</span><span class="w"> </span><span class="nx">module</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="p">(</span><span class="nx">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">);</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">});</span>
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="c1">// index.js</span>
-
-<span class="nx">define</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">require</span><span class="p">,</span><span class="w"> </span><span class="nx">exports</span><span class="p">,</span><span class="w"> </span><span class="nx">module</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">foo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">);</span>
-<span class="w">    </span><span class="nx">foo</span><span class="p">(</span><span class="mf">3</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre></div>
+<p>```js
+// foo.js</p>
+<p>define(function(require, exports, module) {
+  module.exports = function(x) {
+      console.log(x);
+  }
+});
+```</p>
+<p>```js
+// index.js</p>
+<p>define(function(require, exports, module) {
+    var foo = require('foo');
+    foo(3);
+});
+```</p>
       </div><!-- /.entry-content -->
 
     </article>
@@ -134,4 +129,10 @@ define(function(require, exports, module) {</p>
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

@@ -39,7 +39,7 @@
 </footer><!-- /.post-info --><p>JWT <strong>双 Token 机制</strong>（通常指 <strong>Access Token + Refresh Token</strong>）的核心目的只有一句话：
 👉 <strong>在保证安全性的前提下，让用户“尽量少重新登录”</strong>。</p>
 <p>下面我从<strong>单 Token 的问题 → 双 Token 如何解决 → 实际优势 → 适用场景</strong>，一步一步说明「为什么要用双 Token」。</p>
-<hr>
+<hr />
 <h2>一、先看单 Token（只有 Access Token）的问题</h2>
 <p>如果系统只用一个 JWT（Access Token），你会遇到几个矛盾点：</p>
 <h3>1️⃣ Token 有效期长 → 安全性差</h3>
@@ -60,49 +60,28 @@
 <strong>体验 = 长有效期</strong></p>
 </blockquote>
 <p>单 Token 无法同时满足。</p>
-<hr>
+<hr />
 <h2>二、双 Token 是怎么解决这个矛盾的？</h2>
 <h3>双 Token 结构</h3>
-<table>
-<thead>
-<tr>
-<th>Token 类型</th>
-<th>作用</th>
-<th>有效期</th>
-<th>使用频率</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Access Token</td>
-<td>接口鉴权</td>
-<td>短（10～30 分钟）</td>
-<td>高频</td>
-</tr>
-<tr>
-<td>Refresh Token</td>
-<td>换新 Access Token</td>
-<td>长（7～30 天）</td>
-<td>低频</td>
-</tr>
-</tbody>
-</table>
-<hr>
+<p>| Token 类型      | 作用              | 有效期         | 使用频率 |
+| ------------- | --------------- | ----------- | ---- |
+| Access Token  | 接口鉴权            | 短（10～30 分钟） | 高频   |
+| Refresh Token | 换新 Access Token | 长（7～30 天）   | 低频   |</p>
+<hr />
 <h3>流程示意</h3>
-<div class="highlight"><pre><span></span><code>登录
+<p>```
+登录
  ↓
 返回：
-<span class="k">-</span> access_token（短期）
-<span class="k">-</span> refresh_token（长期）
-
-请求接口
+- access_token（短期）
+- refresh_token（长期）</p>
+<p>请求接口
  ↓
 access_token 过期？
   ↓ 是
 用 refresh_token 换新的 access_token
-</code></pre></div>
-
-<hr>
+```</p>
+<hr />
 <h2>三、双 Token 的核心优势（重点）</h2>
 <h3>✅ 1. Access Token 泄露，风险可控</h3>
 <ul>
@@ -116,7 +95,7 @@ access_token 过期？
 <li><strong>无法无限期调用接口</strong></li>
 </ul>
 <p>📌 安全性大幅提升</p>
-<hr>
+<hr />
 <h3>✅ 2. Refresh Token 可控、可失效</h3>
 <p>Refresh Token 通常：</p>
 <ul>
@@ -130,49 +109,33 @@ access_token 过期？
 <li>用户退出登录即失效</li>
 <li>异地登录踢下线</li>
 </ul>
-<div class="highlight"><pre><span></span><code>refresh_token 是“有状态”的
-access_token 是“无状态”的
-</code></pre></div>
-
+<p><code>text
+refresh_token 是“有状态”的
+access_token 是“无状态”的</code></p>
 <p>📌 弥补了 JWT 无法主动失效的缺陷</p>
-<hr>
+<hr />
 <h3>✅ 3. 用户几乎无感知续期（体验好）</h3>
 <ul>
 <li>Access Token 自动刷新</li>
 <li>用户不需要重新登录</li>
 <li>前端可以拦截 401 → 自动 refresh</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="c1">// 典型前端逻辑</span>
-<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">res</span><span class="p">.</span><span class="nx">status</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="mf">401</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="k">await</span><span class="w"> </span><span class="nx">refreshToken</span><span class="p">()</span>
-<span class="w">  </span><span class="nx">retryRequest</span><span class="p">()</span>
-<span class="p">}</span>
-</code></pre></div>
-
+<p><code>js
+// 典型前端逻辑
+if (res.status === 401) {
+  await refreshToken()
+  retryRequest()
+}</code></p>
 <p>📌 <strong>体验接近 Cookie Session，但更适合前后端分离</strong></p>
-<hr>
+<hr />
 <h3>✅ 4. 减少 Token 被长期滥用的可能</h3>
 <p>对比一下：</p>
-<table>
-<thead>
-<tr>
-<th>方案</th>
-<th>Token 泄露后</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>单 Token（30 天）</td>
-<td>攻击者 30 天随便用</td>
-</tr>
-<tr>
-<td>双 Token</td>
-<td>攻击者最多用 10～30 分钟</td>
-</tr>
-</tbody>
-</table>
+<p>| 方案            | Token 泄露后       |
+| ------------- | --------------- |
+| 单 Token（30 天） | 攻击者 30 天随便用     |
+| 双 Token       | 攻击者最多用 10～30 分钟 |</p>
 <p>📌 这是双 Token 最大的安全收益</p>
-<hr>
+<hr />
 <h3>✅ 5. 更符合实际安全分级</h3>
 <p>双 Token 本质是 <strong>权限分层</strong>：</p>
 <ul>
@@ -182,7 +145,7 @@ access_token 是“无状态”的
   👉 “我有没有资格继续登录？”</li>
 </ul>
 <p>📌 类似「临时工证 + 身份证」</p>
-<hr>
+<hr />
 <h2>四、为什么 Refresh Token 一般不用 JWT？</h2>
 <p>很多系统会这样设计：</p>
 <ul>
@@ -190,68 +153,22 @@ access_token 是“无状态”的
 <li>Refresh Token：随机字符串（UUID）</li>
 </ul>
 <p>原因：</p>
-<table>
-<thead>
-<tr>
-<th>原因</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>可控性</td>
-<td>能随时吊销</td>
-</tr>
-<tr>
-<td>安全</td>
-<td>不暴露用户信息</td>
-</tr>
-<tr>
-<td>防重放</td>
-<td>可绑定设备 / IP</td>
-</tr>
-</tbody>
-</table>
+<p>| 原因  | 说明         |
+| --- | ---------- |
+| 可控性 | 能随时吊销      |
+| 安全  | 不暴露用户信息    |
+| 防重放 | 可绑定设备 / IP |</p>
 <p>📌 <strong>Refresh Token 一定要可失效</strong></p>
-<hr>
+<hr />
 <h2>五、双 Token vs Session（你可能会关心）</h2>
-<table>
-<thead>
-<tr>
-<th>对比项</th>
-<th>Session</th>
-<th>双 Token</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>前后端分离</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>无状态扩展</td>
-<td>❌</td>
-<td>✅</td>
-</tr>
-<tr>
-<td>移动端支持</td>
-<td>一般</td>
-<td>很好</td>
-</tr>
-<tr>
-<td>安全性</td>
-<td>高</td>
-<td>高（设计好）</td>
-</tr>
-<tr>
-<td>微服务</td>
-<td>一般</td>
-<td>非常适合</td>
-</tr>
-</tbody>
-</table>
-<hr>
+<p>| 对比项   | Session | 双 Token |
+| ----- | ------- | ------- |
+| 前后端分离 | ❌       | ✅       |
+| 无状态扩展 | ❌       | ✅       |
+| 移动端支持 | 一般      | 很好      |
+| 安全性   | 高       | 高（设计好）  |
+| 微服务   | 一般      | 非常适合    |</p>
+<hr />
 <h2>六、什么时候“没必要”用双 Token？</h2>
 <p>❌ 以下情况可以不复杂化：</p>
 <ul>
@@ -267,7 +184,7 @@ access_token 是“无状态”的
 <li>微服务</li>
 <li>对安全有要求的业务</li>
 </ul>
-<hr>
+<hr />
 <h2>七、总结一句话</h2>
 <blockquote>
 <p><strong>JWT 双 Token 机制的优势在于：
@@ -324,30 +241,15 @@ access_token 是“无状态”的
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
 </footer><!-- /.post-info -->                        <h2>基础语法</h2>
-<div class="highlight"><pre><span></span><code>sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span><span class="w"> </span><span class="s1">&#39;命令&#39;</span><span class="w"> </span>文件名
-sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>脚本文件<span class="w"> </span>文件名
-</code></pre></div>
-
+<p><code>bash
+sed [选项] '命令' 文件名
+sed [选项] -f 脚本文件 文件名</code></p>
 <h2>常用选项</h2>
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>-n</code></td>
-<td>安静模式,仅显示经过sed处理的行</td>
-</tr>
-<tr>
-<td><code>-e</code></td>
-<td>执行多个sed命令</td>
-</tr>
-<tr>
-<td><code>-f</code></td>
-<td>从 …</td></tr></tbody></table>
+<p>| 选项 | 说明 |
+|------|------|
+| <code>-n</code> | 安静模式,仅显示经过sed处理的行 |
+| <code>-e</code> | 执行多个sed命令 |
+| <code>-f …</code></p>
                         <a class="readmore" href="https://yinxianwei.github.io/sed-ming-ling-zhong-wen-su-cha-shou-ce.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -369,23 +271,20 @@ sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
 <p>tags: <a href="https://yinxianwei.github.io/tag/bi.html">BI</a> <a href="https://yinxianwei.github.io/tag/superset.html">superset</a> <a href="https://yinxianwei.github.io/tag/docker.html">docker</a> </p>        
-</footer><!-- /.post-info -->                        <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/apache/superset.git
-
-<span class="nb">cd</span><span class="w"> </span>superset
-
-docker<span class="w"> </span>compose<span class="w"> </span>up
-
-docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-non-dev.yml<span class="w"> </span>pull
-docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-non-dev.yml<span class="w"> </span>up
-
-open<span class="w"> </span>http://localhost:8088
-</code></pre></div>
-
+</footer><!-- /.post-info -->                        <p>```sh
+git clone <a href="https://github.com/apache/superset.git">https://github.com/apache/superset.git</a></p>
+<p>cd superset</p>
+<p>docker compose up</p>
+<p>docker compose -f docker-compose-non-dev.yml pull
+docker compose -f docker-compose-non-dev.yml up</p>
+<p>open <a href="http://localhost:8088">http://localhost:8088</a>
+```</p>
 <blockquote>
-<p>如何添加superset_config.py文件 <br>
-https://github.com/apache/superset/tree/master/docker#readme</p>
+<p>如何添加superset_config.py文件 <br />
+<a href="https://github.com/apache/superset/tree/master/docker#readme">https://github.com/apache/superset/tree/master/docker#readme</a></p>
 </blockquote>
-<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>cp<span class="w"> </span>superset_config.py<span class="w"> </span>superset_app:/app …</code></pre></div>
+<p><code>sh
+docker cp superset_config.py …</code></p>
                         <a class="readmore" href="https://yinxianwei.github.io/shi-yong-dockerbu-shu-superset.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -417,20 +316,18 @@ https://github.com/apache/superset/tree/master/docker#readme</p>
 <blockquote>
 <p><a href="https://support.huaweicloud.com/ecs_faq/zh-cn_topic_0050735736.html">怎样使修改的静态主机名永久生效？</a></p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="c1"># 更新</span>
-apt-get<span class="w"> </span>update
-</code></pre></div>
-
-<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/hostname<span class="w"> </span>mail.example.com
-
-<span class="c1"># 注释 - update_hostname</span>
-vim<span class="w"> </span>/etc/cloud/cloud.cfg
-
-<span class="c1"># 重启</span>
-reboot
-</code></pre></div>
-
-<h1>安装nginx …</h1>
+<p>```sh</p>
+<h1>更新</h1>
+<p>apt-get update
+```</p>
+<p>```sh
+echo &gt; /etc/hostname mail.example.com</p>
+<h1>注释 - update_hostname</h1>
+<p>vim /etc/cloud/cloud.cfg</p>
+<h1>重启</h1>
+<p>reboot
+```</p>
+<h1>安 …</h1>
                         <a class="readmore" href="https://yinxianwei.github.io/da-jian-you-jian-fu-wu.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -505,7 +402,7 @@ reboot
         
 </footer><!-- /.post-info -->                        <h4>1. 安装redmine_gitlab_hook</h4>
 <ol>
-<li>下载：https://github.com/phlegx/redmine_gitlab_hook/releases</li>
+<li>下载：<a href="https://github.com/phlegx/redmine_gitlab_hook/releases">https://github.com/phlegx/redmine_gitlab_hook/releases</a></li>
 <li>解压后文件夹名字修改为redmine_gitlab_hook</li>
 <li>放到redmine安装目录的plugins文件夹下</li>
 <li>重启redmine</li>
@@ -537,10 +434,10 @@ reboot
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
 </footer><!-- /.post-info -->                        <ol>
-<li>下载最新版 https://www.redmine.org/releases/redmine-4.2.3.tar.gz</li>
+<li>下载最新版 <a href="https://www.redmine.org/releases/redmine-4.2.3.tar.gz">https://www.redmine.org/releases/redmine-4.2.3.tar.gz</a></li>
 <li>解压 tar zxvf redmine-4.2.3.tar.gz</li>
 <li>复制3.x的files至redmine-4.2.3</li>
-<li>3.x数据库备份  https://www.redmine.org/projects/redmine/wiki/RedmineBackupRestore</li>
+<li>3.x数据库备份  <a href="https://www.redmine.org/projects/redmine/wiki/RedmineBackupRestore">https://www.redmine.org/projects/redmine/wiki/RedmineBackupRestore</a></li>
 <li>新建数据库 redmine4</li>
 <li>恢复3.x的数据至数据库redmine4 …</li></ol>
                         <a class="readmore" href="https://yinxianwei.github.io/redmine3xsheng-ji-zhi-4x.html">read more</a>
@@ -564,9 +461,9 @@ reboot
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <p>插件开发： https://www.redmine.org/projects/redmine/wiki/Developer_Guide</p>
-<p>插件开发教程： https://www.redmine.org/projects/redmine/wiki/plugin_tutorial
-hooks列表： https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Using-hooks</p>
+</footer><!-- /.post-info -->                        <p>插件开发： <a href="https://www.redmine.org/projects/redmine/wiki/Developer_Guide">https://www.redmine.org/projects/redmine/wiki/Developer_Guide</a></p>
+<p>插件开发教程： <a href="https://www.redmine.org/projects/redmine/wiki/plugin_tutorial">https://www.redmine.org/projects/redmine/wiki/plugin_tutorial</a>
+hooks列表： <a href="https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Using-hooks">https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Using-hooks</a></p>
                         <a class="readmore" href="https://yinxianwei.github.io/redminecha-jian-kai-fa.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -597,4 +494,10 @@ hooks列表： https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Usi
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

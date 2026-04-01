@@ -64,7 +64,7 @@
 </ol>
 <h2>第二部分：核心技术架构</h2>
 <h3>2.1 系统设计的三层结构</h3>
-<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────┐
+<p><code>┌─────────────────────────────────────────┐
 │      用户交互层（User Interface）      │
 │  VS Code插件 / Web IDE / CLI / Slack   │
 └──────────────┬──────────────────────────┘
@@ -77,374 +77,378 @@
 ┌──────────────▼──────────────────────────┐
 │     模型层（Model Layer）               │
 │  LLM + 代码执行引擎 + 外部工具集成     │
-└─────────────────────────────────────────┘
-</code></pre></div>
-
+└─────────────────────────────────────────┘</code></p>
 <h3>2.2 关键模块详解</h3>
 <h4>2.2.1 上下文管理（Context Management）</h4>
 <p>AI决策的质量取决于上下文质量。实现策略：</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ProjectContextManager</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;维护项目AI同事的长期记忆&quot;&quot;&quot;</span>
+<p>```python
+class ProjectContextManager:
+    """维护项目AI同事的长期记忆"""</p>
+<pre><code>def __init__(self):
+    self.code_graph = {}  # 代码依赖图
+    self.conventions = {}  # 项目规范
+    self.decisions = []    # 架构决策记录
+    self.feedback = []     # 团队反馈
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">code_graph</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 代码依赖图</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">conventions</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># 项目规范</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">decisions</span> <span class="o">=</span> <span class="p">[]</span>    <span class="c1"># 架构决策记录</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">feedback</span> <span class="o">=</span> <span class="p">[]</span>     <span class="c1"># 团队反馈</span>
+def build_code_graph(self, repo_path):
+    """构建代码依赖图用于上下文检索"""
+    # 分析项目结构、导入关系、模块依赖
+    # 生成向量嵌入供后续检索使用
+    pass
 
-    <span class="k">def</span> <span class="nf">build_code_graph</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">repo_path</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;构建代码依赖图用于上下文检索&quot;&quot;&quot;</span>
-        <span class="c1"># 分析项目结构、导入关系、模块依赖</span>
-        <span class="c1"># 生成向量嵌入供后续检索使用</span>
-        <span class="k">pass</span>
+def extract_conventions(self, file_samples):
+    """从代码样本中提取隐性规范"""
+    # 命名规范、注释风格、错误处理模式
+    # 通过AST分析 + LLM总结
+    pass
 
-    <span class="k">def</span> <span class="nf">extract_conventions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_samples</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;从代码样本中提取隐性规范&quot;&quot;&quot;</span>
-        <span class="c1"># 命名规范、注释风格、错误处理模式</span>
-        <span class="c1"># 通过AST分析 + LLM总结</span>
-        <span class="k">pass</span>
+def maintain_adr(self, adr_docs):
+    """维护架构决策记录（ADR）"""
+    # 为AI提供"为什么"的背景
+    pass
 
-    <span class="k">def</span> <span class="nf">maintain_adr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adr_docs</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;维护架构决策记录（ADR）&quot;&quot;&quot;</span>
-        <span class="c1"># 为AI提供&quot;为什么&quot;的背景</span>
-        <span class="k">pass</span>
-
-    <span class="k">def</span> <span class="nf">incorporate_feedback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback_item</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;根据反馈持续优化AI行为&quot;&quot;&quot;</span>
-        <span class="c1"># 调整Prompt、修改检查规则、更新约束</span>
-        <span class="k">pass</span>
-</code></pre></div>
-
+def incorporate_feedback(self, feedback_item):
+    """根据反馈持续优化AI行为"""
+    # 调整Prompt、修改检查规则、更新约束
+    pass
+</code></pre>
+<p>```</p>
 <h4>2.2.2 检索增强生成（RAG）</h4>
 <p>不是所有相关信息都放在Prompt中（Token有限），而是按需检索：</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">RAGSystem</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;检索增强的生成系统&quot;&quot;&quot;</span>
+<p>```python
+class RAGSystem:
+    """检索增强的生成系统"""</p>
+<pre><code>def __init__(self, embedding_model, vector_db):
+    self.embedding_model = embedding_model
+    self.vector_db = vector_db  # Pinecone / Weaviate
+    self.code_base = CodebaseIndex()
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embedding_model</span><span class="p">,</span> <span class="n">vector_db</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">embedding_model</span> <span class="o">=</span> <span class="n">embedding_model</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">vector_db</span> <span class="o">=</span> <span class="n">vector_db</span>  <span class="c1"># Pinecone / Weaviate</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">code_base</span> <span class="o">=</span> <span class="n">CodebaseIndex</span><span class="p">()</span>
+def retrieve_relevant_context(self, query, k=5):
+    """为查询检索最相关的k个代码片段"""
+    query_embedding = self.embedding_model.encode(query)
 
-    <span class="k">def</span> <span class="nf">retrieve_relevant_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;为查询检索最相关的k个代码片段&quot;&quot;&quot;</span>
-        <span class="n">query_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    # 多源检索
+    code_chunks = self.code_base.search(query_embedding, k)
+    docs = self.vector_db.search(query_embedding, k)
+    issues = self.search_issue_tracker(query)
 
-        <span class="c1"># 多源检索</span>
-        <span class="n">code_chunks</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">code_base</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-        <span class="n">docs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">vector_db</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-        <span class="n">issues</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">search_issue_tracker</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+    return self._rerank(code_chunks + docs + issues, query)
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_rerank</span><span class="p">(</span><span class="n">code_chunks</span> <span class="o">+</span> <span class="n">docs</span> <span class="o">+</span> <span class="n">issues</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">_rerank</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">candidates</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;基于相关度重排序&quot;&quot;&quot;</span>
-        <span class="c1"># 使用交叉编码器(Cross-Encoder)重排</span>
-        <span class="c1"># 确保最相关的内容排在前面</span>
-        <span class="k">pass</span>
-</code></pre></div>
-
+def _rerank(self, candidates, query):
+    """基于相关度重排序"""
+    # 使用交叉编码器(Cross-Encoder)重排
+    # 确保最相关的内容排在前面
+    pass
+</code></pre>
+<p>```</p>
 <h4>2.2.3 智能体模式（Agent Pattern）</h4>
 <p>让AI能够进行多步推理和工具调用：</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CodeAssistantAgent</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;具有决策能力的代码助手&quot;&quot;&quot;</span>
+<p>```python
+class CodeAssistantAgent:
+    """具有决策能力的代码助手"""</p>
+<pre><code>def __init__(self, llm, tools):
+    self.llm = llm
+    self.tools = tools  # 代码执行、文件操作等
+    self.reasoning_trace = []
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">llm</span><span class="p">,</span> <span class="n">tools</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">llm</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">tools</span>  <span class="c1"># 代码执行、文件操作等</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reasoning_trace</span> <span class="o">=</span> <span class="p">[]</span>
+def handle_request(self, user_request):
+    """处理用户请求的完整流程"""
 
-    <span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">user_request</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;处理用户请求的完整流程&quot;&quot;&quot;</span>
+    # 1. 理解意图
+    intent = self._classify_intent(user_request)
 
-        <span class="c1"># 1. 理解意图</span>
-        <span class="n">intent</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_classify_intent</span><span class="p">(</span><span class="n">user_request</span><span class="p">)</span>
+    # 2. 制定计划
+    plan = self._create_plan(intent)
 
-        <span class="c1"># 2. 制定计划</span>
-        <span class="n">plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_plan</span><span class="p">(</span><span class="n">intent</span><span class="p">)</span>
+    # 3. 逐步执行
+    for step in plan:
+        result = self._execute_step(step)
 
-        <span class="c1"># 3. 逐步执行</span>
-        <span class="k">for</span> <span class="n">step</span> <span class="ow">in</span> <span class="n">plan</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_execute_step</span><span class="p">(</span><span class="n">step</span><span class="p">)</span>
+        # 4. 根据中间结果调整
+        if result['status'] == 'error':
+            corrected_plan = self._repair_plan(plan, result)
+            plan = corrected_plan
 
-            <span class="c1"># 4. 根据中间结果调整</span>
-            <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;error&#39;</span><span class="p">:</span>
-                <span class="n">corrected_plan</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_repair_plan</span><span class="p">(</span><span class="n">plan</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
-                <span class="n">plan</span> <span class="o">=</span> <span class="n">corrected_plan</span>
+    return self._synthesize_response()
 
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_synthesize_response</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">_execute_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">step</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;执行单个步骤&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="n">step</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;analyze&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analyze_code</span><span class="p">(</span><span class="n">step</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">step</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;execute&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tools</span><span class="p">[</span><span class="s1">&#39;code_executor&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">step</span><span class="p">[</span><span class="s1">&#39;code&#39;</span><span class="p">])</span>
-        <span class="k">elif</span> <span class="n">step</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;search&#39;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_search_codebase</span><span class="p">(</span><span class="n">step</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">])</span>
-</code></pre></div>
-
+def _execute_step(self, step):
+    """执行单个步骤"""
+    if step['type'] == 'analyze':
+        return self._analyze_code(step['target'])
+    elif step['type'] == 'execute':
+        return self.tools['code_executor'].run(step['code'])
+    elif step['type'] == 'search':
+        return self._search_codebase(step['query'])
+</code></pre>
+<p>```</p>
 <h3>2.3 提示词工程（Prompt Engineering）</h3>
 <h4>2.3.1 分层Prompt策略</h4>
 <p>不同任务使用不同的Prompt：</p>
-<div class="highlight"><pre><span></span><code><span class="gu">## System Prompt（基础）</span>
-你是{项目名}的资深技术顾问，有{X年}的{技术栈}开发经验。
-你的职责是帮助团队进行代码审查、架构设计、问题排查。
+<p>```markdown</p>
+<h2>System Prompt（基础）</h2>
+<p>你是{项目名}的资深技术顾问，有{X年}的{技术栈}开发经验。
+你的职责是帮助团队进行代码审查、架构设计、问题排查。</p>
+<h3>项目背景</h3>
+<ul>
+<li>技术栈：{list}</li>
+<li>团队规模：{N}人</li>
+<li>核心业务：{description}</li>
+</ul>
+<h3>行为规范</h3>
+<ol>
+<li>代码风格遵循{规范文档链接}</li>
+<li>在提出建议前，总是先解释原理</li>
+<li>对于破坏性改动，必须提供回滚方案</li>
+</ol>
+<hr />
+<h2>Task-Specific Prompt（针对任务）</h2>
+<p>任务：代码审查</p>
+<h3>检查清单</h3>
+<ul>
+<li>[ ] 是否遵循命名规范</li>
+<li>[ ] 是否有充分的错误处理</li>
+<li>[ ] 是否有性能隐患</li>
+<li>[ ] 是否更新了相关文档</li>
+</ul>
+<h3>输出格式</h3>
+<p>| 问题 | 严重度 | 改进建议 |
+|------|--------|--------|
+```</p>
+<h4>2.3.2 少样本学习（Few-shot Learning）</h4>
+<p>通过示例教导AI期望的行为：</p>
+<p>```python
+def build_code_review_prompt(pr_content, style_guide):
+    """构建代码审查Prompt"""</p>
+<pre><code>examples = [
+    {
+        "code": "var x = 1;",
+        "feedback": "❌ 使用 `const` 而非 `var`（不可重新赋值）"
+    },
+    {
+        "code": "if (error) { throw error; }",
+        "feedback": "⚠️ 建议使用 custom error class 以提供更多上下文"
+    }
+]
 
-<span class="gu">### 项目背景</span>
-<span class="k">-</span><span class="w"> </span>技术栈：{list}
-<span class="k">-</span><span class="w"> </span>团队规模：{N}人
-<span class="k">-</span><span class="w"> </span>核心业务：{description}
+prompt = f"""
+你是代码审查专家。参考以下风格指南和示例，审查代码。
 
-<span class="gu">### 行为规范</span>
-<span class="k">1.</span> 代码风格遵循{规范文档链接}
-<span class="k">2.</span> 在提出建议前，总是先解释原理
-<span class="k">3.</span> 对于破坏性改动，必须提供回滚方案
+风格指南摘要：
+{style_guide}
+
+评审示例：
+{format_examples(examples)}
 
 ---
 
-<span class="gu">## Task-Specific Prompt（针对任务）</span>
-任务：代码审查
+现在审查以下代码：
+{pr_content}
 
-<span class="gu">### 检查清单</span>
-<span class="k">- [ ]</span> 是否遵循命名规范
-<span class="k">- [ ]</span> 是否有充分的错误处理
-<span class="k">- [ ]</span> 是否有性能隐患
-<span class="k">- [ ]</span> 是否更新了相关文档
+按问题严重度列出反馈。
+"""
 
-<span class="gu">### 输出格式</span>
-| 问题 | 严重度 | 改进建议 |
-|------|--------|--------|
-</code></pre></div>
-
-<h4>2.3.2 少样本学习（Few-shot Learning）</h4>
-<p>通过示例教导AI期望的行为：</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">build_code_review_prompt</span><span class="p">(</span><span class="n">pr_content</span><span class="p">,</span> <span class="n">style_guide</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;构建代码审查Prompt&quot;&quot;&quot;</span>
-
-    <span class="n">examples</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;var x = 1;&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;feedback&quot;</span><span class="p">:</span> <span class="s2">&quot;❌ 使用 `const` 而非 `var`（不可重新赋值）&quot;</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-            <span class="s2">&quot;code&quot;</span><span class="p">:</span> <span class="s2">&quot;if (error) { throw error; }&quot;</span><span class="p">,</span>
-            <span class="s2">&quot;feedback&quot;</span><span class="p">:</span> <span class="s2">&quot;⚠️ 建议使用 custom error class 以提供更多上下文&quot;</span>
-        <span class="p">}</span>
-    <span class="p">]</span>
-
-    <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">    你是代码审查专家。参考以下风格指南和示例，审查代码。</span>
-
-<span class="s2">    风格指南摘要：</span>
-<span class="s2">    </span><span class="si">{</span><span class="n">style_guide</span><span class="si">}</span>
-
-<span class="s2">    评审示例：</span>
-<span class="s2">    </span><span class="si">{</span><span class="n">format_examples</span><span class="p">(</span><span class="n">examples</span><span class="p">)</span><span class="si">}</span>
-
-<span class="s2">    ---</span>
-
-<span class="s2">    现在审查以下代码：</span>
-<span class="s2">    </span><span class="si">{</span><span class="n">pr_content</span><span class="si">}</span>
-
-<span class="s2">    按问题严重度列出反馈。</span>
-<span class="s2">    &quot;&quot;&quot;</span>
-
-    <span class="k">return</span> <span class="n">prompt</span>
-</code></pre></div>
-
+return prompt
+</code></pre>
+<p>```</p>
 <h2>第三部分：实现模式与案例</h2>
 <h3>3.1 模式一：编码助手</h3>
 <p><strong>场景</strong>：开发者在IDE中获得实时代码建议</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 关键技术选择</span>
-<span class="o">-</span> <span class="n">模型</span><span class="err">：</span><span class="n">Codex</span> <span class="o">/</span> <span class="n">GPT</span><span class="o">-</span><span class="mi">4</span> <span class="p">(</span><span class="n">推荐</span><span class="p">)</span> <span class="n">或开源</span> <span class="n">Codestral</span>
-<span class="o">-</span> <span class="n">延迟要求</span><span class="err">：</span><span class="o">&lt;</span><span class="mi">2</span><span class="n">秒完成补全</span>
-<span class="o">-</span> <span class="n">交互方式</span><span class="err">：</span><span class="n">VS</span> <span class="n">Code</span> <span class="n">LSP</span> <span class="p">(</span><span class="n">Language</span> <span class="n">Server</span> <span class="n">Protocol</span><span class="p">)</span>
-
-<span class="c1"># 实现要点</span>
-<span class="mf">1.</span> <span class="n">将光标前的代码作为上下文</span><span class="err">（</span><span class="n">通常100</span><span class="o">-</span><span class="mi">500</span><span class="n">行</span><span class="err">）</span>
-<span class="mf">2.</span> <span class="n">使用Stop</span> <span class="n">Tokens避免生成过长内容</span>
-<span class="mf">3.</span> <span class="n">缓存常见补全以降低API调用</span>
-</code></pre></div>
-
+<p>```python</p>
+<h1>关键技术选择</h1>
+<ul>
+<li>模型：Codex / GPT-4 (推荐) 或开源 Codestral</li>
+<li>延迟要求：&lt;2秒完成补全</li>
+<li>交互方式：VS Code LSP (Language Server Protocol)</li>
+</ul>
+<h1>实现要点</h1>
+<ol>
+<li>将光标前的代码作为上下文（通常100-500行）</li>
+<li>使用Stop Tokens避免生成过长内容</li>
+<li>缓存常见补全以降低API调用
+```</li>
+</ol>
 <p><strong>示例：智能补全</strong></p>
-<div class="highlight"><pre><span></span><code><span class="c1">// 用户输入到这里↓</span>
-<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">fetchUserData</span><span class="p">(</span><span class="nx">userId</span><span class="o">:</span><span class="w"> </span><span class="kt">string</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="sb">`/api/users/</span><span class="si">${</span><span class="nx">userId</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
-<span class="w">    </span><span class="c1">// AI建议的补全：</span>
-<span class="w">    </span><span class="c1">// if (!response.ok) {</span>
-<span class="w">    </span><span class="c1">//     throw new Error(`Failed to fetch user: ${response.status}`);</span>
-<span class="w">    </span><span class="c1">// }</span>
-<span class="w">    </span><span class="c1">// const data = await response.json();</span>
-<span class="w">    </span><span class="c1">// return data as User;</span>
-<span class="p">}</span>
-</code></pre></div>
-
+<p><code>typescript
+// 用户输入到这里↓
+async function fetchUserData(userId: string) {
+    const response = await fetch(`/api/users/${userId}`);
+    // AI建议的补全：
+    // if (!response.ok) {
+    //     throw new Error(`Failed to fetch user: ${response.status}`);
+    // }
+    // const data = await response.json();
+    // return data as User;
+}</code></p>
 <h3>3.2 模式二：代码审查机制人</h3>
 <p><strong>场景</strong>：PR提交时自动进行智能评审</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 架构</span>
-<span class="mf">1.</span> <span class="n">Webhook</span> <span class="n">监听</span> <span class="n">GitHub</span> <span class="n">PR</span> <span class="n">事件</span>
-<span class="mf">2.</span> <span class="n">提取</span> <span class="n">Diff</span> <span class="n">和相关文件</span>
-<span class="mf">3.</span> <span class="n">构建增强Prompt</span><span class="err">（</span><span class="n">包含</span><span class="err">：</span><span class="n">代码规范</span><span class="err">、</span><span class="n">依赖关系</span><span class="err">、</span><span class="n">历史问题</span><span class="err">）</span>
-<span class="mf">4.</span> <span class="n">调用LLM进行多维度分析</span>
-<span class="mf">5.</span> <span class="n">发布审查意见评论</span>
-
-<span class="c1"># 评审维度</span>
-<span class="o">-</span> <span class="n">代码质量</span><span class="err">：</span><span class="n">命名</span><span class="err">、</span><span class="n">复杂度</span><span class="err">、</span><span class="n">DRY原则</span>
-<span class="o">-</span> <span class="n">安全性</span><span class="err">：</span><span class="n">SQL注入</span><span class="err">、</span><span class="n">XSS</span><span class="err">、</span><span class="n">权限问题</span>
-<span class="o">-</span> <span class="n">性能</span><span class="err">：</span><span class="n">算法复杂度</span><span class="err">、</span><span class="n">数据库查询优化</span>
-<span class="o">-</span> <span class="n">可维护性</span><span class="err">：</span><span class="n">文档</span><span class="err">、</span><span class="n">测试覆盖率</span>
-<span class="o">-</span> <span class="n">架构</span><span class="err">：</span><span class="n">是否遵循项目模式</span><span class="err">、</span><span class="n">解耦原则</span>
-</code></pre></div>
-
+<p>```python</p>
+<h1>架构</h1>
+<ol>
+<li>Webhook 监听 GitHub PR 事件</li>
+<li>提取 Diff 和相关文件</li>
+<li>构建增强Prompt（包含：代码规范、依赖关系、历史问题）</li>
+<li>调用LLM进行多维度分析</li>
+<li>发布审查意见评论</li>
+</ol>
+<h1>评审维度</h1>
+<ul>
+<li>代码质量：命名、复杂度、DRY原则</li>
+<li>安全性：SQL注入、XSS、权限问题</li>
+<li>性能：算法复杂度、数据库查询优化</li>
+<li>可维护性：文档、测试覆盖率</li>
+<li>架构：是否遵循项目模式、解耦原则
+```</li>
+</ul>
 <p><strong>工作流示例</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AICodeReviewer</span><span class="p">:</span>
-    <span class="k">def</span> <span class="nf">review_pull_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pr</span><span class="p">):</span>
-        <span class="c1"># 获取变更</span>
-        <span class="n">changes</span> <span class="o">=</span> <span class="n">pr</span><span class="o">.</span><span class="n">get_diff</span><span class="p">()</span>
+<p>```python
+class AICodeReviewer:
+    def review_pull_request(self, pr):
+        # 获取变更
+        changes = pr.get_diff()</p>
+<pre><code>    # 获取上下文
+    context = {
+        'style_guide': self.load_style_guide(),
+        'related_code': self.find_related_files(changes),
+        'recent_issues': self.get_similar_past_issues(changes),
+        'architectural_decisions': self.load_adr()
+    }
 
-        <span class="c1"># 获取上下文</span>
-        <span class="n">context</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;style_guide&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_style_guide</span><span class="p">(),</span>
-            <span class="s1">&#39;related_code&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">find_related_files</span><span class="p">(</span><span class="n">changes</span><span class="p">),</span>
-            <span class="s1">&#39;recent_issues&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_similar_past_issues</span><span class="p">(</span><span class="n">changes</span><span class="p">),</span>
-            <span class="s1">&#39;architectural_decisions&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">load_adr</span><span class="p">()</span>
-        <span class="p">}</span>
+    # 分别进行多个维度的审查
+    quality_review = self.analyze_quality(changes, context)
+    security_review = self.analyze_security(changes, context)
+    perf_review = self.analyze_performance(changes, context)
 
-        <span class="c1"># 分别进行多个维度的审查</span>
-        <span class="n">quality_review</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyze_quality</span><span class="p">(</span><span class="n">changes</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-        <span class="n">security_review</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyze_security</span><span class="p">(</span><span class="n">changes</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
-        <span class="n">perf_review</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">analyze_performance</span><span class="p">(</span><span class="n">changes</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+    # 合并意见，按严重度排序
+    all_issues = self._merge_reviews([
+        quality_review, security_review, perf_review
+    ])
 
-        <span class="c1"># 合并意见，按严重度排序</span>
-        <span class="n">all_issues</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_merge_reviews</span><span class="p">([</span>
-            <span class="n">quality_review</span><span class="p">,</span> <span class="n">security_review</span><span class="p">,</span> <span class="n">perf_review</span>
-        <span class="p">])</span>
-
-        <span class="c1"># 发布评论</span>
-        <span class="k">for</span> <span class="n">issue</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">all_issues</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">severity</span><span class="p">):</span>
-            <span class="n">pr</span><span class="o">.</span><span class="n">add_comment</span><span class="p">(</span><span class="n">issue</span><span class="o">.</span><span class="n">format</span><span class="p">())</span>
-</code></pre></div>
-
+    # 发布评论
+    for issue in sorted(all_issues, key=lambda x: x.severity):
+        pr.add_comment(issue.format())
+</code></pre>
+<p>```</p>
 <h3>3.3 模式三：文档/ADR生成</h3>
 <p><strong>场景</strong>：自动生成和维护项目文档</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 流程</span>
-<span class="mf">1.</span> <span class="n">监听代码变更</span><span class="err">（</span><span class="n">大功能</span><span class="o">/</span><span class="n">架构调整</span><span class="err">）</span>
-<span class="mf">2.</span> <span class="n">提示AI总结变更的目的和设计</span>
-<span class="mf">3.</span> <span class="n">生成初稿</span> <span class="n">ADR</span><span class="o">/</span><span class="n">API文档</span>
-<span class="mf">4.</span> <span class="n">发起Review供团队确认</span>
-<span class="mf">5.</span> <span class="n">纳入版本控制</span>
-
-<span class="c1"># 优势</span>
-<span class="o">-</span> <span class="n">决策历史不丢失</span>
-<span class="o">-</span> <span class="n">新成员快速理解背景</span>
-<span class="o">-</span> <span class="n">促进知识沉淀</span>
-</code></pre></div>
-
+<p>```python</p>
+<h1>流程</h1>
+<ol>
+<li>监听代码变更（大功能/架构调整）</li>
+<li>提示AI总结变更的目的和设计</li>
+<li>生成初稿 ADR/API文档</li>
+<li>发起Review供团队确认</li>
+<li>纳入版本控制</li>
+</ol>
+<h1>优势</h1>
+<ul>
+<li>决策历史不丢失</li>
+<li>新成员快速理解背景</li>
+<li>促进知识沉淀
+```</li>
+</ul>
 <h3>3.4 模式四：Bug预测与预防</h3>
 <p><strong>场景</strong>：在代码合并前预测潜在Bug</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">BugPredictor</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;基于历史数据的Bug预测&quot;&quot;&quot;</span>
+<p>```python
+class BugPredictor:
+    """基于历史数据的Bug预测"""</p>
+<pre><code>def predict_bugs(self, commit_diff):
+    # 分析变更代码的特征
+    features = self.extract_features(commit_diff)
 
-    <span class="k">def</span> <span class="nf">predict_bugs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">commit_diff</span><span class="p">):</span>
-        <span class="c1"># 分析变更代码的特征</span>
-        <span class="n">features</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_features</span><span class="p">(</span><span class="n">commit_diff</span><span class="p">)</span>
+    # Bug特征（从历史数据学习）
+    # - 文件变更频率高 → 缺陷可能性高
+    # - 单次提交改动行数多 → 风险高
+    # - 触及核心模块 → 风险高
+    # - 相似代码历史有Bug → 当前也可能有
 
-        <span class="c1"># Bug特征（从历史数据学习）</span>
-        <span class="c1"># - 文件变更频率高 → 缺陷可能性高</span>
-        <span class="c1"># - 单次提交改动行数多 → 风险高</span>
-        <span class="c1"># - 触及核心模块 → 风险高</span>
-        <span class="c1"># - 相似代码历史有Bug → 当前也可能有</span>
+    bug_probability = self.ml_model.predict(features)
 
-        <span class="n">bug_probability</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ml_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
-
-        <span class="k">if</span> <span class="n">bug_probability</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">:</span>
-            <span class="c1"># 建议添加特定类型的测试</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">recommend_tests</span><span class="p">(</span><span class="n">commit_diff</span><span class="p">)</span>
-</code></pre></div>
-
+    if bug_probability &gt; threshold:
+        # 建议添加特定类型的测试
+        return self.recommend_tests(commit_diff)
+</code></pre>
+<p>```</p>
 <h2>第四部分：挑战与解决方案</h2>
 <h3>4.1 幻觉问题（Hallucination）</h3>
 <p><strong>问题</strong>：AI生成看起来合理但错误的代码/建议</p>
-<p><strong>解决方案</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># 1. 验证执行</span>
-<span class="n">generated_code</span> <span class="o">=</span> <span class="n">ai_model</span><span class="o">.</span><span class="n">generate_code</span><span class="p">(</span><span class="n">prompt</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">code_executor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">generated_code</span><span class="p">)</span>  <span class="c1"># 真实验证</span>
-<span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">error</span><span class="p">:</span>
-    <span class="c1"># 反馈给AI进行修正</span>
-    <span class="n">fixed_code</span> <span class="o">=</span> <span class="n">ai_model</span><span class="o">.</span><span class="n">fix_code</span><span class="p">(</span><span class="n">generated_code</span><span class="p">,</span> <span class="n">result</span><span class="o">.</span><span class="n">error</span><span class="p">)</span>
-
-<span class="c1"># 2. 知识检索验证</span>
-<span class="n">suggestion</span> <span class="o">=</span> <span class="n">ai_model</span><span class="o">.</span><span class="n">make_suggestion</span><span class="p">()</span>
-<span class="n">supporting_evidence</span> <span class="o">=</span> <span class="n">vector_db</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">suggestion</span><span class="p">)</span>  <span class="c1"># 从可信源验证</span>
-<span class="n">confidence</span> <span class="o">=</span> <span class="n">calculate_confidence</span><span class="p">(</span><span class="n">suggestion</span><span class="p">,</span> <span class="n">supporting_evidence</span><span class="p">)</span>
-
-<span class="c1"># 3. 多模型投票</span>
-<span class="n">suggestions</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">suggest</span><span class="p">()</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">ensemble_models</span><span class="p">]</span>
-<span class="k">if</span> <span class="ow">not</span> <span class="n">all_agree</span><span class="p">(</span><span class="n">suggestions</span><span class="p">):</span>
-    <span class="k">return</span> <span class="s2">&quot;uncertain_flag&quot;</span>  <span class="c1"># 要求人工审核</span>
-</code></pre></div>
-
+<p><strong>解决方案</strong>：
+```python</p>
+<h1>1. 验证执行</h1>
+<p>generated_code = ai_model.generate_code(prompt)
+result = code_executor.run(generated_code)  # 真实验证
+if result.error:
+    # 反馈给AI进行修正
+    fixed_code = ai_model.fix_code(generated_code, result.error)</p>
+<h1>2. 知识检索验证</h1>
+<p>suggestion = ai_model.make_suggestion()
+supporting_evidence = vector_db.search(suggestion)  # 从可信源验证
+confidence = calculate_confidence(suggestion, supporting_evidence)</p>
+<h1>3. 多模型投票</h1>
+<p>suggestions = [model.suggest() for model in ensemble_models]
+if not all_agree(suggestions):
+    return "uncertain_flag"  # 要求人工审核
+```</p>
 <h3>4.2 上下文过期（Context Stagnation）</h3>
 <p><strong>问题</strong>：AI使用的项目知识快速变旧</p>
-<p><strong>解决方案</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ContextRefreshStrategy</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">last_refresh</span> <span class="o">=</span> <span class="kc">None</span>
+<p><strong>解决方案</strong>：
+```python
+class ContextRefreshStrategy:
+    def <strong>init</strong>(self):
+        self.last_refresh = None</p>
+<pre><code>def should_refresh(self):
+    # 周期性刷新（如每周）
+    if time.time() - self.last_refresh &gt; 7 * 24 * 3600:
+        return True
 
-    <span class="k">def</span> <span class="nf">should_refresh</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># 周期性刷新（如每周）</span>
-        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_refresh</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="o">*</span> <span class="mi">24</span> <span class="o">*</span> <span class="mi">3600</span><span class="p">:</span>
-            <span class="k">return</span> <span class="kc">True</span>
+    # 事件触发刷新
+    if self.repo_changed_significantly():
+        return True
 
-        <span class="c1"># 事件触发刷新</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">repo_changed_significantly</span><span class="p">():</span>
-            <span class="k">return</span> <span class="kc">True</span>
+    return False
 
-        <span class="k">return</span> <span class="kc">False</span>
+def refresh_context(self):
+    """增量更新上下文"""
+    recent_commits = self.get_commits(since=self.last_refresh)
 
-    <span class="k">def</span> <span class="nf">refresh_context</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;增量更新上下文&quot;&quot;&quot;</span>
-        <span class="n">recent_commits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_commits</span><span class="p">(</span><span class="n">since</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">last_refresh</span><span class="p">)</span>
+    # 更新代码图
+    self.update_code_graph(recent_commits)
 
-        <span class="c1"># 更新代码图</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">update_code_graph</span><span class="p">(</span><span class="n">recent_commits</span><span class="p">)</span>
+    # 更新规范（如果改变）
+    new_conventions = self.extract_conventions()
 
-        <span class="c1"># 更新规范（如果改变）</span>
-        <span class="n">new_conventions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extract_conventions</span><span class="p">()</span>
-
-        <span class="c1"># 更新向量索引</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">reindex_changed_files</span><span class="p">(</span><span class="n">recent_commits</span><span class="p">)</span>
-</code></pre></div>
-
+    # 更新向量索引
+    self.reindex_changed_files(recent_commits)
+</code></pre>
+<p>```</p>
 <h3>4.3 成本与延迟的平衡</h3>
 <p><strong>问题</strong>：API调用成本高，延迟不稳定</p>
-<p><strong>解决方案</strong>：</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">CostOptimizedAI</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model_router</span> <span class="o">=</span> <span class="n">ModelRouter</span><span class="p">()</span>
+<p><strong>解决方案</strong>：
+```python
+class CostOptimizedAI:
+    def <strong>init</strong>(self):
+        self.model_router = ModelRouter()</p>
+<pre><code>def handle_request(self, request, budget='balanced'):
+    # 路由到合适的模型
+    if budget == 'low_cost':
+        # 使用本地模型或轻量级模型
+        model = self.model_router.select('local_codegen')
+    elif budget == 'balanced':
+        # 使用中等模型
+        model = self.model_router.select('gpt3.5')
+    else:  # 'quality_first'
+        # 使用高端模型
+        model = self.model_router.select('gpt4')
 
-    <span class="k">def</span> <span class="nf">handle_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="s1">&#39;balanced&#39;</span><span class="p">):</span>
-        <span class="c1"># 路由到合适的模型</span>
-        <span class="k">if</span> <span class="n">budget</span> <span class="o">==</span> <span class="s1">&#39;low_cost&#39;</span><span class="p">:</span>
-            <span class="c1"># 使用本地模型或轻量级模型</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_router</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;local_codegen&#39;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">budget</span> <span class="o">==</span> <span class="s1">&#39;balanced&#39;</span><span class="p">:</span>
-            <span class="c1"># 使用中等模型</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_router</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;gpt3.5&#39;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>  <span class="c1"># &#39;quality_first&#39;</span>
-            <span class="c1"># 使用高端模型</span>
-            <span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_router</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;gpt4&#39;</span><span class="p">)</span>
+    # 缓存策略
+    cache_key = hash(request)
+    if cache_key in self.response_cache:
+        return self.response_cache[cache_key]
 
-        <span class="c1"># 缓存策略</span>
-        <span class="n">cache_key</span> <span class="o">=</span> <span class="nb">hash</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">cache_key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_cache</span><span class="p">:</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_cache</span><span class="p">[</span><span class="n">cache_key</span><span class="p">]</span>
-
-        <span class="n">result</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">process</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">response_cache</span><span class="p">[</span><span class="n">cache_key</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span>
-        <span class="k">return</span> <span class="n">result</span>
-</code></pre></div>
-
+    result = model.process(request)
+    self.response_cache[cache_key] = result
+    return result
+</code></pre>
+<p>```</p>
 <h2>第五部分：最佳实践</h2>
 <h3>5.1 团队集成</h3>
 <ol>
@@ -454,44 +458,43 @@
 <li><strong>反馈循环</strong> - 建立系统化的反馈机制，持续改进AI表现</li>
 </ol>
 <h3>5.2 数据治理</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># 确保使用开源/私有代码库训练</span>
-<span class="c1"># 不泄露敏感信息到第三方API</span>
+<p>```python</p>
+<h1>确保使用开源/私有代码库训练</h1>
+<h1>不泄露敏感信息到第三方API</h1>
+<p>class PrivateAISetup:
+    def <strong>init</strong>(self):
+        # 选项1：本地部署开源模型
+        self.model = load_local_model('codestral')</p>
+<pre><code>    # 选项2：私有API
+    self.api = PrivateOpenAIDeployment()
 
-<span class="k">class</span> <span class="nc">PrivateAISetup</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="c1"># 选项1：本地部署开源模型</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">load_local_model</span><span class="p">(</span><span class="s1">&#39;codestral&#39;</span><span class="p">)</span>
-
-        <span class="c1"># 选项2：私有API</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">api</span> <span class="o">=</span> <span class="n">PrivateOpenAIDeployment</span><span class="p">()</span>
-
-    <span class="k">def</span> <span class="nf">sanitize_context</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">code</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot;移除敏感信息&quot;&quot;&quot;</span>
-        <span class="c1"># 脱敏API密钥、个人数据</span>
-        <span class="k">return</span> <span class="n">remove_secrets</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
-</code></pre></div>
-
+def sanitize_context(self, code):
+    """移除敏感信息"""
+    # 脱敏API密钥、个人数据
+    return remove_secrets(code)
+</code></pre>
+<p>```</p>
 <h3>5.3 度量和评估</h3>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">AIPerformanceMetrics</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;AI同事的表现度量&quot;&quot;&quot;</span>
+<p>```python
+class AIPerformanceMetrics:
+    """AI同事的表现度量"""</p>
+<pre><code># 有效性
+code_acceptance_rate = "提交的代码有多少被采纳"
+review_issue_accuracy = "识别的问题有多少真实存在"
 
-    <span class="c1"># 有效性</span>
-    <span class="n">code_acceptance_rate</span> <span class="o">=</span> <span class="s2">&quot;提交的代码有多少被采纳&quot;</span>
-    <span class="n">review_issue_accuracy</span> <span class="o">=</span> <span class="s2">&quot;识别的问题有多少真实存在&quot;</span>
+# 效率
+development_time_saved = "AI帮助节省的时间"
+review_cycle_time = "使用AI review后PR合并速度"
 
-    <span class="c1"># 效率</span>
-    <span class="n">development_time_saved</span> <span class="o">=</span> <span class="s2">&quot;AI帮助节省的时间&quot;</span>
-    <span class="n">review_cycle_time</span> <span class="o">=</span> <span class="s2">&quot;使用AI review后PR合并速度&quot;</span>
+# 质量
+bug_escape_rate = "AI遗漏的Bug占比"
+false_positive_rate = "不必要的建议占比"
 
-    <span class="c1"># 质量</span>
-    <span class="n">bug_escape_rate</span> <span class="o">=</span> <span class="s2">&quot;AI遗漏的Bug占比&quot;</span>
-    <span class="n">false_positive_rate</span> <span class="o">=</span> <span class="s2">&quot;不必要的建议占比&quot;</span>
-
-    <span class="c1"># 成本</span>
-    <span class="n">api_cost_per_developer</span> <span class="o">=</span> <span class="s2">&quot;平均每个开发者的成本&quot;</span>
-    <span class="n">compute_infrastructure</span> <span class="o">=</span> <span class="s2">&quot;本地部署的资源成本&quot;</span>
-</code></pre></div>
-
+# 成本
+api_cost_per_developer = "平均每个开发者的成本"
+compute_infrastructure = "本地部署的资源成本"
+</code></pre>
+<p>```</p>
 <h2>第六部分：未来展望</h2>
 <ol>
 <li><strong>多模态AI</strong> - 不仅理解代码，还能理解架构图、设计文档等</li>
@@ -539,4 +542,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

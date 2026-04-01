@@ -76,22 +76,22 @@
 </li>
 </ul>
 <h2>scp常用参数</h2>
-<p>-1  强制scp命令使用协议ssh1<br>
--2  强制scp命令使用协议ssh2<br>
--4  强制scp命令只使用IPv4寻址<br>
--6  强制scp命令只使用IPv6寻址<br>
--B  使用批处理模式（传输过程中不询问传输口令或短语）<br>
--C  允许压缩。（将-C标志传递给ssh，从而打开压缩功能）<br>
--p 保留原文件的修改时间，访问时间和访问权限。<br>
--q  不显示传输进度条。<br>
--r  递归复制整个目录。<br>
--v 详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。 <br>
--c cipher  以cipher将数据传输进行加密，这个选项将直接传递给ssh。 <br>
--F ssh_config  指定一个替代的ssh配置文件，此参数直接传递给ssh。<br>
--i identity_file  从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。  <br>
--l limit  限定用户所能使用的带宽，以Kbit/s为单位。   <br>
--o ssh_option  如果习惯于使用ssh_config(5)中的参数传递方式， <br>
--P port  注意是大写的P, port是指定数据传输用到的端口号 <br>
+<p>-1  强制scp命令使用协议ssh1<br />
+-2  强制scp命令使用协议ssh2<br />
+-4  强制scp命令只使用IPv4寻址<br />
+-6  强制scp命令只使用IPv6寻址<br />
+-B  使用批处理模式（传输过程中不询问传输口令或短语）<br />
+-C  允许压缩。（将-C标志传递给ssh，从而打开压缩功能）<br />
+-p 保留原文件的修改时间，访问时间和访问权限。<br />
+-q  不显示传输进度条。<br />
+-r  递归复制整个目录。<br />
+-v 详细方式显示输出。scp和ssh(1)会显示出整个过程的调试信息。这些信息用于调试连接，验证和配置问题。 <br />
+-c cipher  以cipher将数据传输进行加密，这个选项将直接传递给ssh。 <br />
+-F ssh_config  指定一个替代的ssh配置文件，此参数直接传递给ssh。<br />
+-i identity_file  从指定文件中读取传输时使用的密钥文件，此参数直接传递给ssh。  <br />
+-l limit  限定用户所能使用的带宽，以Kbit/s为单位。   <br />
+-o ssh_option  如果习惯于使用ssh_config(5)中的参数传递方式， <br />
+-P port  注意是大写的P, port是指定数据传输用到的端口号 <br />
 -S program  指定加密传输时所使用的程序。此程序必须能够理解ssh(1)的选项。</p>
       </div><!-- /.entry-content -->
 
@@ -115,4 +115,10 @@
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>

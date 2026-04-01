@@ -44,7 +44,7 @@
         
 </footer><!-- /.post-info -->        <p style="color: #F44336;">注意备份将要安装系统的电脑内容</p>
 
-<p>官网教程：https://support.apple.com/zh-cn/HT201372</p>
+<p>官网教程：<a href="https://support.apple.com/zh-cn/HT201372">https://support.apple.com/zh-cn/HT201372</a></p>
 <ul>
 <li>U盘抹掉格式为：<code>Mac OS 扩展（日志式）</code> 重命名为：<code>UM</code></li>
 <li>下载镜像<a href="http://www.pc6.com/mac/484081.html">High.Sierra.dmg</a>并打开</li>
@@ -52,28 +52,22 @@
 </ul>
 <!-- more -->
 
-<div class="highlight"><pre><span></span><code>sudo /Volumes/Install\ macOS\ High\ Sierra/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/UM --applicationpath /Volumes/Install\ macOS\ High\ Sierra/Install\ macOS\ High\ Sierra.app --nointeraction
-</code></pre></div>
-
+<p><code>sudo /Volumes/Install\ macOS\ High\ Sierra/Install\ macOS\ High\ Sierra.app/Contents/Resources/createinstallmedia --volume /Volumes/UM --applicationpath /Volumes/Install\ macOS\ High\ Sierra/Install\ macOS\ High\ Sierra.app --nointeraction</code></p>
 <ul>
 <li>等待</li>
 </ul>
-<div class="highlight"><pre><span></span><code>Erasing Disk: 0%... 10%... 20%... 30%...100%...
+<p><code>Erasing Disk: 0%... 10%... 20%... 30%...100%...
 Copying installer files to disk...
 Copy complete.
 Making disk bootable...
 Copying boot files...
 Copy complete.
-Done.
-</code></pre></div>
-
-<ul>
-<li>重启按住option键</li>
-<li>选择制作的U盘启动</li>
-<li>打开磁盘工具抹掉系统盘</li>
-<li>开始安装</li>
-<li>出现<code>不能验证</code>问题时，打开实用工具-终端，输入<code>date 032208102015.20</code>回车即可</li>
-</ul>
+Done.</code>
+-  重启按住option键
+-  选择制作的U盘启动
+- 打开磁盘工具抹掉系统盘
+- 开始安装
+- 出现<code>不能验证</code>问题时，打开实用工具-终端，输入<code>date 032208102015.20</code>回车即可</p>
 <p>老款可能需要下载支持文件：<a href="https://support.apple.com/zh-cn/HT205016">https://support.apple.com/zh-cn/HT205016</a></p>
       </div><!-- /.entry-content -->
 
@@ -97,4 +91,10 @@ Done.
                 </footer><!-- /#contentinfo -->
 
         </body>
+        <script>
+                document.querySelectorAll('article a[href^="http"]').forEach(a => {
+                    a.target = '_blank';
+                    a.rel = 'noopener noreferrer';
+                });
+        </script>
 </html>
