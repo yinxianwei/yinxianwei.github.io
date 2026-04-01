@@ -43,3 +43,10 @@ MENUITEMS = [
     ("标签", "/tags.html"),
     ("归档", "/archives.html"),
 ]
+
+MARKDOWN = {
+    "extensions": [
+        "pymdownx.magiclink",
+    ],
+    "extension_configs": {},
+}
