@@ -46,7 +46,9 @@ MENUITEMS = [
 
 MARKDOWN = {
     "extensions": [
+        "extra",  # 包含 tables
         "pymdownx.magiclink",
+        "codehilite",
+        "toc",
     ],
-    "extension_configs": {},
 }
