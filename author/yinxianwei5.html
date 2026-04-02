@@ -27,6 +27,40 @@
                         <ol id="posts-list" class="hfeed" start="9">
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="https://yinxianwei.github.io/xuan-zhong-qu-xiao-iconfontsuo-you-tu-biao.html" rel="bookmark"
+                               title="Permalink to 选中取消iconfont所有图标">选中取消iconfont所有图标</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2019-03-14T13:31:00+08:00">
+                Published: Thu 14 March 2019
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://yinxianwei.github.io/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
+        
+</footer><!-- /.post-info -->                        <h1>选中/取消iconfont所有图标</h1>
+<p>打开控制台，粘贴下面代码，回车</p>
+<p>```</p>
+<p>var ls = document.getElementsByClassName('icon-cover-freeze');
+var mClick = function(index) {
+    if (index == ls.length) return;
+    ls[index].firstElementChild.click();
+    setTimeout(() =&gt; {
+        mClick(index + 1);
+    }, 5);
+};
+mClick(0);</p>
+<p>```</p>
+                        <a class="readmore" href="https://yinxianwei.github.io/xuan-zhong-qu-xiao-iconfontsuo-you-tu-biao.html">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="https://yinxianwei.github.io/magsafe-2-geng-huan-dian-yuan-xian.html" rel="bookmark"
                                title="Permalink to MagSafe 2 更换电源线">MagSafe 2 更换电源线</a></h1>
                     </header>
@@ -326,41 +360,6 @@ ERROR: Failed to download Chromium r579032! Set "PUPPETEER_SKIP_CHROMIUM_DOWNLOA
     at Object._errnoException (util.js:992:11)
     at _exceptionWithHostPort (util …</p>
                         <a class="readmore" href="https://yinxianwei.github.io/yarn-puppeteercuo-wu.html">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="https://yinxianwei.github.io/npm-version.html" rel="bookmark"
-                               title="Permalink to npm version">npm version</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2018-08-30T13:49:18+08:00">
-                Published: Thu 30 August 2018
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="https://yinxianwei.github.io/author/yinxianwei.html">yinxianwei</a>
-                </address>
-        <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
-        
-</footer><!-- /.post-info -->                        <p>```
-版本示例：1.2.3 MAJOR.MINOR.PATCH:</p>
-<p>1.2.3
-┬ ┬ ┬
-│ │ │
-│ │ └ 补丁版本：bug修复，向后兼容
-│ └── 次要版本：新增功能，向后兼容
-└──── 主要版本：修改不向后兼容的api
-```</p>
-<!-- more -->
-
-<h5>示例</h5>
-<p>```
-  1 …</p>
-                        <a class="readmore" href="https://yinxianwei.github.io/npm-version.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
                     </ol><!-- /#posts-list -->
