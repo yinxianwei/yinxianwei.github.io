@@ -7,7 +7,7 @@
                         <title>查看Swift代码执行时间</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="swift func measure(title: String!, call: () -> Void) { let startTime = CACurrentMediaTime() call() let endTime = CACurrentMediaTime() if let title..." />
+    <meta name="description" content="func measure(title: String!, call: () -> Void) { let startTime = CACurrentMediaTime() call() let endTime = CACurrentMediaTime() if let title =..." />
         </head>
 
         <body id="index" class="home">
@@ -42,31 +42,33 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <p><code>swift
-func measure(title: String!, call: () -&gt; Void) {
-    let startTime = CACurrentMediaTime()
-    call()
-    let endTime = CACurrentMediaTime()
-    if let title = title {
-        print("\(title): ")
-    }
-    print("Time - \(endTime - startTime)")
- }</code></p>
+</footer><!-- /.post-info -->        <div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">measure</span><span class="p">(</span><span class="n">title</span><span class="p">:</span> <span class="nb">String</span><span class="p">!,</span> <span class="n">call</span><span class="p">:</span> <span class="p">()</span> <span class="p">-&gt;</span> <span class="nb">Void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nv">startTime</span> <span class="p">=</span> <span class="n">CACurrentMediaTime</span><span class="p">()</span>
+    <span class="n">call</span><span class="p">()</span>
+    <span class="kd">let</span> <span class="nv">endTime</span> <span class="p">=</span> <span class="n">CACurrentMediaTime</span><span class="p">()</span>
+    <span class="k">if</span> <span class="kd">let</span> <span class="nv">title</span> <span class="p">=</span> <span class="n">title</span> <span class="p">{</span>
+        <span class="bp">print</span><span class="p">(</span><span class="s">&quot;</span><span class="si">\(</span><span class="n">title</span><span class="si">)</span><span class="s">: &quot;</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="bp">print</span><span class="p">(</span><span class="s">&quot;Time - </span><span class="si">\(</span><span class="n">endTime</span> <span class="o">-</span> <span class="n">startTime</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+ <span class="p">}</span>
+</code></pre></div>
+
 <!-- more -->
 
-<p><code>swift
-func doSomeWork() {
-  measure("Array") {
-  var ar = [String]()
-  for i in 0...10000 {
-  ar.append("New elem \(i)")
-  }
-  }
-  measure("Image") {
-  let url = NSURL(string: "http://lorempixel.com/1920/1920/")
-  let image = UIImage(data:NSData(contentsOfURL:url!)!)
-  }
-}</code></p>
+<div class="codehilite"><pre><span></span><code><span class="kd">func</span> <span class="nf">doSomeWork</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">measure</span><span class="p">(</span><span class="s">&quot;Array&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nv">ar</span> <span class="p">=</span> <span class="p">[</span><span class="nb">String</span><span class="p">]()</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">..</span><span class="mi">10000</span> <span class="p">{</span>
+  <span class="n">ar</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;New elem </span><span class="si">\(</span><span class="n">i</span><span class="si">)</span><span class="s">&quot;</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="n">measure</span><span class="p">(</span><span class="s">&quot;Image&quot;</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nv">url</span> <span class="p">=</span> <span class="bp">NSURL</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="s">&quot;http://lorempixel.com/1920/1920/&quot;</span><span class="p">)</span>
+  <span class="kd">let</span> <span class="nv">image</span> <span class="p">=</span> <span class="bp">UIImage</span><span class="p">(</span><span class="n">data</span><span class="p">:</span><span class="bp">NSData</span><span class="p">(</span><span class="n">contentsOfURL</span><span class="p">:</span><span class="n">url</span><span class="p">!)</span><span class="o">!</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <blockquote>
 <p>Array: Time — 0.0845723639995413</p>
 <p>Image: Time — 1.77442857499955</p>

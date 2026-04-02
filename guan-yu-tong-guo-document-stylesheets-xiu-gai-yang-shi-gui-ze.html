@@ -7,7 +7,7 @@
                         <title>关于通过document.styleSheets修改样式规则</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="```js var innerText = ''; function changeTheme() { try { var colors = JSON.parse(..." />
+    <meta name="description" content="var innerText = ''; function changeTheme() { try { var colors = JSON.parse( window.localStorage.getItem(window.localStorage.getItem('ROLE_ID') +..." />
         </head>
 
         <body id="index" class="home">
@@ -42,36 +42,35 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <p>```js
-var innerText = '';
-function changeTheme() {
-    try {
-        var colors = JSON.parse(
-            window.localStorage.getItem(window.localStorage.getItem('ROLE_ID') + '__theme')
-        );
-    } catch (error) { }
-    if (!colors) {
-        return;
-    }
-    var keys = ['background', 'background-color', 'color', 'border-color'];</p>
-<pre><code>var styleSheet = document.styleSheets[0].href ? document.styleSheets[0] : document.styleSheets[1];
-for (var index = 0; index &lt; styleSheet.rules.length; index++) {
-    var rule = styleSheet.rules[index];
-    if (rule.style) {
-        Object.keys(colors).forEach(function(key) {
-            keys.forEach(function(styleKey) {
-                var sc = rule.style.getPropertyValue(styleKey).replace(key, colors[key]);
-                if (sc) {
-                    rule.style.setProperty(styleKey, sc, rule.style.getPropertyPriority(styleKey))
-                }
-            });
-        });
-    }
-}
-</code></pre>
-<p>}
-changeTheme();</p>
-<p>```</p>
+</footer><!-- /.post-info -->        <div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">innerText</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="p">;</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">changeTheme</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span>
+<span class="w">            </span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">localStorage</span><span class="p">.</span><span class="nx">getItem</span><span class="p">(</span><span class="s1">&#39;ROLE_ID&#39;</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s1">&#39;__theme&#39;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">colors</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">keys</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;background&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;background-color&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;color&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;border-color&#39;</span><span class="p">];</span>
+
+<span class="w">    </span><span class="kd">var</span><span class="w"> </span><span class="nx">styleSheet</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">styleSheets</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">href</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">styleSheets</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">styleSheets</span><span class="p">[</span><span class="mf">1</span><span class="p">];</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kd">var</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0</span><span class="p">;</span><span class="w"> </span><span class="nx">index</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="nx">styleSheet</span><span class="p">.</span><span class="nx">rules</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="w"> </span><span class="nx">index</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kd">var</span><span class="w"> </span><span class="nx">rule</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">styleSheet</span><span class="p">.</span><span class="nx">rules</span><span class="p">[</span><span class="nx">index</span><span class="p">];</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">rule</span><span class="p">.</span><span class="nx">style</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">colors</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nx">keys</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">styleKey</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                    </span><span class="kd">var</span><span class="w"> </span><span class="nx">sc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">rule</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">getPropertyValue</span><span class="p">(</span><span class="nx">styleKey</span><span class="p">).</span><span class="nx">replace</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span><span class="w"> </span><span class="nx">colors</span><span class="p">[</span><span class="nx">key</span><span class="p">]);</span>
+<span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">sc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nx">rule</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">setProperty</span><span class="p">(</span><span class="nx">styleKey</span><span class="p">,</span><span class="w"> </span><span class="nx">sc</span><span class="p">,</span><span class="w"> </span><span class="nx">rule</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">getPropertyPriority</span><span class="p">(</span><span class="nx">styleKey</span><span class="p">))</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">});</span>
+<span class="w">            </span><span class="p">});</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+<span class="nx">changeTheme</span><span class="p">();</span>
+</code></pre></div>
       </div><!-- /.entry-content -->
 
     </article>

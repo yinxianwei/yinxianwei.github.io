@@ -42,7 +42,7 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <h2>需要准备的工具：</h2>
+</footer><!-- /.post-info -->        <h2 id="_1">需要准备的工具：</h2>
 <ol>
 <li>WR720N v3</li>
 <li>W25Q1238FVSSIG 16M闪存</li>
@@ -53,7 +53,7 @@
 <li>网线一根</li>
 <li>可以插网线的电脑一台</li>
 </ol>
-<h2>流程</h2>
+<h2 id="_2">流程</h2>
 <ol>
 <li>网线连接路由后，打开 192.168.1.253，记录Mac地址，后面会用到</li>
 <li>选择4M的openwrt固件升级</li>
@@ -67,28 +67,28 @@
 <li>修改Mac地址</li>
 <li>重启路由5分钟后灯常亮打开192.168.1.1为openwrt后台</li>
 </ol>
-<h2>固件</h2>
+<h2 id="_3">固件</h2>
 <ol>
 <li>安装docker</li>
 <li>安装ubuntu容器<code>docker pull ubuntu:20.04</code></li>
 <li>查看容器id <code>docker ps</code> </li>
 <li>进入容器 <code>docker exec -it 容器id  /bin/bash</code></li>
-<li>
-<p>修改镜像 <a href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11ZrkuE2">https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11ZrkuE2</a>
-<code>echo 'deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse
-deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse' &gt; /etc/apt/sources.list</code></p>
-</li>
-<li>
-<p><code>apt-get update</code></p>
-</li>
+<li>修改镜像 <a href="https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11ZrkuE2">https://developer.aliyun.com/mirror/ubuntu?spm=a2c6h.13651102.0.0.3e221b11ZrkuE2</a></li>
+</ol>
+<div class="codehilite"><pre><span></span><code><span class="err">echo</span><span class="w"> </span><span class="err">&#39;deb</span><span class="w"> </span><span class="err">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="err">focal</span><span class="w"> </span><span class="err">main</span><span class="w"> </span><span class="err">restricted</span><span class="w"> </span><span class="err">universe</span><span class="w"> </span><span class="err">multiverse</span>
+<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-security</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-security</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-updates</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-updates</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-proposed</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-proposed</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-backports</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse</span>
+<span class="k">deb-src</span><span class="w"> </span><span class="s">http://mirrors.aliyun.com/ubuntu/</span><span class="w"> </span><span class="kp">focal-backports</span><span class="w"> </span><span class="kp">main</span><span class="w"> </span><span class="kp">restricted</span><span class="w"> </span><span class="kp">universe</span><span class="w"> </span><span class="kp">multiverse&#39;</span><span class="w"> </span><span class="kp">&gt;</span><span class="w"> </span><span class="kp">/etc/apt/sources.list</span>
+</code></pre></div>
+
+<ol>
+<li><code>apt-get update</code></li>
 <li><code>apt-get install git</code></li>
 <li><code>apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3.5 python2.7 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler g++-multilib antlr3 gperf wget curl swig rsync</code></li>
 <li><code>git clone https://github.com/coolsnowwolf/openwrt.git</code></li>

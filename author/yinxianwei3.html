@@ -47,53 +47,18 @@
 
 <p>update：2020年12月04日</p>
 <p><a href="https://medium.com/@Idan_Co/the-ultimate-print-html-template-with-header-footer-568f415f6d2a">https://medium.com/@Idan_Co/the-ultimate-print-html-template-with-header-footer-568f415f6d2a</a></p>
-<p>```html</p>
-<!DOCTYPE HTML>
-<html>
+<div class="codehilite"><pre><span></span><code><span class="cp">&lt;!DOCTYPE HTML&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
 
-<head>
-    <meta name="renderer" content="webkit">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>美问</title>
-    <style type="text/css">
-    @media screen {
-        #printSection {
-            display: none;
-        }
-    }
-    @page {
-        margin: 0cm;
-    }
-   @media print {
-        body * {
-            visibility: hidden;
-        }
-        #printSection * {
-            visibility: visible;
-        }
-        p {
-            font-size: 9pt;
-        }
-        h4 {
-            font-size: 18pt;
-        }
-    }
-    </style>
-    <script type="text/javascript">
-    function printTest() {
-        window.print();
-    }
-
-    </script>
-</head>
-
-<body>
-    <div>
-        <div id="printSection">
-            <div style="width: 150%;height: 1px;"></div>
-            <!-- 如果打印内容宽度过短，则需要添加宽度大于100%的div，否则字体大小设置无效 -->
-            <p>打印测试 …</p></div></div></body></html>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&quot;renderer&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;webkit&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;utf-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">http-equiv</span><span class="o">=</span><span class="s">&quot;X-UA-Compatible&quot;</span> <span class="na">content</span><span class="o">=</span><span class="s">&quot;IE=edge,chrome=1&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>美问<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">style</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="nt">screen</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">#</span><span class="nn">printSection</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none …</span></code></pre></div>
                         <a class="readmore" href="https://yinxianwei.github.io/re-min-da-yin-ji-wu-fa-tiao-zheng-font-size.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -118,10 +83,10 @@
 </footer><!-- /.post-info -->                        <p><code>Update: 2015-04-10</code></p>
 <p>上传podspec文件到CocoaPods官方仓库中的方式更改，<a href="#1">原来的办法</a>不可行，新的办法如下：
     <a href="http://guides.cocoapods.org/making/getting-setup-with-trunk.html">http://guides.cocoapods.org/making/getting-setup-with-trunk.html</a></p>
-<pre><code>First you need to register for trunk:
+<div class="codehilite"><pre><span></span><code><span class="k">First</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nl">trunk</span><span class="p">:</span>
 
-$ pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
-Then you should be able to …</code></pre>
+<span class="err">$</span><span class="w"> </span><span class="n">pod</span><span class="w"> </span><span class="n">trunk</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="n">orta</span><span class="nv">@cocoapods</span><span class="p">.</span><span class="n">org</span><span class="w"> </span><span class="s1">&#39;Orta Therox&#39;</span><span class="w"> </span><span class="o">--</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;macbook air&#39;</span>
+<span class="k">Then</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">able</span><span class="w"> </span><span class="k">to …</span></code></pre></div>
                         <a class="readmore" href="https://yinxianwei.github.io/cocoapods-zhi-zuo-pian.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -143,20 +108,32 @@ Then you should be able to …</code></pre>
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <h2>console</h2>
-<h4>console.log(object [, object, ...])</h4>
-<h4>console.info(object [, object, ...])</h4>
-<h4>console.error(object [, object, ...])</h4>
-<p><code>js
-var str = 'hello world';
-console.log('---&gt;&gt;&gt;%s', str);</code></p>
+</footer><!-- /.post-info -->                        <h2 id="console">console</h2>
+<h4 id="consolelogobject-object">console.log(object [, object, ...])</h4>
+<h4 id="consoleinfoobject-object">console.info(object [, object, ...])</h4>
+<h4 id="consoleerrorobject-object">console.error(object [, object, ...])</h4>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hello world&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---&gt;&gt;&gt;%s&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">str</span><span class="p">);</span>
+</code></pre></div>
+
 <!-- more -->
 
 <p>常用格式代码：</p>
-<p>| 说明符 | 输出 |
-| --- | --- |
-| %s |   将值格式化为字符串 |
-| %i 或 %d | 将值格式 …</p>
+<table>
+<thead>
+<tr>
+<th>说明符</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>将值格式化为字符串</td>
+</tr>
+<tr>
+<td>%i 或 %d</td>
+<td>将值格式化 …</td></tr></tbody></table>
                         <a class="readmore" href="https://yinxianwei.github.io/google-chrome-kong-zhi-tai.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -237,10 +214,12 @@ console.log('---&gt;&gt;&gt;%s', str);</code></p>
 <p>方案一</p>
 <p>.ssh/config文件添加 <code>ProxyCommand nc %h %p</code></p>
 <p>如：</p>
-<p><code>host vps
+<div class="codehilite"><pre><span></span><code>host vps
 hostname xx.xxx.com
 user root
-ProxyCommand nc %h %p</code></p>
+ProxyCommand nc %h %p
+</code></pre></div>
+
 <p>方案二</p>
 <p><code>brew install openssh</code></p>
 <p>~/.bash_profile 添加: export PATH="/usr/local/sbin:$PATH"</p>
@@ -272,11 +251,10 @@ ProxyCommand nc %h %p</code></p>
 <p>toFixed() 方法使用定点表示法来格式化一个数。</p>
 </blockquote>
 <p>Chrome：</p>
-<p><code>js
-console.log((0.005).toFixed(2)) -&gt; 0.01
-console.log((0.015).toFixed(2)) -&gt; 0.01
-console.log((0.025).toFixed(2)) -&gt; 0.03
-console.log((0 …</code></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.005</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.015</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.025</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.03</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.035 …</span></code></pre></div>
                         <a class="readmore" href="https://yinxianwei.github.io/js-zhong-tofixed-de-keng.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -353,7 +331,7 @@ console.log((0 …</code></p>
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <h3>安装</h3>
+</footer><!-- /.post-info -->                        <h3 id="_1">安装</h3>
 <p>下载地址：<a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a>
 - <code>wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-server_5.7.21-1ubuntu14.04_amd64.deb-bundle.tar</code>  </p>
 <!-- more -->

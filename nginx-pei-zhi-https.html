@@ -48,13 +48,17 @@
 <p>Trying to get a wildcard certificate? Please use the dropdown menus below to get instructions specific to your system, and read those instructions carefully.</p>
 </blockquote>
 <hr />
-<p><code>$ sudo apt-get update
-$ sudo apt-get install software-properties-common
-$ sudo add-apt-repository ppa:certbot/certbot
-$ sudo apt-get update
-$ sudo apt-get install python-certbot-nginx</code></p>
-<p><code>$ service nginx stop
-$ certbot certonly --standalone --email your@email.com -d yourdomain.com</code></p>
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>software-properties-common
+$<span class="w"> </span>sudo<span class="w"> </span>add-apt-repository<span class="w"> </span>ppa:certbot/certbot
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>python-certbot-nginx<span class="w"> </span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code>$<span class="w"> </span>service<span class="w"> </span>nginx<span class="w"> </span>stop
+$<span class="w"> </span>certbot<span class="w"> </span>certonly<span class="w"> </span>--standalone<span class="w"> </span>--email<span class="w"> </span>your@email.com<span class="w"> </span>-d<span class="w"> </span>yourdomain.com
+</code></pre></div>
+
 <p>安装参考：<a href="[https://www.cnblogs.com/SzeCheng/p/8075799.html](https://www.cnblogs.com/SzeCheng/p/8075799.html)">[https://www.cnblogs.com/SzeCheng/p/8075799.html](https://www.cnblogs.com/SzeCheng/p/8075799.html)</a>
 证书三个月需要续签一次，使用<code>crontab</code>每个月检查一次，自动续期
 <code>0 0 1 * * certbot renew -q --pre-hook "service nginx stop" --post-hook "service nginx start"</code></p>

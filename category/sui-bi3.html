@@ -101,10 +101,12 @@
 <p>方案一</p>
 <p>.ssh/config文件添加 <code>ProxyCommand nc %h %p</code></p>
 <p>如：</p>
-<p><code>host vps
+<div class="codehilite"><pre><span></span><code>host vps
 hostname xx.xxx.com
 user root
-ProxyCommand nc %h %p</code></p>
+ProxyCommand nc %h %p
+</code></pre></div>
+
 <p>方案二</p>
 <p><code>brew install openssh</code></p>
 <p>~/.bash_profile 添加: export PATH="/usr/local/sbin:$PATH"</p>
@@ -136,11 +138,10 @@ ProxyCommand nc %h %p</code></p>
 <p>toFixed() 方法使用定点表示法来格式化一个数。</p>
 </blockquote>
 <p>Chrome：</p>
-<p><code>js
-console.log((0.005).toFixed(2)) -&gt; 0.01
-console.log((0.015).toFixed(2)) -&gt; 0.01
-console.log((0.025).toFixed(2)) -&gt; 0.03
-console.log((0 …</code></p>
+<div class="codehilite"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.005</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.015</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.025</span><span class="p">).</span><span class="nx">toFixed</span><span class="p">(</span><span class="mf">2</span><span class="p">))</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mf">0.03</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">((</span><span class="mf">0.035 …</span></code></pre></div>
                         <a class="readmore" href="https://yinxianwei.github.io/js-zhong-tofixed-de-keng.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -217,7 +218,7 @@ console.log((0 …</code></p>
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <h3>安装</h3>
+</footer><!-- /.post-info -->                        <h3 id="_1">安装</h3>
 <p>下载地址：<a href="https://dev.mysql.com/downloads/mysql/">https://dev.mysql.com/downloads/mysql/</a>
 - <code>wget https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-server_5.7.21-1ubuntu14.04_amd64.deb-bundle.tar</code>  </p>
 <!-- more -->
@@ -279,23 +280,72 @@ console.log((0 …</code></p>
 <p><a href="http://www.unicode.org/charts/PDF/U2000.pdf">http://www.unicode.org/charts/PDF/U2000.pdf</a></p>
 <!-- more -->
 
-<p>|  unicode   |   显示符号  |
-| --- | --- |
-|\u2000| |
-|\u2001| |
-|\u2002| |
-|\u2003| |
-|\u2004| |
-|\u2005| |
-|\u2006| |
-|\u2007| |
-|\u2008| |
-|\u2009| |
-|\u200a| |
-|\u200b|​|
-|\u200c|‌|
-|\u200d|‍|
-|\u200e …</p>
+<table>
+<thead>
+<tr>
+<th>unicode</th>
+<th>显示符号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\u2000</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2001</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2002</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2003</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2004</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2005</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2006</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2007</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2008</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u2009</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u200a</td>
+<td> </td>
+</tr>
+<tr>
+<td>\u200b</td>
+<td>​</td>
+</tr>
+<tr>
+<td>\u200c</td>
+<td>‌</td>
+</tr>
+<tr>
+<td>\u200d</td>
+<td>‍</td>
+</tr>
+<tr>
+<td>\u200e …</td></tr></tbody></table>
                         <a class="readmore" href="https://yinxianwei.github.io/qian-duan-de-bu-ke-jian-zi-fu.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
@@ -317,7 +367,7 @@ console.log((0 …</code></p>
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->                        <h1>PhoneGap安装</h1>
+</footer><!-- /.post-info -->                        <h1 id="phonegap">PhoneGap安装</h1>
 <p>当前版本是<code>PhoneGap2.9.1</code>、<code>Xcode6.3</code></p>
 <ol>
 <li>
@@ -336,7 +386,7 @@ console.log((0 …</code></p>
 </li>
 </ol>
 <!--more-->
-<h1>iOS的工程创建</h1>
+<h1 id="ios">iOS的工程创建</h1>
 <ol>
 <li>
 <p>创建工程（终端命令）</p>

@@ -49,7 +49,7 @@
 </blockquote>
 <!-- more -->
 
-<h1>编写插件方法</h1>
+<h1 id="_1">编写插件方法</h1>
 <ul>
 <li>
 <p>html里面调用已经写过了，只是没有对数据进行处理，<code>CDVInvokedUrlCommand</code>这个类里有两个重要的参数。</p>
@@ -77,14 +77,15 @@
 <img alt="QQ20150423-6@2x" src="media/15027829418427/QQ20150423-6@2x.png" /></p>
 </li>
 </ul>
-<h1>重复回调JS函数</h1>
+<h1 id="js">重复回调JS函数</h1>
 <ul>
 <li>
 <p>我想实现多次回调JS代码，于是我就天真的这样写：</p>
-<pre><code>[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+<div class="codehilite"><pre><span></span><code><span class="cp">[</span><span class="bp">self.</span><span class="nx nx-Member">commandDelegate</span><span class="w"> </span><span class="nx">sendPluginResult</span><span class="p">:</span><span class="nx">pluginResult</span><span class="w"> </span><span class="nx">callbackId</span><span class="p">:</span><span class="nx">command.callbackId</span><span class="cp">]</span><span class="o">;</span>
 
-[self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-</code></pre>
+<span class="cp">[</span><span class="bp">self.</span><span class="nx nx-Member">commandDelegate</span><span class="w"> </span><span class="nx">sendPluginResult</span><span class="p">:</span><span class="nx">pluginResult</span><span class="w"> </span><span class="nx">callbackId</span><span class="p">:</span><span class="nx">command.callbackId</span><span class="cp">]</span><span class="o">;</span>
+</code></pre></div>
+
 <p>发现并不能回调多次，第二次调用时PhoneGap认为记录的这条<code>callbackId</code>已经回调成功了，所以就不会继续执行。</p>
 </li>
 <li>

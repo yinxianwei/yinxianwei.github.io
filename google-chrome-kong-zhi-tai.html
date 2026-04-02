@@ -7,7 +7,7 @@
                         <title>Google Chrome 控制台</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="console console.log(object [, object, ...]) console.info(object [, object, ...]) console.error(object [, object, ...]) js var str = 'hello world';..." />
+    <meta name="description" content="console console.log(object [, object, ...]) console.info(object [, object, ...]) console.error(object [, object, ...]) var str = 'hello world';..." />
         </head>
 
         <body id="index" class="home">
@@ -42,52 +42,92 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <h2>console</h2>
-<h4>console.log(object [, object, ...])</h4>
-<h4>console.info(object [, object, ...])</h4>
-<h4>console.error(object [, object, ...])</h4>
-<p><code>js
-var str = 'hello world';
-console.log('---&gt;&gt;&gt;%s', str);</code></p>
+</footer><!-- /.post-info -->        <h2 id="console">console</h2>
+<h4 id="consolelogobject-object">console.log(object [, object, ...])</h4>
+<h4 id="consoleinfoobject-object">console.info(object [, object, ...])</h4>
+<h4 id="consoleerrorobject-object">console.error(object [, object, ...])</h4>
+<div class="codehilite"><pre><span></span><code><span class="kd">var</span><span class="w"> </span><span class="nx">str</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;hello world&#39;</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;---&gt;&gt;&gt;%s&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">str</span><span class="p">);</span>
+</code></pre></div>
+
 <!-- more -->
 
 <p>常用格式代码：</p>
-<p>| 说明符 | 输出 |
-| --- | --- |
-| %s |   将值格式化为字符串 |
-| %i 或 %d | 将值格式化为整型 |
-| %f |   将值格式化为浮点值 |
-| %o |   将值格式化为可扩展 DOM 元素。如同在 Elements 面板中显示的一样 |
-| %O |   将值格式化为可扩展 JavaScript 对象 |
-| %c |   将 CSS 样式规则应用到第二个参数指定的输出字符串 |</p>
-<h4>console.table(object [, columns])</h4>
-<p>将元素属性按表格结构打印出来</p>
-<h4>console.assert(expression, object)</h4>
-<p><code>js
-console.assert(a &gt; b, 'error');</code></p>
-<h4>console.time(label)</h4>
-<h4>console.timeEnd(label)</h4>
+<table>
+<thead>
+<tr>
+<th>说明符</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>%s</td>
+<td>将值格式化为字符串</td>
+</tr>
+<tr>
+<td>%i 或 %d</td>
+<td>将值格式化为整型</td>
+</tr>
+<tr>
+<td>%f</td>
+<td>将值格式化为浮点值</td>
+</tr>
+<tr>
+<td>%o</td>
+<td>将值格式化为可扩展 DOM 元素。如同在 Elements 面板中显示的一样</td>
+</tr>
+<tr>
+<td>%O</td>
+<td>将值格式化为可扩展 JavaScript 对象</td>
+</tr>
+<tr>
+<td>%c</td>
+<td>将 CSS 样式规则应用到第二个参数指定的输出字符串</td>
+</tr>
+<tr>
+<td>#### console.table(object [, columns])</td>
+<td></td>
+</tr>
+<tr>
+<td>将元素属性按表格结构打印出来</td>
+<td></td>
+</tr>
+<tr>
+<td>#### console.assert(expression, object)</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="codehilite"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">assert</span><span class="p">(</span><span class="nx">a</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="nx">b</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;error&#39;</span><span class="p">);</span>
+</code></pre></div>
+
+<h4 id="consoletimelabel">console.time(label)</h4>
+<h4 id="consoletimeendlabel">console.timeEnd(label)</h4>
 <p>代码执行时间</p>
-<p><code>js
-console.time('time');
-console.timeEnd('time');
-time: 0.001953125ms;</code></p>
-<h2>copy</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">console</span><span class="p">.</span><span class="nx">time</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">timeEnd</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">);</span>
+<span class="nx">time</span><span class="o">:</span><span class="w"> </span><span class="mf">0.001953125</span><span class="nx">ms</span><span class="p">;</span>
+</code></pre></div>
+
+<h2 id="copy">copy</h2>
 <p>copy命令，可复制变量到剪切板</p>
-<p><code>js
-copy(str);</code></p>
-<h2>选择元素</h2>
+<div class="codehilite"><pre><span></span><code><span class="nx">copy</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="_1">选择元素</h2>
 <p>检查元素控制台<code>$0</code>即为该元素</p>
-<h2>事件监听</h2>
-<p><code>js
-// 事件监听
-monitorEvents($0, 'mouse');
-// 取消事件监听
-unmonitorEvents($0);</code></p>
-<h2>contenteditable</h2>
-<p><code>js
-// 网页body内容可编辑
-document.body.contentEditable = true;</code></p>
+<h2 id="_2">事件监听</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1">// 事件监听</span>
+<span class="nx">monitorEvents</span><span class="p">(</span><span class="nx">$0</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mouse&#39;</span><span class="p">);</span>
+<span class="c1">// 取消事件监听</span>
+<span class="nx">unmonitorEvents</span><span class="p">(</span><span class="nx">$0</span><span class="p">);</span>
+</code></pre></div>
+
+<h2 id="contenteditable">contenteditable</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1">// 网页body内容可编辑</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">contentEditable</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span>
+</code></pre></div>
       </div><!-- /.entry-content -->
 
     </article>

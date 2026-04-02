@@ -7,7 +7,7 @@
                         <title>解决Cannot find module '../lib/completion'</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="json // package.json { "scripts": { "build": "gulp build" } } 错误： Error: Cannot find module '../lib/completion' at..." />
+    <meta name="description" content="// package.json { "scripts": { "build": "gulp build" } } 错误： Error: Cannot find module '../lib/completion' at Function.Module._resolveFilename..." />
         </head>
 
         <body id="index" class="home">
@@ -42,35 +42,38 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <p><code>json
-// package.json
-{
-    "scripts": {
-        "build": "gulp build"
-    }
-}</code></p>
+</footer><!-- /.post-info -->        <div class="codehilite"><pre><span></span><code><span class="c1">// package.json</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;gulp build&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
 <!-- more -->
 
 <p>错误：</p>
-<p><code>Error: Cannot find module '../lib/completion'
-    at Function.Module._resolveFilename (module.js:469:15)
-    at Function.Module._load (module.js:417:25)
-    at Module.require (module.js:497:17)
-    at require (internal/module.js:20:19)
-    at Object.&lt;anonymous&gt; (/staticDisk/repository/jenkins/saas/node_modules/.bin/gulp:13:18)
-    at Module._compile (module.js:570:32)
-    at Object.Module._extensions..js (module.js:579:10)
-    at Module.load (module.js:487:32)
-    at tryModuleLoad (module.js:446:12)
-    at Function.Module._load (module.js:438:3)</code></p>
+<div class="codehilite"><pre><span></span><code><span class="n">Error</span><span class="p">:</span><span class="w"> </span><span class="n">Cannot</span><span class="w"> </span><span class="n">find</span><span class="w"> </span><span class="n">module</span><span class="w"> </span><span class="s1">&#39;../lib/completion&#39;</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Function</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">_resolveFilename</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">469</span><span class="p">:</span><span class="mi">15</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Function</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">_load</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">417</span><span class="p">:</span><span class="mi">25</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Module</span><span class="o">.</span><span class="n">require</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">497</span><span class="p">:</span><span class="mi">17</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">require</span><span class="w"> </span><span class="p">(</span><span class="n">internal</span><span class="o">/</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">20</span><span class="p">:</span><span class="mi">19</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="nb nb-Type">Object</span><span class="o">.&lt;</span><span class="n">anonymous</span><span class="o">&gt;</span><span class="w"> </span><span class="p">(</span><span class="o">/</span><span class="n">staticDisk</span><span class="o">/</span><span class="n">repository</span><span class="o">/</span><span class="n">jenkins</span><span class="o">/</span><span class="n">saas</span><span class="o">/</span><span class="n">node_modules</span><span class="o">/.</span><span class="n">bin</span><span class="o">/</span><span class="n">gulp</span><span class="p">:</span><span class="mi">13</span><span class="p">:</span><span class="mi">18</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Module</span><span class="o">.</span><span class="n">_compile</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">570</span><span class="p">:</span><span class="mi">32</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="nb nb-Type">Object</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">_extensions</span><span class="o">..</span><span class="n">js</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">579</span><span class="p">:</span><span class="mi">10</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Module</span><span class="o">.</span><span class="n">load</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">487</span><span class="p">:</span><span class="mi">32</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">tryModuleLoad</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">446</span><span class="p">:</span><span class="mi">12</span><span class="p">)</span>
+<span class="w">    </span><span class="n">at</span><span class="w"> </span><span class="n">Function</span><span class="o">.</span><span class="n">Module</span><span class="o">.</span><span class="n">_load</span><span class="w"> </span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">js</span><span class="p">:</span><span class="mi">438</span><span class="p">:</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+
 <p>修改为：</p>
-<p><code>json
-// package.json
-{
-    "scripts": {
-        "build": "node ./node_modules/gulp/bin/gulp build"
-    }
-}</code></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// package.json</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;scripts&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;build&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;node ./node_modules/gulp/bin/gulp build&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
       </div><!-- /.entry-content -->
 
     </article>

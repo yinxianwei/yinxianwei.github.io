@@ -57,10 +57,10 @@
     ~/.secrets/certbot/cloudflare.ini
     内容: </p>
 <p>```</p>
-<h1>Cloudflare API token used by Certbot</h1>
+<h1 id="cloudflare-api-token-used-by-certbot">Cloudflare API token used by Certbot</h1>
 <p>dns_cloudflare_api_token = 你的api token
 <code>1.</code>chmod 600 ~/.secrets/certbot/cloudflare.ini<code>2.</code>certbot certonly --dns-cloudflare --dns-cloudflare-credentials ~/.secrets/certbot/cloudflare.ini -d *.yinxianwei.com --email <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#64;&#113;&#113;&#46;&#99;&#111;&#109;">&#101;&#120;&#97;&#109;&#112;&#108;&#101;&#64;&#113;&#113;&#46;&#99;&#111;&#109;</a><code>3. nginx配置泛域名解析</code></p>
-<h1>/etc/nginx/conf.d/<a href="http://www.conf">www.conf</a></h1>
+<h1 id="etcnginxconfdwwwconf">/etc/nginx/conf.d/<a href="http://www.conf">www.conf</a></h1>
 <p>server {
     server_name  ~^(?<subdomain>.+).yinxianwei.com$;
     root   /usr/share/nginx/$subdomain; 

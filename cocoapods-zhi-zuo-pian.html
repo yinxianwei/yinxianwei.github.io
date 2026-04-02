@@ -45,14 +45,15 @@
 </footer><!-- /.post-info -->        <p><code>Update: 2015-04-10</code></p>
 <p>上传podspec文件到CocoaPods官方仓库中的方式更改，<a href="#1">原来的办法</a>不可行，新的办法如下：
     <a href="http://guides.cocoapods.org/making/getting-setup-with-trunk.html">http://guides.cocoapods.org/making/getting-setup-with-trunk.html</a></p>
-<pre><code>First you need to register for trunk:
+<div class="codehilite"><pre><span></span><code><span class="k">First</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">need</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="nl">trunk</span><span class="p">:</span>
 
-$ pod trunk register orta@cocoapods.org 'Orta Therox' --description='macbook air'
-Then you should be able to do:
+<span class="err">$</span><span class="w"> </span><span class="n">pod</span><span class="w"> </span><span class="n">trunk</span><span class="w"> </span><span class="n">register</span><span class="w"> </span><span class="n">orta</span><span class="nv">@cocoapods</span><span class="p">.</span><span class="n">org</span><span class="w"> </span><span class="s1">&#39;Orta Therox&#39;</span><span class="w"> </span><span class="o">--</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;macbook air&#39;</span>
+<span class="k">Then</span><span class="w"> </span><span class="n">you</span><span class="w"> </span><span class="n">should</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">able</span><span class="w"> </span><span class="k">to</span><span class="w"> </span><span class="nl">do</span><span class="p">:</span>
 
-$ pod trunk push yourPodspec.podspec
-I hope that answers your question - I'm afraid I don't speak Chinese so I'm relying on google translate.
-</code></pre>
+<span class="err">$</span><span class="w"> </span><span class="n">pod</span><span class="w"> </span><span class="n">trunk</span><span class="w"> </span><span class="n">push</span><span class="w"> </span><span class="n">yourPodspec</span><span class="p">.</span><span class="n">podspec</span>
+<span class="n">I</span><span class="w"> </span><span class="n">hope</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">answers</span><span class="w"> </span><span class="n">your</span><span class="w"> </span><span class="n">question</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">I</span><span class="s1">&#39;m afraid I don&#39;</span><span class="n">t</span><span class="w"> </span><span class="n">speak</span><span class="w"> </span><span class="n">Chinese</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">I</span><span class="err">&#39;</span><span class="n">m</span><span class="w"> </span><span class="n">relying</span><span class="w"> </span><span class="k">on</span><span class="w"> </span><span class="n">google</span><span class="w"> </span><span class="k">translate</span><span class="p">.</span>
+</code></pre></div>
+
 <!-- more -->
 
 <p>大概就是：先把邮箱信息注册，然后收到邮件，点击链接验证，最后一步提交你的podspec文件。</p>
@@ -63,7 +64,7 @@ I hope that answers your question - I'm afraid I don't speak Chinese so I'm rely
 如果觉得文章对你有所帮助，请通过留言或关注微信公众帐号wangzzstrive来支持我，谢谢!</p>
 </blockquote>
 <p>学会使用别人的Pods依赖库以后，你一定对创建自己的依赖库跃跃欲试，今天就来揭开Pods依赖库创建过程的神秘面纱。整个创建过程都以我实现的一个名称为WZMarqueeView跑马灯效果的view为例，步骤如下：</p>
-<h1>一、创建自己的github仓库</h1>
+<h1 id="github">一、创建自己的github仓库</h1>
 <p>CocoaPods都托管在github上(官方链接为：<a href="https://github.com/CocoaPods">https://github.com/CocoaPods</a>)，所有的Pods依赖库也都依赖github，因此第一步我们需要创建一个属于自己的github仓库。仓库创建界面如下图：
 <img alt="x" src="http://img.blog.csdn.net/20140304101538437?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3p6dmljdG9yeQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" />
 上图中标了序号的共6处，对应的说明如下：</p>
@@ -84,14 +85,15 @@ I hope that answers your question - I'm afraid I don't speak Chinese so I'm rely
 <img alt="x" src="http://img.blog.csdn.net/20140304103428187?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3p6dmljdG9yeQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" />
 到这，仓库创建过程就结束了。    </li>
 </ol>
-<h1>二、clone仓库到本地</h1>
+<h1 id="clone">二、clone仓库到本地</h1>
 <p>为了便于向仓库中删减内容，需要先将仓库clone到本地，操作方式有多种，推荐使用命令行：     </p>
-<pre><code>git clone https://github.com/wangzz/WZMarqueeView.git
-</code></pre>
+<div class="codehilite"><pre><span></span><code>git clone https://github.com/wangzz/WZMarqueeView.git
+</code></pre></div>
+
 <p>操作完成后，github上对应的文件都会拷贝到本地，目录结构为:
 github上仓库中的.gitignore文件是以.开头的隐藏文件，因此这里只能看到两个。  <br />
 后续我们的所有文件增、删、改都在这个目录下进行。</p>
-<h1>三、向本地git仓库中添加创建Pods依赖库所需文件</h1>
+<h1 id="gitpods">三、向本地git仓库中添加创建Pods依赖库所需文件</h1>
 <p>注意：以下描述的文件都要放在步骤二clone到本地的git仓库的根目录下面。</p>
 <ol>
 <li>
@@ -152,7 +154,7 @@ Pods依赖库使用的license类型，大家填上自己对应的选择即可。
 以上所说的5个是创建Pods依赖库所需最基础的文件，其中1、2、3是必需的，4、5是可选但强烈推荐创建的。 添加完这些文件以后，我的github本地仓库目录就变成了下图所示的样子：</p>
 </li>
 </ol>
-<h1>四、提交修改文件到github</h1>
+<h1 id="github_1">四、提交修改文件到github</h1>
 <p>经过步骤三，向本地的git仓库中添加了不少文件，现在需要将它们提交到github仓库中去。提交过程分以下几步：    </p>
 <ol>
 <li>
@@ -180,7 +182,7 @@ $ git push origin master    </p>
 </blockquote>
 <p>上述命令均属git的范畴，这里不多述。如果一切正常，github上就应该能看到自己刚添加的内容了。如下图所示：       <br />
 <span id = "1"> </span></p>
-<h1>五、上传podspec文件到CocoaPods官方仓库中</h1>
+<h1 id="podspeccocoapods">五、上传podspec文件到CocoaPods官方仓库中</h1>
 </li>
 </ol>
 <p>经过前边的四步操作，你可能以为已经结束了，不幸的是还早着呢。 要想一个Pods依赖库真正可用，还需要做最后一步操作，将我们刚才生成的podspec文件上传到CocoaPods官方的Specs仓库中，链接为：<a href="https://github.com/CocoaPods/Specs">https://github.com/CocoaPods/Specs</a> 打开这个链接你就会发现，原来我们能使用的，以及我们使用pod search命令能搜索到的所有Pods依赖库都会把它们的podspec文件上传到这个仓库中，也就是说，只有将我们的podspec文件上传到这个仓库中以后，才能成为一个真正的Pods依赖库，别人才能正常使用！ 按照git的规则，要想向别人的仓库中添加文件，必须先fork一份别人的仓库，做完相应地修改后，在push给仓库的原作者，等到作者审核通过，然后合并到原来的仓库中。 流程明白了以后，自然知道该怎么干了：       </p>
@@ -214,7 +216,7 @@ $ git push origin master        </p>
 红圈标识的就是我刚才pull上来的请求，点进去以后就能看到对应的审核进度。</p>
 </li>
 </ol>
-<h1>六、查看我们自己创建的Pods依赖库</h1>
+<h1 id="pods">六、查看我们自己创建的Pods依赖库</h1>
 <p>如果收到了CocoaPods官方发过来的审核通过邮件以后，你可能很着急的想在自己的电脑上执行pod search命令，看看能不能搜索到自己创建的Pods依赖库。不过你肯定会失望的，因为还需要执行一条命令才能在我们的本地电脑上使用search命令搜索到我们的依赖库：        </p>
 <blockquote>
 <p>$ pod setup    </p>
@@ -231,30 +233,30 @@ $ pod trunk register <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#111;&#11
 Then you should be able to do:        <br />
 $ pod trunk push name.podspec           </p>
 </blockquote>
-<h1>七、framework包的配置</h1>
+<h1 id="framework">七、framework包的配置</h1>
 <p>这是FIR的<a href="https://github.com/zw-FIR/BugHD-SDK">BugHD</a>，可以用pod安装famework包。</p>
-<pre><code>Pod::Spec.new do |s|
-  s.name                = "BugHD"
-  s.version             = "1.1.0"
-  s.summary             = "FIR.im BugHD"
-  s.description         = &lt;&lt;-DESC
-                          让APP崩溃问题无处遁形
-                          DESC
-  s.homepage            = "http://bughd.com/"
-  s.license             = {
-    :type =&gt; 'Copyright',
-    :text =&gt; &lt;&lt;-LICENSE
-      ©2014 BugHD, Made with love by FIR.im.
-      LICENSE
-  }
-  s.author              = { "FIR.im" =&gt; "dev@fir.im" }
-  s.platform            = :ios, '6.0'
-  s.source              = { :git =&gt; "https://github.com/zw-FIR/BugHD-SDK.git", :tag =&gt; s.version.to_s }
-  s.vendored_frameworks = 'BugHD/FIR.framework'
-  s.source_files = 'BugHD/FIR.framework/Headers/*.h'
-  s.frameworks = 'SystemConfiguration'
-end
-</code></pre>
+<div class="codehilite"><pre><span></span><code><span class="nx">Pod</span><span class="o">::</span><span class="nx">Spec</span><span class="p">.</span><span class="nx">new</span><span class="w"> </span><span class="nx">do</span><span class="w"> </span><span class="o">|</span><span class="nx">s</span><span class="o">|</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">name</span><span class="w">                </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;BugHD&quot;</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">version</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;1.1.0&quot;</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">summary</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;FIR.im BugHD&quot;</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">description</span><span class="w">         </span><span class="p">=</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="nx">DESC</span>
+<span class="w">                          </span><span class="nx">让APP崩溃问题无处遁形</span>
+<span class="w">                          </span><span class="nx">DESC</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">homepage</span><span class="w">            </span><span class="p">=</span><span class="w"> </span><span class="s">&quot;http://bughd.com/&quot;</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">license</span><span class="w">             </span><span class="p">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">:</span><span class="k">type</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">Copyright</span><span class="err">&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="p">:</span><span class="nx">text</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="o">&lt;&lt;-</span><span class="nx">LICENSE</span>
+<span class="w">      </span><span class="err">©</span><span class="mi">2014</span><span class="w"> </span><span class="nx">BugHD</span><span class="p">,</span><span class="w"> </span><span class="nx">Made</span><span class="w"> </span><span class="nx">with</span><span class="w"> </span><span class="nx">love</span><span class="w"> </span><span class="nx">by</span><span class="w"> </span><span class="nx">FIR</span><span class="p">.</span><span class="nx">im</span><span class="p">.</span>
+<span class="w">      </span><span class="nx">LICENSE</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">author</span><span class="w">              </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s">&quot;FIR.im&quot;</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;dev@fir.im&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">platform</span><span class="w">            </span><span class="p">=</span><span class="w"> </span><span class="p">:</span><span class="nx">ios</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="m m-Double">6.0</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">source</span><span class="w">              </span><span class="p">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">:</span><span class="nx">git</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&quot;https://github.com/zw-FIR/BugHD-SDK.git&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">:</span><span class="nx">tag</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">version</span><span class="p">.</span><span class="nx">to_s</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">vendored_frameworks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">BugHD</span><span class="o">/</span><span class="nx">FIR</span><span class="p">.</span><span class="nx">framework</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">source_files</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">BugHD</span><span class="o">/</span><span class="nx">FIR</span><span class="p">.</span><span class="nx">framework</span><span class="o">/</span><span class="nx">Headers</span><span class="o">/*</span><span class="p">.</span><span class="nx">h</span><span class="err">&#39;</span>
+<span class="w">  </span><span class="nx">s</span><span class="p">.</span><span class="nx">frameworks</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="err">&#39;</span><span class="nx">SystemConfiguration</span><span class="err">&#39;</span>
+<span class="nx">end</span>
+</code></pre></div>
       </div><!-- /.entry-content -->
 
     </article>

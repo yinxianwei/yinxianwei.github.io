@@ -42,7 +42,7 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <h2>postgresql</h2>
+</footer><!-- /.post-info -->        <h2 id="postgresql">postgresql</h2>
 <!-- https://blog.csdn.net/S2T11Enterprise/article/details/109775056 -->
 
 <ol>
@@ -63,11 +63,11 @@
 <li>ALTER USER xianwei WITH CREATEDB;</li>
 <li>重启 systemctl restart postgresql-10</li>
 </ol>
-<h2>python2.x</h2>
+<h2 id="python2x">python2.x</h2>
 <ol>
 <li>yum install python2</li>
 </ol>
-<h2>odoo10</h2>
+<h2 id="odoo10">odoo10</h2>
 <ol>
 <li>git clone <a href="https://gitee.com/mirrors/odoo.git">https://gitee.com/mirrors/odoo.git</a> --depth 1 --branch 10.0 --single-branch odoo10</li>
 <li>sudo yum install libxml2-devel libxslt-devel python2-devel openldap-devel libffi-devel gcc</li>
@@ -81,39 +81,41 @@
 <li>vim odoo.config</li>
 <li>vim /etc/systemd/system/odoo.service</li>
 </ol>
-<p>```</p>
-<h1>修改pip镜像 ~.pip/pip.config</h1>
-<p>[global]
-index-url = <a href="https://pypi.tuna.tsinghua.edu.cn/simple">https://pypi.tuna.tsinghua.edu.cn/simple</a>
-[install]
-trusted-host = <a href="https://pypi.tuna.tsinghua.edu.cn">https://pypi.tuna.tsinghua.edu.cn</a>
-```</p>
-<p>```</p>
-<h1>odoo.config</h1>
-<p>[options]
-db_host = localhost
-db_port = 5432
-addons_path = addons
-db_user = xianwei
-db_password = password
-dbfilter = odoo
-db_name = odoo
-addons_path = /usr/local/app/odoo/addons
-```</p>
-<p>```</p>
-<h1>/etc/systemd/system/odoo.service</h1>
-<p>[Unit]
-Description=Odoo
-After=postgresql-10.service</p>
-<p>[Service]
-Type=simple
-User=xianwei
-Group=xianwei
-ExecStart=/usr/bin/python2 /usr/local/app/odoo/odoo-bin -c /usr/local/app/odoo/odoo.conf</p>
-<p>[Install]
-WantedBy=multi-user.target
-```</p>
-<h2>问题</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">#修改pip镜像</span><span class="w"> </span><span class="o">~</span><span class="p">.</span><span class="n">pip</span><span class="o">/</span><span class="n">pip</span><span class="p">.</span><span class="n">config</span>
+<span class="o">[</span><span class="n">global</span><span class="o">]</span>
+<span class="k">index</span><span class="o">-</span><span class="n">url</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span><span class="o">/</span><span class="n">simple</span>
+<span class="o">[</span><span class="n">install</span><span class="o">]</span>
+<span class="n">trusted</span><span class="o">-</span><span class="k">host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nl">https</span><span class="p">:</span><span class="o">//</span><span class="n">pypi</span><span class="p">.</span><span class="n">tuna</span><span class="p">.</span><span class="n">tsinghua</span><span class="p">.</span><span class="n">edu</span><span class="p">.</span><span class="n">cn</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="n">#odoo</span><span class="p">.</span><span class="n">config</span>
+<span class="o">[</span><span class="n">options</span><span class="o">]</span>
+<span class="n">db_host</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">localhost</span>
+<span class="n">db_port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5432</span>
+<span class="n">addons_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">addons</span>
+<span class="n">db_user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xianwei</span>
+<span class="n">db_password</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">password</span>
+<span class="n">dbfilter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odoo</span>
+<span class="nf">db_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">odoo</span>
+<span class="n">addons_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">app</span><span class="o">/</span><span class="n">odoo</span><span class="o">/</span><span class="n">addons</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="c1">#/etc/systemd/system/odoo.service</span>
+<span class="k">[Unit]</span>
+<span class="na">Description</span><span class="o">=</span><span class="s">Odoo</span>
+<span class="na">After</span><span class="o">=</span><span class="s">postgresql-10.service</span>
+
+<span class="k">[Service]</span>
+<span class="na">Type</span><span class="o">=</span><span class="s">simple</span>
+<span class="na">User</span><span class="o">=</span><span class="s">xianwei</span>
+<span class="na">Group</span><span class="o">=</span><span class="s">xianwei</span>
+<span class="na">ExecStart</span><span class="o">=</span><span class="s">/usr/bin/python2 /usr/local/app/odoo/odoo-bin -c /usr/local/app/odoo/odoo.conf</span>
+
+<span class="k">[Install]</span>
+<span class="na">WantedBy</span><span class="o">=</span><span class="s">multi-user.target</span>
+</code></pre></div>
+
+<h2 id="_1">问题</h2>
 <ol>
 <li>OptionBinding with id "failovermethod" does not exist
     <code>sudo sed -iBAK '/^failovermethod=/d' /etc/yum.repos.d/*.repo</code></li>

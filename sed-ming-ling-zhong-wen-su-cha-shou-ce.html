@@ -7,7 +7,7 @@
                         <title>sed 命令中文速查手册</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="基础语法 bash sed [选项] '命令' 文件名 sed [选项] -f 脚本文件 文件名 常用选项 | 选项 | 说明 | |------|------| | -n | 安静模式,仅显示经过sed处理的行 | | -e | 执行多个sed命令 | | -f …" />
+    <meta name="description" content="基础语法 sed [选项] '命令' 文件名 sed [选项] -f 脚本文件 文件名 常用选项 选项 说明 -n 安静模式,仅显示经过sed处理的行 -e 执行多个sed命令 -f 从 …" />
         </head>
 
         <body id="index" class="home">
@@ -42,170 +42,234 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <h2>基础语法</h2>
-<p><code>bash
-sed [选项] '命令' 文件名
-sed [选项] -f 脚本文件 文件名</code></p>
-<h2>常用选项</h2>
-<p>| 选项 | 说明 |
-|------|------|
-| <code>-n</code> | 安静模式,仅显示经过sed处理的行 |
-| <code>-e</code> | 执行多个sed命令 |
-| <code>-f</code> | 从文件中读取sed命令 |
-| <code>-i</code> | 直接修改文件内容(不加参数),<code>-i.bak</code>可创建备份 |
-| <code>-r</code> 或 <code>-E</code> | 使用扩展正则表达式 |</p>
-<h2>基本命令</h2>
-<h3>查找与打印</h3>
-<p>```bash</p>
-<h1>打印第5行</h1>
-<p>sed -n '5p' file.txt</p>
-<h1>打印第5到第10行</h1>
-<p>sed -n '5,10p' file.txt</p>
-<h1>打印包含"pattern"的行</h1>
-<p>sed -n '/pattern/p' file.txt</p>
-<h1>打印从第一个匹配到第二个匹配之间的行</h1>
-<p>sed -n '/start/,/end/p' file.txt</p>
-<h1>打印最后一行</h1>
-<p>sed -n '$p' file.txt
-```</p>
-<h3>删除操作</h3>
-<p>```bash</p>
-<h1>删除第3行</h1>
-<p>sed '3d' file.txt</p>
-<h1>删除第3到第6行</h1>
-<p>sed '3,6d' file.txt</p>
-<h1>删除包含"pattern"的行</h1>
-<p>sed '/pattern/d' file.txt</p>
-<h1>删除空行</h1>
-<p>sed '/^$/d' file.txt</p>
-<h1>删除以#开头的行(注释行)</h1>
-<p>sed '/^#/d' file.txt
-```</p>
-<h3>替换操作</h3>
-<p>```bash</p>
-<h1>替换每行第一个匹配</h1>
-<p>sed 's/old/new/' file.txt</p>
-<h1>替换每行所有匹配(全局替换)</h1>
-<p>sed 's/old/new/g' file.txt</p>
-<h1>只替换第2个匹配</h1>
-<p>sed 's/old/new/2' file.txt</p>
-<h1>替换并打印被修改的行</h1>
-<p>sed -n 's/old/new/p' file.txt</p>
-<h1>忽略大小写替换</h1>
-<p>sed 's/old/new/gi' file.txt</p>
-<h1>只在第5行进行替换</h1>
-<p>sed '5s/old/new/' file.txt</p>
-<h1>只在第5到第10行进行替换</h1>
-<p>sed '5,10s/old/new/g' file.txt</p>
-<h1>在包含"pattern"的行中进行替换</h1>
-<p>sed '/pattern/s/old/new/g' file.txt
-```</p>
-<h3>插入与追加</h3>
-<p>```bash</p>
-<h1>在第3行前插入文本</h1>
-<p>sed '3i\新插入的文本' file.txt</p>
-<h1>在第3行后追加文本</h1>
-<p>sed '3a\新追加的文本' file.txt</p>
-<h1>在匹配行前插入</h1>
-<p>sed '/pattern/i\新插入的文本' file.txt</p>
-<h1>在匹配行后追加</h1>
-<p>sed '/pattern/a\新追加的文本' file.txt
-```</p>
-<h3>修改行</h3>
-<p>```bash</p>
-<h1>替换第3行的内容</h1>
-<p>sed '3c\新的一行内容' file.txt</p>
-<h1>替换匹配行的内容</h1>
-<p>sed '/pattern/c\新的一行内容' file.txt
-```</p>
-<h2>高级用法</h2>
-<h3>使用正则表达式</h3>
-<p>```bash</p>
-<h1>删除行首空格</h1>
-<p>sed 's/^[ \t]*//' file.txt</p>
-<h1>删除行尾空格</h1>
-<p>sed 's/[ \t]*$//' file.txt</p>
-<h1>删除所有空格</h1>
-<p>sed 's/ //g' file.txt</p>
-<h1>匹配数字</h1>
-<p>sed -n '/[0-9]/p' file.txt</p>
-<h1>使用扩展正则(+, ?, |等)</h1>
-<p>sed -E 's/[0-9]+/NUM/g' file.txt
-```</p>
-<h3>使用反向引用</h3>
-<p>```bash</p>
-<h1>交换两个单词的位置</h1>
-<p>sed 's/(.<em>) (.</em>)/\2 \1/' file.txt</p>
-<h1>给匹配的内容加括号</h1>
-<p>sed 's/[0-9]*/(&amp;)/' file.txt</p>
-<h1>提取IP地址的某一段</h1>
-<p>echo "192.168.1.1" | sed 's/([0-9]<em>).([0-9]</em>)..*/\1.\2/'
-```</p>
-<h3>多命令组合</h3>
-<p>```bash</p>
-<h1>使用分号分隔多个命令</h1>
-<p>sed '1d; s/old/new/g' file.txt</p>
-<h1>使用-e选项</h1>
-<p>sed -e '1d' -e 's/old/new/g' file.txt</p>
-<h1>使用花括号组合命令</h1>
-<p>sed '/pattern/{s/old/new/; p}' file.txt
-```</p>
-<h3>读写文件</h3>
-<p>```bash</p>
-<h1>将匹配行后追加文件内容</h1>
-<p>sed '/pattern/r other.txt' file.txt</p>
-<h1>将匹配行写入新文件</h1>
-<p>sed '/pattern/w output.txt' file.txt
-```</p>
-<h3>保持空间操作</h3>
-<p>```bash</p>
-<h1>h - 将模式空间复制到保持空间</h1>
-<h1>H - 将模式空间追加到保持空间</h1>
-<h1>g - 将保持空间复制到模式空间</h1>
-<h1>G - 将保持空间追加到模式空间</h1>
-<h1>x - 交换模式空间和保持空间</h1>
-<h1>示例:删除重复的相邻行</h1>
-<p>sed '$!N; /^(.*)\n\1$/!P; D' file.txt</p>
-<h1>示例:倒序输出文件</h1>
-<p>sed '1!G;h;$!d' file.txt
-```</p>
-<h2>实用示例</h2>
-<h3>文本处理</h3>
-<p>```bash</p>
-<h1>在文件开头添加内容</h1>
-<p>sed -i '1i\标题行' file.txt</p>
-<h1>在文件末尾添加内容</h1>
-<p>sed -i '$a\结尾行' file.txt</p>
-<h1>给每行添加行号</h1>
-<p>sed = file.txt | sed 'N;s/\n/\t/'</p>
-<h1>删除HTML标签</h1>
-<p>sed 's/&lt;[^&gt;]*&gt;//g' file.html</p>
-<h1>转换DOS格式到Unix格式</h1>
-<p>sed 's/\r$//' file.txt</p>
-<h1>转换Unix格式到DOS格式</h1>
-<p>sed 's/$/\r/' file.txt
-```</p>
-<h3>配置文件修改</h3>
-<p>```bash</p>
-<h1>修改配置项的值</h1>
-<p>sed -i 's/^Port 22/Port 2222/' sshd_config</p>
-<h1>取消注释</h1>
-<p>sed -i 's/^#(.*)/\1/' config.txt</p>
-<h1>添加注释</h1>
-<p>sed -i 's/^(.*)/#\1/' config.txt</p>
-<h1>在特定行后添加配置</h1>
-<p>sed -i '/[section]/a\new_option = value' config.ini
-```</p>
-<h3>日志分析</h3>
-<p>```bash</p>
-<h1>提取特定时间段的日志</h1>
-<p>sed -n '/2024-01-01/,/2024-01-31/p' log.txt</p>
-<h1>删除日志中的时间戳</h1>
-<p>sed 's/^[0-9]{4}-[0-9]{2}-[0-9]{2} [0-9:]*//g' log.txt</p>
-<h1>统计错误日志</h1>
-<p>sed -n '/ERROR/p' log.txt | wc -l
-```</p>
-<h2>注意事项</h2>
+</footer><!-- /.post-info -->        <h2 id="_1">基础语法</h2>
+<div class="codehilite"><pre><span></span><code>sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span><span class="w"> </span><span class="s1">&#39;命令&#39;</span><span class="w"> </span>文件名
+sed<span class="w"> </span><span class="o">[</span>选项<span class="o">]</span><span class="w"> </span>-f<span class="w"> </span>脚本文件<span class="w"> </span>文件名
+</code></pre></div>
+
+<h2 id="_2">常用选项</h2>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-n</code></td>
+<td>安静模式,仅显示经过sed处理的行</td>
+</tr>
+<tr>
+<td><code>-e</code></td>
+<td>执行多个sed命令</td>
+</tr>
+<tr>
+<td><code>-f</code></td>
+<td>从文件中读取sed命令</td>
+</tr>
+<tr>
+<td><code>-i</code></td>
+<td>直接修改文件内容(不加参数),<code>-i.bak</code>可创建备份</td>
+</tr>
+<tr>
+<td><code>-r</code> 或 <code>-E</code></td>
+<td>使用扩展正则表达式</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_3">基本命令</h2>
+<h3 id="_4">查找与打印</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 打印第5行</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;5p&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 打印第5到第10行</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;5,10p&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 打印包含&quot;pattern&quot;的行</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/pattern/p&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 打印从第一个匹配到第二个匹配之间的行</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/start/,/end/p&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 打印最后一行</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;$p&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_5">删除操作</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 删除第3行</span>
+sed<span class="w"> </span><span class="s1">&#39;3d&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 删除第3到第6行</span>
+sed<span class="w"> </span><span class="s1">&#39;3,6d&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 删除包含&quot;pattern&quot;的行</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/d&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 删除空行</span>
+sed<span class="w"> </span><span class="s1">&#39;/^$/d&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 删除以#开头的行(注释行)</span>
+sed<span class="w"> </span><span class="s1">&#39;/^#/d&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_6">替换操作</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 替换每行第一个匹配</span>
+sed<span class="w"> </span><span class="s1">&#39;s/old/new/&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 替换每行所有匹配(全局替换)</span>
+sed<span class="w"> </span><span class="s1">&#39;s/old/new/g&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 只替换第2个匹配</span>
+sed<span class="w"> </span><span class="s1">&#39;s/old/new/2&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 替换并打印被修改的行</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;s/old/new/p&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 忽略大小写替换</span>
+sed<span class="w"> </span><span class="s1">&#39;s/old/new/gi&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 只在第5行进行替换</span>
+sed<span class="w"> </span><span class="s1">&#39;5s/old/new/&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 只在第5到第10行进行替换</span>
+sed<span class="w"> </span><span class="s1">&#39;5,10s/old/new/g&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 在包含&quot;pattern&quot;的行中进行替换</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/s/old/new/g&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_7">插入与追加</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 在第3行前插入文本</span>
+sed<span class="w"> </span><span class="s1">&#39;3i\新插入的文本&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 在第3行后追加文本</span>
+sed<span class="w"> </span><span class="s1">&#39;3a\新追加的文本&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 在匹配行前插入</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/i\新插入的文本&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 在匹配行后追加</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/a\新追加的文本&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_8">修改行</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 替换第3行的内容</span>
+sed<span class="w"> </span><span class="s1">&#39;3c\新的一行内容&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 替换匹配行的内容</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/c\新的一行内容&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h2 id="_9">高级用法</h2>
+<h3 id="_10">使用正则表达式</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 删除行首空格</span>
+sed<span class="w"> </span><span class="s1">&#39;s/^[ \t]*//&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 删除行尾空格</span>
+sed<span class="w"> </span><span class="s1">&#39;s/[ \t]*$//&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 删除所有空格</span>
+sed<span class="w"> </span><span class="s1">&#39;s/ //g&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 匹配数字</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/[0-9]/p&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 使用扩展正则(+, ?, |等)</span>
+sed<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;s/[0-9]+/NUM/g&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_11">使用反向引用</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 交换两个单词的位置</span>
+sed<span class="w"> </span><span class="s1">&#39;s/\(.*\) \(.*\)/\2 \1/&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 给匹配的内容加括号</span>
+sed<span class="w"> </span><span class="s1">&#39;s/[0-9]*/(&amp;)/&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 提取IP地址的某一段</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;192.168.1.1&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/\([0-9]*\)\.\([0-9]*\)\..*/\1.\2/&#39;</span>
+</code></pre></div>
+
+<h3 id="_12">多命令组合</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 使用分号分隔多个命令</span>
+sed<span class="w"> </span><span class="s1">&#39;1d; s/old/new/g&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 使用-e选项</span>
+sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;1d&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/old/new/g&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 使用花括号组合命令</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/{s/old/new/; p}&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_13">读写文件</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 将匹配行后追加文件内容</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/r other.txt&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 将匹配行写入新文件</span>
+sed<span class="w"> </span><span class="s1">&#39;/pattern/w output.txt&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_14">保持空间操作</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># h - 将模式空间复制到保持空间</span>
+<span class="c1"># H - 将模式空间追加到保持空间</span>
+<span class="c1"># g - 将保持空间复制到模式空间</span>
+<span class="c1"># G - 将保持空间追加到模式空间</span>
+<span class="c1"># x - 交换模式空间和保持空间</span>
+
+<span class="c1"># 示例:删除重复的相邻行</span>
+sed<span class="w"> </span><span class="s1">&#39;$!N; /^\(.*\)\n\1$/!P; D&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 示例:倒序输出文件</span>
+sed<span class="w"> </span><span class="s1">&#39;1!G;h;$!d&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h2 id="_15">实用示例</h2>
+<h3 id="_16">文本处理</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 在文件开头添加内容</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;1i\标题行&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 在文件末尾添加内容</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;$a\结尾行&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 给每行添加行号</span>
+<span class="nv">sed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>file.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;N;s/\n/\t/&#39;</span>
+
+<span class="c1"># 删除HTML标签</span>
+sed<span class="w"> </span><span class="s1">&#39;s/&lt;[^&gt;]*&gt;//g&#39;</span><span class="w"> </span>file.html
+
+<span class="c1"># 转换DOS格式到Unix格式</span>
+sed<span class="w"> </span><span class="s1">&#39;s/\r$//&#39;</span><span class="w"> </span>file.txt
+
+<span class="c1"># 转换Unix格式到DOS格式</span>
+sed<span class="w"> </span><span class="s1">&#39;s/$/\r/&#39;</span><span class="w"> </span>file.txt
+</code></pre></div>
+
+<h3 id="_17">配置文件修改</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 修改配置项的值</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^Port 22/Port 2222/&#39;</span><span class="w"> </span>sshd_config
+
+<span class="c1"># 取消注释</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#\(.*\)/\1/&#39;</span><span class="w"> </span>config.txt
+
+<span class="c1"># 添加注释</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^\(.*\)/#\1/&#39;</span><span class="w"> </span>config.txt
+
+<span class="c1"># 在特定行后添加配置</span>
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/\[section\]/a\new_option = value&#39;</span><span class="w"> </span>config.ini
+</code></pre></div>
+
+<h3 id="_18">日志分析</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 提取特定时间段的日志</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/2024-01-01/,/2024-01-31/p&#39;</span><span class="w"> </span>log.txt
+
+<span class="c1"># 删除日志中的时间戳</span>
+sed<span class="w"> </span><span class="s1">&#39;s/^[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9:]*//g&#39;</span><span class="w"> </span>log.txt
+
+<span class="c1"># 统计错误日志</span>
+sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;/ERROR/p&#39;</span><span class="w"> </span>log.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</code></pre></div>
+
+<h2 id="_19">注意事项</h2>
 <ol>
 <li>
 <p><strong>备份文件</strong>: 使用 <code>-i</code> 选项修改文件前,建议先备份:<code>sed -i.bak 's/old/new/g' file.txt</code></p>
@@ -232,20 +296,61 @@ sed [选项] -f 脚本文件 文件名</code></p>
 <li>单引号 <code>'</code> : 保持原样</li>
 <li>双引号 <code>"</code> : 允许变量替换</li>
 </ol>
-<h2>快速参考</h2>
-<p>| 命令 | 功能 |
-|------|------|
-| <code>p</code> | 打印 |
-| <code>d</code> | 删除 |
-| <code>s///</code> | 替换 |
-| <code>a\</code> | 追加 |
-| <code>i\</code> | 插入 |
-| <code>c\</code> | 修改 |
-| <code>r</code> | 读取文件 |
-| <code>w</code> | 写入文件 |
-| <code>q</code> | 退出 |
-| <code>n</code> | 读取下一行 |
-| <code>N</code> | 追加下一行到模式空间 |</p>
+<h2 id="_20">快速参考</h2>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>p</code></td>
+<td>打印</td>
+</tr>
+<tr>
+<td><code>d</code></td>
+<td>删除</td>
+</tr>
+<tr>
+<td><code>s///</code></td>
+<td>替换</td>
+</tr>
+<tr>
+<td><code>a\</code></td>
+<td>追加</td>
+</tr>
+<tr>
+<td><code>i\</code></td>
+<td>插入</td>
+</tr>
+<tr>
+<td><code>c\</code></td>
+<td>修改</td>
+</tr>
+<tr>
+<td><code>r</code></td>
+<td>读取文件</td>
+</tr>
+<tr>
+<td><code>w</code></td>
+<td>写入文件</td>
+</tr>
+<tr>
+<td><code>q</code></td>
+<td>退出</td>
+</tr>
+<tr>
+<td><code>n</code></td>
+<td>读取下一行</td>
+</tr>
+<tr>
+<td><code>N</code></td>
+<td>追加下一行到模式空间</td>
+</tr>
+</tbody>
+</table>
 <hr />
       </div><!-- /.entry-content -->
 

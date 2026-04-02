@@ -7,7 +7,7 @@
                         <title>安卓 position: absolute; position: fixed;和键盘冲突的问题</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="解决方式一 修改为relative或static 解决方式二 设置absolute时固定父元素高度（px） 解决方式三 弹出键盘时隐藏内容 css @media (max-height: 500px) { .class { display: none; } }" />
+    <meta name="description" content="解决方式一 修改为relative或static 解决方式二 设置absolute时固定父元素高度（px） 解决方式三 弹出键盘时隐藏内容 @media (max-height: 500px) { .class { display: none; } }" />
         </head>
 
         <body id="index" class="home">
@@ -42,18 +42,18 @@
                 </address>
         <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
         
-</footer><!-- /.post-info -->        <h3>解决方式一</h3>
+</footer><!-- /.post-info -->        <h3 id="_1">解决方式一</h3>
 <p>修改为relative或static</p>
-<h3>解决方式二</h3>
+<h3 id="_2">解决方式二</h3>
 <p>设置absolute时固定父元素高度（px）</p>
-<h3>解决方式三</h3>
+<h3 id="_3">解决方式三</h3>
 <p>弹出键盘时隐藏内容</p>
-<p><code>css
-@media (max-height: 500px) {
-    .class {
-        display: none;
-    }
-}</code></p>
+<div class="codehilite"><pre><span></span><code><span class="p">@</span><span class="k">media</span><span class="w"> </span><span class="o">(</span><span class="nt">max-height</span><span class="o">:</span><span class="w"> </span><span class="nt">500px</span><span class="o">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">.</span><span class="nc">class</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">none</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
       </div><!-- /.entry-content -->
 
     </article>

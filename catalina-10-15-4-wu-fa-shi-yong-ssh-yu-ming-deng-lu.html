@@ -46,10 +46,12 @@
 <p>方案一</p>
 <p>.ssh/config文件添加 <code>ProxyCommand nc %h %p</code></p>
 <p>如：</p>
-<p><code>host vps
+<div class="codehilite"><pre><span></span><code>host vps
 hostname xx.xxx.com
 user root
-ProxyCommand nc %h %p</code></p>
+ProxyCommand nc %h %p
+</code></pre></div>
+
 <p>方案二</p>
 <p><code>brew install openssh</code></p>
 <p>~/.bash_profile 添加: export PATH="/usr/local/sbin:$PATH"</p>

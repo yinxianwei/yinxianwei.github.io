@@ -7,7 +7,7 @@
                         <title>element-ui + element-theme + vue-cli + postcss-px2rem</title>
                         <link rel="stylesheet" href="https://yinxianwei.github.io/theme/css/main.css" />
                                 <link rel="stylesheet" href="/custom.css" />
-    <meta name="description" content="element-ui: 1.4.2 vue-cli: 2.8.2 js // utils.j exports.cssLoaders = function (options) { ... return { css: generateLoaders('postcss', { plugins()..." />
+    <meta name="description" content="element-ui: 1.4.2 vue-cli: 2.8.2 // utils.j exports.cssLoaders = function (options) { ... return { css: generateLoaders('postcss', { plugins() {..." />
         </head>
 
         <body id="index" class="home">
@@ -46,26 +46,27 @@
 <li>element-ui: 1.4.2</li>
 <li>vue-cli: 2.8.2</li>
 </ul>
-<p><code>js
-// utils.j
-exports.cssLoaders = function (options) {
-    ...
-    return {
-        css: generateLoaders('postcss', {
-            plugins() {
-                return [require('postcss-px2rem')({ remUnit: 75 })]
-            }
-        }),
-        ...
-    }
-}</code></p>
-<p><code>js
-// vue-loader.conf.js
-module.exports = {
-    ...
-    postcss: [require('postcss-px2rem')({ remUnit: 75 })],
-    ...
-}</code></p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// utils.j</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">cssLoaders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">css</span><span class="o">:</span><span class="w"> </span><span class="nx">generateLoaders</span><span class="p">(</span><span class="s1">&#39;postcss&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">plugins</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;postcss-px2rem&#39;</span><span class="p">)({</span><span class="w"> </span><span class="nx">remUnit</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="w"> </span><span class="p">})]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="c1">// vue-loader.conf.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="nx">postcss</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;postcss-px2rem&#39;</span><span class="p">)({</span><span class="w"> </span><span class="nx">remUnit</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="w"> </span><span class="p">})],</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
       </div><!-- /.entry-content -->
 
     </article>
