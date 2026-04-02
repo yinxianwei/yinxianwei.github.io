@@ -1,5 +1,6 @@
 Title: cron-parser
 Date: 2018-08-15 14:23:57
+Slug: cron-parser
 
 
 Github: [cron-parser](https://github.com/harrisiirak/cron-parser)

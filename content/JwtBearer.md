@@ -1,5 +1,6 @@
 Title: JwtBearer
 Date: 2018-08-21 09:53:49
+Slug: jwtbearer
 
 
 #### [JWT](https://jwt.io/) Token由以下三部分组成：
