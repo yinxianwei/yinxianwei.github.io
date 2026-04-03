@@ -1,7 +1,8 @@
 import os
 import sys
 
-sys.path.append(os.curdir)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(BASE_DIR)
 from pelicanconf import *
 
 SITEURL = "https://blog.yinxianwei.com"
