@@ -27,6 +27,51 @@
                         <ol id="posts-list" class="hfeed" start="9">
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="https://yinxianwei.github.io/da-jian-you-jian-fu-wu.html" rel="bookmark"
+                               title="Permalink to 搭建邮件服务">搭建邮件服务</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-04-20T11:17:00+08:00">
+                Published: Thu 20 April 2023
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://yinxianwei.github.io/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
+<p>tags: <a href="https://yinxianwei.github.io/tag/email.html">email</a> </p>        
+</footer><!-- /.post-info -->                        <h1 id="_1">环境</h1>
+<ol>
+<li>Ubuntu 22.04 server 64bit</li>
+<li>nginx+php</li>
+<li>sqlite3</li>
+</ol>
+<h1 id="fqdn">FQDN</h1>
+<blockquote>
+<p><a href="https://support.huaweicloud.com/ecs_faq/zh-cn_topic_0050735736.html">怎样使修改的静态主机名永久生效？</a></p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 更新</span>
+apt-get<span class="w"> </span>update
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span>&gt;<span class="w"> </span>/etc/hostname<span class="w"> </span>mail.example.com
+
+<span class="c1"># 注释 - update_hostname</span>
+vim<span class="w"> </span>/etc/cloud/cloud.cfg
+
+<span class="c1"># 重启</span>
+reboot
+</code></pre></div>
+
+<h1 id="nginx">安装nginx …</h1>
+                        <a class="readmore" href="https://yinxianwei.github.io/da-jian-you-jian-fu-wu.html">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="https://yinxianwei.github.io/linux-yi-xie-ming-ling.html" rel="bookmark"
                                title="Permalink to linux一些命令">linux一些命令</a></h1>
                     </header>
@@ -273,33 +318,6 @@ hooks列表： <a href="https://www.redmine.org/projects/redmine/wiki/plugin_tut
 </footer><!-- /.post-info -->                        <p>全局安装
 <code>sudo npm install -g --unsafe-perm node-sass@4.14.1 --save</code></p>
                         <a class="readmore" href="https://yinxianwei.github.io/linux-node-sass-bao-cuo.html">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="https://yinxianwei.github.io/mac-zhua-qu-xiao-cheng-xu-yuan-ma.html" rel="bookmark"
-                               title="Permalink to Mac抓取小程序源码">Mac抓取小程序源码</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2020-12-28T09:59:34+08:00">
-                Published: Mon 28 December 2020
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="https://yinxianwei.github.io/author/yinxianwei.html">yinxianwei</a>
-                </address>
-        <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
-        
-</footer><!-- /.post-info -->                        <ol>
-<li>安装安卓模拟器 <a href="https://mumu.163.com/">https://mumu.163.com/</a></li>
-<li>模拟器设置-开启ROOT权限</li>
-<li>安装微信 <a href="https://weixin.qq.com/download">https://weixin.qq.com/download</a></li>
-<li>安装 RE文件管理器</li>
-<li>登录微信，点击想要抓取小程序（小程序会闪退 …</li></ol>
-                        <a class="readmore" href="https://yinxianwei.github.io/mac-zhua-qu-xiao-cheng-xu-yuan-ma.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
                     </ol><!-- /#posts-list -->
