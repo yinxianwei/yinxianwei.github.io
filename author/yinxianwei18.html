@@ -27,6 +27,52 @@
                         <ol id="posts-list" class="hfeed" start="9">
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="https://yinxianwei.github.io/element-ui-element-theme-vue-cli-postcss-px2rem.html" rel="bookmark"
+                               title="Permalink to element-ui + element-theme + vue-cli + postcss-px2rem">element-ui + element-theme + vue-cli + postcss-px2rem</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2017-09-29T14:58:12+08:00">
+                Published: Fri 29 September 2017
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://yinxianwei.github.io/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
+        
+</footer><!-- /.post-info -->                        <ul>
+<li>element-ui: 1.4.2</li>
+<li>vue-cli: 2.8.2</li>
+</ul>
+<div class="codehilite"><pre><span></span><code><span class="c1">// utils.j</span>
+<span class="nx">exports</span><span class="p">.</span><span class="nx">cssLoaders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">options</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">css</span><span class="o">:</span><span class="w"> </span><span class="nx">generateLoaders</span><span class="p">(</span><span class="s1">&#39;postcss&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">plugins</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;postcss-px2rem&#39;</span><span class="p">)({</span><span class="w"> </span><span class="nx">remUnit</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="w"> </span><span class="p">})]</span>
+<span class="w">            </span><span class="p">}</span>
+<span class="w">        </span><span class="p">}),</span>
+<span class="w">        </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<div class="codehilite"><pre><span></span><code><span class="c1">// vue-loader.conf.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="nx">postcss</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;postcss-px2rem&#39;</span><span class="p">)({</span><span class="w"> </span><span class="nx">remUnit</span><span class="o">:</span><span class="w"> </span><span class="mf">75</span><span class="w"> </span><span class="p">})],</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="p">}</span>
+</code></pre></div>
+                        <a class="readmore" href="https://yinxianwei.github.io/element-ui-element-theme-vue-cli-postcss-px2rem.html">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="https://yinxianwei.github.io/mac-zi-dai-python-sheng-ji-ji-pip-an-zhuang.html" rel="bookmark"
                                title="Permalink to Mac自带Python升级及pip安装">Mac自带Python升级及pip安装</a></h1>
                     </header>
