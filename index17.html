@@ -27,6 +27,44 @@
                         <ol id="posts-list" class="hfeed" start="9">
                 <li><article class="hentry">
                     <header>
+                        <h1><a href="https://yinxianwei.github.io/shi-yong-docker-bu-shu-superset.html" rel="bookmark"
+                               title="Permalink to 使用docker部署superset">使用docker部署superset</a></h1>
+                    </header>
+
+                    <div class="entry-content">
+<footer class="post-info">
+        <abbr class="published" title="2023-12-13T17:32:44+08:00">
+                Published: Wed 13 December 2023
+        </abbr>
+
+                <address class="vcard author">
+                        By                                 <a class="url fn" href="https://yinxianwei.github.io/author/yinxianwei.html">yinxianwei</a>
+                </address>
+        <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
+<p>tags: <a href="https://yinxianwei.github.io/tag/bi.html">BI</a> <a href="https://yinxianwei.github.io/tag/superset.html">superset</a> <a href="https://yinxianwei.github.io/tag/docker.html">docker</a> </p>        
+</footer><!-- /.post-info -->                        <div class="codehilite"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/apache/superset.git
+
+<span class="nb">cd</span><span class="w"> </span>superset
+
+docker<span class="w"> </span>compose<span class="w"> </span>up
+
+docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-non-dev.yml<span class="w"> </span>pull
+docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-non-dev.yml<span class="w"> </span>up
+
+open<span class="w"> </span>http://localhost:8088
+</code></pre></div>
+
+<blockquote>
+<p>如何添加superset_config.py文件 <br />
+<a href="https://github.com/apache/superset/tree/master/docker#readme">https://github.com/apache/superset/tree/master/docker#readme</a></p>
+</blockquote>
+<div class="codehilite"><pre><span></span><code>docker<span class="w"> </span>cp<span class="w"> </span>superset_config.py<span class="w"> </span>superset_app:/app …</code></pre></div>
+                        <a class="readmore" href="https://yinxianwei.github.io/shi-yong-docker-bu-shu-superset.html">read more</a>
+                    </div><!-- /.entry-content -->
+                </article></li>
+
+                <li><article class="hentry">
+                    <header>
                         <h1><a href="https://yinxianwei.github.io/da-jian-you-jian-fu-wu.html" rel="bookmark"
                                title="Permalink to 搭建邮件服务">搭建邮件服务</a></h1>
                     </header>
@@ -295,29 +333,6 @@ hooks列表： <a href="https://www.redmine.org/projects/redmine/wiki/plugin_tut
 <li>重新添加打印机</li>
 </ol>
                         <a class="readmore" href="https://yinxianwei.github.io/macos-catalina-da-yin-ji-stopped-filter-failed.html">read more</a>
-                    </div><!-- /.entry-content -->
-                </article></li>
-
-                <li><article class="hentry">
-                    <header>
-                        <h1><a href="https://yinxianwei.github.io/linux-node-sass-bao-cuo.html" rel="bookmark"
-                               title="Permalink to linux node-sass报错">linux node-sass报错</a></h1>
-                    </header>
-
-                    <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2021-07-21T15:16:41+08:00">
-                Published: Wed 21 July 2021
-        </abbr>
-
-                <address class="vcard author">
-                        By                                 <a class="url fn" href="https://yinxianwei.github.io/author/yinxianwei.html">yinxianwei</a>
-                </address>
-        <p>In <a href="https://yinxianwei.github.io/category/sui-bi.html">随笔</a>.</p>
-        
-</footer><!-- /.post-info -->                        <p>全局安装
-<code>sudo npm install -g --unsafe-perm node-sass@4.14.1 --save</code></p>
-                        <a class="readmore" href="https://yinxianwei.github.io/linux-node-sass-bao-cuo.html">read more</a>
                     </div><!-- /.entry-content -->
                 </article></li>
                     </ol><!-- /#posts-list -->
